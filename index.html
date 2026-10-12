@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="3.4";
+const CURRENT="3.5";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -111,8 +111,12 @@ body{padding-bottom:92px}
 @keyframes chordPulse{to{transform:translate(-50%,-50%) scale(1.18);box-shadow:0 0 0 6px #f59e0b55,0 0 20px #f59e0b}}
 .audioOptions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}.audioOptions label{font-size:10px;color:#aeb8cc;font-weight:800}.audioOptions select,.audioOptions input{width:100%;min-height:42px;margin-top:4px;background:#111a2e;color:#fff;border:1px solid #33405f;border-radius:9px;padding:6px}
 .noteTap{cursor:pointer}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v3.4</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.4</div>
+</style><style id="v35TheoryFix">
+.chordFinger.root{background:#ef4444!important;border-color:#fecaca!important;color:#fff!important}
+.chordFinger:not(.root){background:#263a65;border-color:#b9c7e8;color:#fff}
+.chordFinger.root.playing{background:#ef4444!important;box-shadow:0 0 0 8px #ef444455,0 0 24px #ef4444!important}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v3.5</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.5</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -444,21 +448,32 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   drawMini();
  }
  function voicing(){
-  // Busca uma forma compacta de 5 casas contendo apenas notas do acorde.
-  const ints=currentInts(),pcs=ints.map(i=>(root+i)%12);let best=null;
+  // Formação teórica: exatamente uma posição para cada nota distinta do acorde.
+  const ints=[...currentInts()], wanted=ints.map(iv=>({iv,pc:(root+iv)%12}));
+  let best=null;
   for(let start=0;start<=12;start++){
-    let pts=[];
-    for(let si=0;si<6;si++){
-      let candidates=[];
-      for(let fr=start;fr<=start+4;fr++){let pc=(openMidi[si]+fr)%12;if(pcs.includes(pc))candidates.push({si,fr,pc,iv:(pc-root+12)%12})}
-      if(candidates.length)pts.push(candidates[0]);
+    const choices=wanted.map(w=>{
+      const c=[];
+      for(let si=0;si<6;si++)for(let fr=start;fr<=start+4;fr++){
+        if((openMidi[si]+fr)%12===w.pc)c.push({si,fr,pc:w.pc,iv:w.iv});
+      }
+      return c;
+    });
+    if(choices.some(c=>!c.length))continue;
+    let pts=[],usedStrings=new Set(),usedCells=new Set(),cost=0;
+    for(const cands of choices){
+      const ranked=[...cands].sort((x,y)=>{
+        const sx=(usedStrings.has(x.si)?20:0)+(usedCells.has(x.si+":"+x.fr)?50:0)+x.fr*.08;
+        const sy=(usedStrings.has(y.si)?20:0)+(usedCells.has(y.si+":"+y.fr)?50:0)+y.fr*.08;
+        return sx-sy;
+      });
+      const p=ranked[0];pts.push(p);usedStrings.add(p.si);usedCells.add(p.si+":"+p.fr);cost+=p.fr;
     }
-    const covered=new Set(pts.map(x=>x.pc)).size,score=covered*20+pts.length-start*.08;
+    const score=usedStrings.size*20-cost*.1-start*.05;
     if(!best||score>best.score)best={start,pts,score};
   }
   return best||{start:0,pts:[]};
- }
- function drawMini(){
+ } function drawMini(){
   const b=document.getElementById("miniChordBoard");if(!b)return;const v=voicing(),N=spell==="s"?S:F;
   b.dataset.start=v.start;b.innerHTML='<div class="mcbStrings">'+Array(6).fill('<div class="mcbString"></div>').join("")+'</div><div class="mcbFrets">'+Array.from({length:5},(_,i)=>'<div class="mcbFret"><span>'+(v.start+i)+'</span></div>').join("")+'</div>';
   for(let si=0;si<6;si++){let sn=document.createElement("div");sn.className="mcbStringName";sn.textContent=names[si];sn.style.top=(18+(si+.03)*(189/5))+"px";b.appendChild(sn)}
