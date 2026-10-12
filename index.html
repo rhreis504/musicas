@@ -4,44 +4,37 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 #force{position:fixed;z-index:99999;right:12px;top:calc(12px + env(safe-area-inset-top));border:1px solid #f59e0b;background:#111a2ef2;color:#fff;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;box-shadow:0 4px 18px #0008}
 #force:active{background:#f59e0b;color:#111}
 </style></head><body><button id="force">↻ Atualizar</button><script>
-(()=>{let frame=null,currentKey="",busy=false;const btn=document.getElementById("force");
-const PUBLISHED={version:"5.14",build:"6b138f1d",app:"app-5.9.html"};
-const manifestUrl=()=> "./version.json?nocache="+Date.now();
-const appUrl=m=>"./"+m.app+"?build="+encodeURIComponent(m.build||m.version)+"&nocache="+Date.now();
-function mount(m){
- const k=m.version+"@"+(m.build||"");
- const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=appUrl(m);
- n.onload=()=>{if(frame)frame.remove();frame=n;currentKey=k;try{localStorage.setItem("mv-last-manifest",JSON.stringify(m))}catch(e){}};
- document.body.appendChild(n);
-}
-async function latest(){
- const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),3500);
- try{const r=await fetch(manifestUrl(),{cache:"no-store",mode:"cors",signal:ctl.signal});if(!r.ok)throw Error("manifest");return await r.json()}finally{clearTimeout(tm)}
-}
-async function validateApp(m){const u=appUrl(m);const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),4000);try{const r=await fetch(u,{cache:"no-store",signal:ctl.signal});if(!r.ok)throw Error("app");return true}finally{clearTimeout(tm)}}
-async function update(force){
- if(busy)return;busy=true;if(force)btn.textContent="Atualizando…";
- try{
-   const m=await latest(),k=m.version+"@"+(m.build||"");
-   if(force||k!==currentKey){await validateApp(m);mount(m);}
-   if(force){btn.textContent="✓ Atualizado";setTimeout(()=>btn.textContent="↻ Atualizar",900)}
- }catch(e){
-   if(force){/* Mesmo offline/cacheado, recarrega o build publicado embutido */mount(PUBLISHED);btn.textContent="↻ Recarregado";setTimeout(()=>btn.textContent="↻ Atualizar",900)}
- }finally{busy=false}
-}
-/* abre imediatamente o build atual; a rede só é usada para descobrir um build ainda mais novo */
-mount(PUBLISHED);
-setTimeout(()=>update(false),50);
-setInterval(()=>update(false),30000);
-addEventListener("focus",()=>update(false));
-addEventListener("pageshow",()=>update(false));
-document.addEventListener("visibilitychange",()=>{if(!document.hidden)update(false)});
-btn.onclick=async()=>{if(busy)return;busy=true;btn.textContent="Atualizando…";try{
- if("serviceWorker" in navigator){const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs)await r.unregister().catch(()=>{})}
- if("caches" in window){for(const k of await caches.keys())await caches.delete(k)}
- const m=await latest();await validateApp(m);
- const u=new URL(location.href);u.searchParams.set("_v",m.version||"latest");u.searchParams.set("_b",m.build||Date.now());u.searchParams.set("_t",Date.now());
- location.replace(u.href);
- }catch(e){btn.textContent="Tentar novamente";busy=false}};
+(()=>{
+ const btn=document.getElementById("force");
+ const PUBLISHED={version:"5.15",build:"force515",app:"app-5.9.html"};
+ let frame=null,busy=false;
+ function appUrl(m){return "./"+m.app+"?v="+encodeURIComponent(m.version)+"&b="+encodeURIComponent(m.build)+"&t="+Date.now()}
+ function mount(m){
+   const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=appUrl(m);
+   n.onload=()=>{if(frame)frame.remove();frame=n};
+   document.body.appendChild(n);
+ }
+ async function getLatest(){
+   const r=await fetch("./version.json?t="+Date.now(),{cache:"reload",headers:{"Cache-Control":"no-cache, no-store, max-age=0"}});
+   if(!r.ok)throw Error("version");
+   return r.json();
+ }
+ async function hardUpdate(){
+   if(busy)return;busy=true;btn.textContent="Atualizando…";
+   try{
+     if("serviceWorker" in navigator){for(const reg of await navigator.serviceWorker.getRegistrations())await reg.unregister().catch(()=>{})}
+     if("caches" in window){for(const key of await caches.keys())await caches.delete(key)}
+     localStorage.removeItem("mv-last-manifest");
+     sessionStorage.clear();
+     const m=await getLatest();
+     btn.textContent="Abrindo v"+m.version+"…";
+     const url=new URL(location.origin+location.pathname);
+     url.searchParams.set("v",m.version);url.searchParams.set("build",m.build);url.searchParams.set("fresh",Date.now());
+     location.href=url.toString();
+   }catch(e){btn.textContent="Falhou — toque novamente";busy=false}
+ }
+ btn.addEventListener("click",hardUpdate);
+ mount(PUBLISHED);
+ setTimeout(async()=>{try{const m=await getLatest();if(m.version!==PUBLISHED.version||m.build!==PUBLISHED.build)mount(m)}catch(e){}},300);
 })();
 </script></body></html>
