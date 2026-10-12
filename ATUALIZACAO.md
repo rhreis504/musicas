@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.17
-- **build:** 30f3cee2
+- **version:** 5.18
+- **build:** 3cd45c2a
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.17 |
-| Acordes | app-5.9.html | 5.17 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.17 |
-| Braço do violão | app-5.9.html | 5.17 |
-| Afinador | app-5.9.html | 5.17 |
-| Metrônomo | app-5.9.html | 5.17 |
-| Loader / Atualizar | index.html | 5.17 |
+| Inicial / navegação | app-5.9.html | 5.18 |
+| Acordes | app-5.9.html | 5.18 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.18 |
+| Braço do violão | app-5.9.html | 5.18 |
+| Afinador | app-5.9.html | 5.18 |
+| Metrônomo | app-5.9.html | 5.18 |
+| Loader / Atualizar | index.html | 5.18 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.18** — Play dos shapes pentatônicos passa a usar diretamente a matriz da posição selecionada. Ao chegar à última nota do shape, retorna apenas pelas mesmas notas do desenho; nenhuma nota externa pode entrar na sequência.
 
 - **5.17** — exercício guiado passa a montar a sequência exclusivamente com as notas visíveis do shape selecionado; notas fora do desenho não entram no Play.
 
