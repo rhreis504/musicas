@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
  "use strict";
- const CURRENT="3.1";
+ const CURRENT="3.2";
  let checking=false,lastCheck=0;
  async function verify(){
    if(checking || Date.now()-lastCheck<2500)return;
@@ -76,8 +76,8 @@ body{padding-bottom:92px}
 #screenMusic #title{font-size:27px;font-weight:900;margin-bottom:4px}
 .demoInfo{padding:10px 12px;border-radius:11px;background:#10182a;border:1px solid #26314f;color:#aeb8cc;font-size:12px;line-height:1.4;margin:10px 0}
 #playMain{background:#f59e0b;color:#17100a;border-color:#f59e0b;font-size:16px}
-</style></head><body><div id="appVersionBadge">v3.1</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.1</div>
+</style></head><body><div id="appVersionBadge">v3.2</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.2</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -364,5 +364,28 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    const play=document.getElementById("playMain");if(play){play.textContent="▶ Ouvir notas + acorde";const info=document.createElement("div");info.className="demoInfo";info.textContent="Audição didática: toca cada nota separadamente e sustentada; depois toca o acorde completo.";play.parentElement.parentNode.insertBefore(info,play.parentElement)}
  }
  setTimeout(setup,0);
+})();
+</script><style id="v32ChordFix">
+#screenMusic>section.card{display:none!important}
+#screenMusic .moduleCard{margin-top:8px}
+#screenMusic .compactChordControls{display:grid!important}
+#screenMusic .tabs{display:none!important}
+#screenMusic .audio{grid-template-columns:1fr 1fr}
+#screenMusic #playDown{display:none}
+</style>
+<script id="v32ChordFixJS">
+(function(){
+ function fix(){
+  const music=document.getElementById("screenMusic"),box=document.getElementById("compactChordControls");if(!music||!box)return;
+  const old=music.querySelector(":scope > section.card");if(old)old.style.display="none";
+  const result=[...music.children].find(x=>x.classList&&x.classList.contains("moduleCard"));
+  if(result && box.parentElement!==result)result.insertBefore(box,result.firstChild);
+  const tt=document.getElementById("compactType");
+  if(tt){tt.previousElementSibling&&0;tt.parentElement.childNodes[0].textContent=mode==="c"?"Tipo de acorde":"Tipo de escala";}
+  const title=document.getElementById("title");if(title)title.style.marginTop="14px";
+  const play=document.getElementById("playMain");if(play)play.textContent="▶ Ouvir formação";
+ }
+ setTimeout(fix,30);
+ document.addEventListener("click",e=>{if(e.target&&e.target.matches('[data-go="chord"],[data-go="scale"]'))setTimeout(fix,30)});
 })();
 </script></body></html>
