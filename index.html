@@ -5,36 +5,45 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 #force:active{background:#f59e0b;color:#111}
 </style></head><body><button id="force">↻ Atualizar</button><script>
 (()=>{
- const btn=document.getElementById("force");
- const PUBLISHED={version:"5.15",build:"355960fb",app:"app-5.9.html"};
+ const btn=document.getElementById("force"),LOCAL_VERSION="5.16",LOCAL_BUILD="v516-md-controller",APP="app-5.9.html";
  let frame=null,busy=false;
- function appUrl(m){return "./"+m.app+"?v="+encodeURIComponent(m.version)+"&b="+encodeURIComponent(m.build)+"&t="+Date.now()}
+ const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2);
+ function parseMD(md){
+   const version=(md.match(/\*\*version:\*\*\s*([^\s]+)/i)||[])[1];
+   const build=(md.match(/\*\*build:\*\*\s*([^\s]+)/i)||[])[1];
+   const entry=(md.match(/\*\*entry:\*\*\s*([^\s]+)/i)||[])[1]||APP;
+   if(!version||!build)throw Error("ATUALIZACAO.md inválido");
+   return {version,build,app:entry};
+ }
+ async function mdLatest(){
+   const r=await fetch("./ATUALIZACAO.md?fresh="+bust(),{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store, max-age=0","Pragma":"no-cache"}});
+   if(!r.ok)throw Error("ATUALIZACAO.md indisponível");
+   return parseMD(await r.text());
+ }
+ function appUrl(m){return "./"+m.app+"?version="+encodeURIComponent(m.version)+"&build="+encodeURIComponent(m.build)+"&fresh="+bust()}
  function mount(m){
    const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=appUrl(m);
    n.onload=()=>{if(frame)frame.remove();frame=n};
    document.body.appendChild(n);
  }
- async function getLatest(){
-   const r=await fetch("./version.json?t="+Date.now(),{cache:"reload",headers:{"Cache-Control":"no-cache, no-store, max-age=0"}});
-   if(!r.ok)throw Error("version");
-   return r.json();
+ async function purge(){
+   if("serviceWorker" in navigator){for(const reg of await navigator.serviceWorker.getRegistrations())await reg.unregister().catch(()=>{})}
+   if("caches" in window){for(const key of await caches.keys())await caches.delete(key)}
+   try{localStorage.removeItem("mv-last-manifest")}catch(e){}
  }
  async function hardUpdate(){
-   if(busy)return;busy=true;btn.textContent="Atualizando…";
+   if(busy)return;busy=true;btn.textContent="Validando versão…";
    try{
-     if("serviceWorker" in navigator){for(const reg of await navigator.serviceWorker.getRegistrations())await reg.unregister().catch(()=>{})}
-     if("caches" in window){for(const key of await caches.keys())await caches.delete(key)}
-     localStorage.removeItem("mv-last-manifest");
-     sessionStorage.clear();
-     const m=await getLatest();
+     await purge();
+     const m=await mdLatest();
      btn.textContent="Abrindo v"+m.version+"…";
-     const url=new URL(location.origin+location.pathname);
-     url.searchParams.set("v",m.version);url.searchParams.set("build",m.build);url.searchParams.set("fresh",Date.now());
-     location.href=url.toString();
-   }catch(e){btn.textContent="Falhou — toque novamente";busy=false}
+     const u=new URL(location.origin+location.pathname);
+     u.searchParams.set("version",m.version);u.searchParams.set("build",m.build);u.searchParams.set("fresh",bust());
+     location.replace(u.href);
+   }catch(e){btn.textContent="Falha — tentar novamente";busy=false}
  }
- btn.addEventListener("click",hardUpdate);
- mount(PUBLISHED);
- setTimeout(async()=>{try{const m=await getLatest();if(m.version!==PUBLISHED.version||m.build!==PUBLISHED.build)mount(m)}catch(e){}},300);
+ btn.onclick=hardUpdate;
+ mount({version:LOCAL_VERSION,build:LOCAL_BUILD,app:APP});
+ setTimeout(async()=>{try{const m=await mdLatest();if(m.version!==LOCAL_VERSION||m.build!==LOCAL_BUILD){await purge();mount(m)}}catch(e){}},250);
 })();
 </script></body></html>
