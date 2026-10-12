@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.17";
+const CURRENT="5.18";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -412,8 +412,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .openLabel{left:1%!important;width:12%!important;bottom:5px!important}
 #screenExercise .exDot{width:34px!important;height:34px!important;font-size:12px!important}
 @media(max-height:780px){#screenExercise #exBoardScroll,#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important}}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.17</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.17</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.18</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.18</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -709,7 +709,21 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  function exTick(){if(!exOn)return;exClick(exBeat===0);exBeat=(exBeat+1)%4;exTimer=setTimeout(exTick,60000/(+$("exBpm").value))}
  function startExMetro(){if(exOn)return;exOn=true;exBeat=0;$("exMetro").textContent="■ Parar";$("exMetro").classList.add("active");exTick()}
  function stopGuide(stopMetro=true){exGuideOn=false;clearTimeout(exGuideTimer);exGuideTimer=null;document.querySelectorAll("#exFret .exDot").forEach(x=>x.classList.remove("playing"));document.querySelectorAll("#exFret .exString").forEach(x=>x.classList.remove("playing"));$("exGuide").textContent="▶ Play";exGuidePaused=false;$("exNow").textContent="Pronto";if(stopMetro)stopExMetro()}
- function buildGuide(){const visible=d=>{const s=getComputedStyle(d);return s.display!=="none"&&s.visibility!=="hidden"&&d.getClientRects().length>0};const dots=[...document.querySelectorAll("#exFret .exDot")].filter(visible).sort((a,b)=>{const ds=(+b.dataset.si)-(+a.dataset.si);return ds||(+a.dataset.fret)-(+b.dataset.fret)}),dir=$("exDirection").value;if(dir==="up")return dots;if(dir==="down")return dots.slice().reverse();return dots.length<2?dots:[...dots,...dots.slice(0,-1).reverse()]}
+ function buildGuide(){
+   const position=studyPositions[exPos],isPent=$("exScale").value==="minPent";
+   if(isPent&&position?.strings){
+     const map=new Map([...document.querySelectorAll("#exFret .exDot")].map(d=>[d.dataset.si+":"+d.dataset.fret,d]));
+     const ascending=[];
+     // A sequência nasce da matriz do próprio shape, nunca da escala completa nem de notas fora do desenho.
+     for(let si=5;si>=0;si--){for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){const d=map.get(si+":"+fret);if(d)ascending.push(d)}}
+     const dir=$("exDirection").value;
+     if(dir==="up")return ascending;
+     if(dir==="down")return ascending.slice().reverse();
+     return ascending.length<2?ascending:[...ascending,...ascending.slice(0,-1).reverse()];
+   }
+   const dots=[...document.querySelectorAll("#exFret .exDot")].sort((a,b)=>{const ds=(+b.dataset.si)-(+a.dataset.si);return ds||(+a.dataset.fret)-(+b.dataset.fret)}),dir=$("exDirection").value;
+   if(dir==="up")return dots;if(dir==="down")return dots.slice().reverse();return dots.length<2?dots:[...dots,...dots.slice(0,-1).reverse()]
+ }
  function guideStep(){
    if(!exGuideOn||!exGuideSeq.length)return;
    const bpm=+$("exBpm").value,step=(60000/bpm)/(+$("exSub").value||1),d=exGuideSeq[exGuideIndex];
