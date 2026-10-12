@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
  "use strict";
- const CURRENT="3.0";
+ const CURRENT="3.1";
  let checking=false,lastCheck=0;
  async function verify(){
    if(checking || Date.now()-lastCheck<2500)return;
@@ -64,8 +64,20 @@ body{padding-bottom:92px}
 .exBoard{overflow:hidden;border-radius:14px;border:1px solid #33405f;background:#805333}.exFret{position:relative;height:250px;min-width:620px;background:linear-gradient(#93633f,#754827)}.exStrings{position:absolute;inset:15px 0 22px;display:grid;grid-template-rows:repeat(6,1fr)}.exString{border-top:2px solid #ddd}.exFrets{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr)}.exFretLine{border-right:3px solid #ddd;position:relative}.exFretLine span{position:absolute;bottom:2px;right:5px;font-size:11px;color:#111}.exDot{position:absolute;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%);font-size:11px;font-weight:900;background:#38bdf8;color:#06111c;border:2px solid #bae6fd}.exDot.root{background:#ef4444;color:white;border-color:#fecaca}
 .swipeHint{text-align:center;color:#aeb8cc;font-size:11px;margin-top:8px}
 @media(max-width:390px){.bottomNav button{font-size:8px}.navIco{font-size:18px}}
-</style></head><body><div id="appVersionBadge">v3.0</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.0</div>
+</style><style id="v31ChordCompact">
+#screenMusic .card:first-of-type{padding:14px}
+#screenMusic #roots,#screenMusic #types,#screenMusic #sharp,#screenMusic #flat,#screenMusic #typeLabel+#types{display:none!important}
+.compactChordControls{display:grid;grid-template-columns:1fr;gap:11px}
+.compactChordControls label{display:block;color:#aeb8cc;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.compactChordControls select{width:100%;min-height:48px;margin-top:5px;background:#111a2e;color:#fff;border:1px solid #33405f;border-radius:11px;padding:0 12px;font-size:16px;font-weight:700}
+.compactTwo{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.chordNotesTitle{font-size:11px;color:#aeb8cc;font-weight:800;margin:14px 0 7px;text-transform:uppercase}
+#screenMusic #pills{gap:8px}#screenMusic .pill{font-size:17px;padding:8px 12px}
+#screenMusic #title{font-size:27px;font-weight:900;margin-bottom:4px}
+.demoInfo{padding:10px 12px;border-radius:11px;background:#10182a;border:1px solid #26314f;color:#aeb8cc;font-size:12px;line-height:1.4;margin:10px 0}
+#playMain{background:#f59e0b;color:#17100a;border-color:#f59e0b;font-size:16px}
+</style></head><body><div id="appVersionBadge">v3.1</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.1</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -90,7 +102,17 @@ function synthPluck(midi,when=0,dur=1.15,vol=.16){let a=ctx(),t=a.currentTime+wh
 function stopAll(){playToken++;timers.forEach(clearTimeout);timers=[];audioNodes.forEach(x=>{try{x.stop()}catch(e){}});audioNodes=[];document.querySelectorAll(".playing").forEach(x=>x.classList.remove("playing"))}
 function currentInts(){return (mode==="c"?C:Q)[type]}
 function midiForPc(pc,base=60){let m=base+((pc-base%12+12)%12);return m}
-function playChord(){ctx();stopAll();let I=currentInts(),base=60+root;I.forEach((iv,i)=>pluck(base+iv,i*.035,1.5,.11));}
+function playChord(){
+ ctx();stopAll();
+ let token=playToken,I=[...currentInts()],base=60+root;
+ // Demonstração: cada nota sustentada e, ao final, o acorde completo.
+ const step=1.05,noteDur=1.55;
+ I.forEach((iv,i)=>pluck(base+iv,i*step,noteDur,.27));
+ const chordAt=I.length*step+.35;
+ I.forEach((iv,i)=>pluck(base+iv,chordAt+i*.025,2.6,.23));
+ const end=(chordAt+3)*1000;
+ timers.push(setTimeout(()=>{if(repeat&&token===playToken)playChord()},end));
+}
 function playSeq(direction=1){ctx();stopAll();let token=playToken,I=[...currentInts()],base=60+root,seq=I.map(iv=>base+iv);if(direction<0)seq.reverse();let ms=+$("tempo").value;seq.forEach((m,i)=>{timers.push(setTimeout(()=>{if(token!==playToken)return;pluck(m,0,.65,.18)},i*ms))});let end=seq.length*ms+250;timers.push(setTimeout(()=>{if(repeat&&token===playToken)playSeq(direction)},end))}
 function playFret(pc,stringIndex,fret,el){ctx();let openMidi=[64,59,55,50,45,40][stringIndex],m=openMidi+fret;pluck(m,0,.9,.2);if(el){el.classList.add("playing");setTimeout(()=>el.classList.remove("playing"),220)}}
 function choices(){let a=$("roots");a.innerHTML="";R.forEach((x,i)=>{let b=document.createElement("button");b.textContent=x;b.className=i===root?"active":"";b.onclick=()=>{root=i;choices();render()};a.appendChild(b)});let o=mode==="c"?C:Q;if(!o[type])type=Object.keys(o)[0];$("typeLabel").textContent=mode==="c"?"2. ESCOLHA O TIPO DE ACORDE":"2. ESCOLHA O TIPO DE ESCALA";let t=$("types");t.innerHTML="";Object.keys(o).forEach(k=>{let b=document.createElement("button");b.textContent=k;b.className=k===type?"active":"";b.onclick=()=>{type=k;choices();render()};t.appendChild(b)})}
@@ -151,10 +173,10 @@ function pluck(midi,when=0,dur=1.15,vol=.16){
   if(!item||token!==playToken||inst!==activeInstrument){if(!item&&token===playToken)synthPluck(midi,when,dur,vol);return}
   const a=ctx(),src=a.createBufferSource(),gain=a.createGain(),t=a.currentTime+when;
   src.buffer=item.audio;src.playbackRate.value=item.rate;
-  gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(Math.min(.75,vol*2.2),t+.008);
-  gain.gain.setTargetAtTime(.0001,t+Math.min(dur,.9),.18);
+  gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(Math.min(1.0,vol*3.2),t+.008);
+  gain.gain.setTargetAtTime(.0001,t+Math.min(dur,1.8),.32);
   src.connect(gain);gain.connect(a.destination);
-  src.start(t);src.stop(t+Math.min(Math.max(dur+.35,.55),3));
+  src.start(t);src.stop(t+Math.min(Math.max(dur+.65,.9),4));
   audioNodes.push(src);
  }).catch(()=>{if(token===playToken)synthPluck(midi,when,dur,vol)});
 }
@@ -317,5 +339,30 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  window.launchTool=show;
  document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
  document.querySelectorAll("[data-home]").forEach(b=>b.onclick=()=>{document.querySelectorAll(".toolScreen").forEach(x=>x.classList.remove("active"));document.body.classList.remove("launched");nav.querySelectorAll("button").forEach(x=>x.classList.remove("active"));scrollTo(0,0)});
+})();
+</script><script id="v31ChordUI">
+(function(){
+ function setup(){
+   const host=document.querySelector("#screenMusic .card");if(!host||document.getElementById("compactChordControls"))return;
+   const box=document.createElement("div");box.id="compactChordControls";box.className="compactChordControls";
+   box.innerHTML='<label>Tônica<select id="compactRoot"></select></label><label>Tipo de acorde / escala<select id="compactType"></select></label><div class="compactTwo"><label>Acidentes<select id="compactSpell"><option value="s">♯ Sustenidos</option><option value="f">♭ Bemóis</option></select></label><label>Visualização<select id="compactLabels"><option value="n">Notas</option><option value="d">Graus</option></select></label></div>';
+   host.insertBefore(box,host.firstChild);
+   const rr=document.getElementById("compactRoot"),tt=document.getElementById("compactType"),sp=document.getElementById("compactSpell"),lb=document.getElementById("compactLabels");
+   function fill(){
+     rr.innerHTML=R.map((n,i)=>'<option value="'+i+'">'+n+'</option>').join("");rr.value=root;
+     const o=mode==="c"?C:Q;tt.innerHTML=Object.keys(o).map(k=>'<option>'+k+'</option>').join("");tt.value=type;
+     sp.value=spell;lb.value=labels;
+   }
+   rr.onchange=()=>{root=+rr.value;choices();render()};
+   tt.onchange=()=>{type=tt.value;choices();render()};
+   sp.onchange=()=>{spell=sp.value;document.getElementById(spell==="s"?"sharp":"flat").click();render()};
+   lb.onchange=()=>{labels=lb.value;document.getElementById(labels==="n"?"notesBtn":"degreesBtn").click();render()};
+   // Mantém selects sincronizados ao alternar Acordes/Escalas.
+   ["btChord","btScale"].forEach(id=>document.getElementById(id)?.addEventListener("click",()=>setTimeout(fill,0)));
+   fill();
+   const pills=document.getElementById("pills");if(pills){const t=document.createElement("div");t.className="chordNotesTitle";t.textContent="Notas que formam o acorde / escala";pills.parentNode.insertBefore(t,pills)}
+   const play=document.getElementById("playMain");if(play){play.textContent="▶ Ouvir notas + acorde";const info=document.createElement("div");info.className="demoInfo";info.textContent="Audição didática: toca cada nota separadamente e sustentada; depois toca o acorde completo.";play.parentElement.parentNode.insertBefore(info,play.parentElement)}
+ }
+ setTimeout(setup,0);
 })();
 </script></body></html>
