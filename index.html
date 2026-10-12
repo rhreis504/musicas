@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
  "use strict";
- const CURRENT="2.4";
+ const CURRENT="3.0";
  let checking=false,lastCheck=0;
  async function verify(){
    if(checking || Date.now()-lastCheck<2500)return;
@@ -51,8 +51,21 @@ function launchTool(tool){
  document.addEventListener("visibilitychange",function(){if(!document.hidden)verify()});
  window.addEventListener("focus",verify);
 })();
-</script></head><body><div id="appVersionBadge">v2.4</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 2.4</div>
+</script><style id="v3Layout">
+body{padding-bottom:92px}
+.appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
+#launchHome{display:block} body.launched #launchHome{display:none!important}
+.bottomNav{position:fixed;z-index:9000;left:0;right:0;bottom:0;padding:6px 5px calc(6px + env(safe-area-inset-bottom));background:#0b1020f5;border-top:1px solid #26314f;display:grid;grid-template-columns:repeat(6,1fr);gap:2px;backdrop-filter:blur(12px)}
+.bottomNav button{min-height:55px;padding:4px 1px;border:0;background:transparent;color:#aeb8cc;font-size:9px}.bottomNav button.active{color:#f59e0b;background:#182137}.navIco{display:block;font-size:19px;margin-bottom:2px}
+.screenHead{display:flex;align-items:center;gap:10px;margin:8px 0 12px}.screenHead h2{font-size:22px;margin:0}.screenHead [data-home]{width:auto;padding:6px 10px}
+.moduleCard{background:#151c2f;border:1px solid #26314f;border-radius:16px;padding:13px;margin:10px 0}
+.exerciseGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.exerciseGrid select,.exerciseGrid input{width:100%}
+.exToolbar{display:grid;grid-template-columns:1fr auto auto;gap:7px;align-items:center}.positionBar{display:flex;gap:7px;overflow:auto;padding:5px 0 10px}.positionBar button{min-width:90px}
+.exBoard{overflow:hidden;border-radius:14px;border:1px solid #33405f;background:#805333}.exFret{position:relative;height:250px;min-width:620px;background:linear-gradient(#93633f,#754827)}.exStrings{position:absolute;inset:15px 0 22px;display:grid;grid-template-rows:repeat(6,1fr)}.exString{border-top:2px solid #ddd}.exFrets{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr)}.exFretLine{border-right:3px solid #ddd;position:relative}.exFretLine span{position:absolute;bottom:2px;right:5px;font-size:11px;color:#111}.exDot{position:absolute;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%);font-size:11px;font-weight:900;background:#38bdf8;color:#06111c;border:2px solid #bae6fd}.exDot.root{background:#ef4444;color:white;border-color:#fecaca}
+.swipeHint{text-align:center;color:#aeb8cc;font-size:11px;margin-top:8px}
+@media(max-width:390px){.bottomNav button{font-size:8px}.navIco{font-size:18px}}
+</style></head><body><div id="appVersionBadge">v3.0</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 3.0</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -198,68 +211,111 @@ $("bpmMinus").onclick=()=>{$("bpm").value=Math.max(40,+$("bpm").value-5);$("bpm"
 $("bpmPlus").onclick=()=>{$("bpm").value=Math.min(240,+$("bpm").value+5);$("bpm").oninput()};
 document.querySelectorAll(".meter").forEach(b=>b.onclick=()=>{metroMeter=+b.dataset.meter;metroBeat=0;$("beatTxt").textContent=b.textContent;document.querySelectorAll(".meter").forEach(x=>x.classList.toggle("active",x===b))});
 $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;if(activeInstrument==="synth"){statusSound("Timbre sintético selecionado.");return}loadInstrument(activeInstrument).catch(()=>{})};
-</script><footer class="small" style="max-width:900px;margin:0 auto;padding:0 12px 18px">Amostras reais: FluidR3_GM (Frank Wen), distribuídas por MIDI.js Soundfonts, licença Creative Commons Attribution 3.0. O áudio é carregado pela internet no primeiro uso.</footer><script id="appNavigation">
+</script><footer class="small" style="max-width:900px;margin:0 auto;padding:0 12px 18px">Amostras reais: FluidR3_GM (Frank Wen), distribuídas por MIDI.js Soundfonts, licença Creative Commons Attribution 3.0. O áudio é carregado pela internet no primeiro uso.</footer><script id="v3Navigation">
 (function(){
+ const $=id=>document.getElementById(id);
  const main=document.querySelector("main.app"); if(!main)return;
- const oldTabs=main.querySelector(":scope > .tabs");
- const cards=main.querySelectorAll(":scope > .card"); if(cards.length<2)return;
- const controlCard=cards[0], contentCard=cards[1];
 
- function mk(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e}
- const home=mk("section","appHome");
- home.innerHTML='<div class="card"><div class="small">FERRAMENTAS MUSICAIS</div><h2 style="margin:5px 0 0">O que você quer usar?</h2><div class="homeGrid">'+
- '<button class="homeTool" data-go="chord"><span class="ico">🎵</span><strong>Acordes</strong><span>Monte acordes, ouça e veja as notas.</span></button>'+
- '<button class="homeTool" data-go="scale"><span class="ico">🎼</span><strong>Escalas</strong><span>Consulte escalas, modos e intervalos.</span></button>'+
- '<button class="homeTool" data-go="board"><span class="ico">🎸</span><strong>Braço do violão</strong><span>Visualize notas e graus nas 24 casas.</span></button>'+
- '<button class="homeTool" data-go="tuner"><span class="ico">🎤</span><strong>Afinador</strong><span>Use o microfone para afinar as cordas.</span></button>'+
- '<button class="homeTool" data-go="metro"><span class="ico">⏱️</span><strong>Metrônomo</strong><span>BPM, compasso e controle de volume.</span></button></div></div>';
+ // Preserva os controles originais, mas cada ferramenta passa a ter um destino fixo.
+ const originalCards=[...main.querySelectorAll(":scope > .card")];
+ const controls=originalCards[0], content=originalCards[1];
+ const oldTopTabs=main.querySelector(":scope > .tabs");
+ if(oldTopTabs)oldTopTabs.style.display="none";
 
- const music=mk("section","toolScreen"); music.id="screenMusic";
- music.innerHTML='<div class="screenHead"><button data-home>‹ Início</button><h2 id="musicScreenTitle">Acordes</h2></div>';
- music.appendChild(controlCard);
+ function el(tag,cls,html){const x=document.createElement(tag);if(cls)x.className=cls;if(html!=null)x.innerHTML=html;return x}
+ function screen(id,title){
+   const x=el("section","toolScreen");x.id=id;
+   x.innerHTML='<div class="screenHead"><button data-home>‹ Início</button><h2>'+title+'</h2></div>';
+   main.appendChild(x);return x;
+ }
+ const music=screen("screenMusic","Acordes");
+ const board=screen("screenBoard","Braço do violão");
+ const exercise=screen("screenExercise","Exercícios");
+ const tuner=screen("screenTuner","Afinador eletrônico");
+ const metro=screen("screenMetro","Metrônomo");
 
- const resultCard=mk("div","card");
- ["title","formula","pills"].forEach(id=>resultCard.appendChild(document.getElementById(id)));
- const viewTabs=document.getElementById("notesBtn").parentElement; resultCard.appendChild(viewTabs);
- const instLabel=[...contentCard.querySelectorAll(".label")].find(x=>x.textContent.includes("TIMBRE"));
- if(instLabel){resultCard.appendChild(instLabel);resultCard.appendChild(document.getElementById("instrument"));resultCard.appendChild(document.getElementById("sampleStatus"))}
- const playMain=document.getElementById("playMain"); if(playMain)resultCard.appendChild(playMain.parentElement);
- const tempo=document.getElementById("tempo"); if(tempo)resultCard.appendChild(tempo.parentElement);
- const repeat=document.getElementById("repeatAudio"); if(repeat)resultCard.appendChild(repeat.parentElement);
- music.appendChild(resultCard);
+ // Música: controles + resultado e áudio.
+ music.appendChild(controls);
+ const result=el("div","moduleCard");
+ ["title","formula","pills"].forEach(id=>{if($(id))result.appendChild($(id))});
+ if($("notesBtn"))result.appendChild($("notesBtn").parentElement);
+ const inst=[...content.querySelectorAll(".label")].find(x=>x.textContent.includes("TIMBRE"));
+ if(inst){result.append(inst,$("instrument"),$("sampleStatus"))}
+ if($("playMain"))result.appendChild($("playMain").parentElement);
+ if($("tempo"))result.appendChild($("tempo").parentElement);
+ if($("repeatAudio"))result.appendChild($("repeatAudio").parentElement);
+ music.appendChild(result);
 
- const tuner=mk("section","toolScreen"); tuner.id="screenTuner"; tuner.innerHTML='<div class="screenHead"><button data-home>‹ Início</button><h2>Afinador eletrônico</h2></div><div class="card" id="tunerCard"></div>';
- const tc=tuner.querySelector("#tunerCard"), tunerLabel=[...contentCard.querySelectorAll(".label")].find(x=>x.textContent.includes("AFINADOR"));
- if(tunerLabel){let n=tunerLabel;while(n){let next=n.nextSibling;tc.appendChild(n);if(n.nodeType===1&&n.tagName==="P")break;n=next}}
+ // Captura blocos independentes antes de remover o cartão antigo.
+ function takeRange(labelText,stopLabelText){
+   const holder=el("div","moduleCard"),labels=[...content.querySelectorAll(".label")];
+   const start=labels.find(x=>x.textContent.includes(labelText)); if(!start)return holder;
+   let n=start;
+   while(n){let next=n.nextSibling;if(n.nodeType===1&&n.classList?.contains("label")&&n!==start&&(!stopLabelText||n.textContent.includes(stopLabelText)))break;holder.appendChild(n);n=next}
+   return holder;
+ }
+ const tunerBlock=takeRange("AFINADOR","METRÔNOMO");
+ const metroBlock=takeRange("METRÔNOMO",null);
+ tuner.appendChild(tunerBlock);metro.appendChild(metroBlock);
 
- const metro=mk("section","toolScreen"); metro.id="screenMetro"; metro.innerHTML='<div class="screenHead"><button data-home>‹ Início</button><h2>Metrônomo</h2></div><div class="card" id="metroCard"></div>';
- const mc=metro.querySelector("#metroCard"), metroLabel=[...contentCard.querySelectorAll(".label")].find(x=>x.textContent.includes("METRÔNOMO"));
- if(metroLabel){let n=metroLabel;while(n){let next=n.nextSibling;mc.appendChild(n);n=next}}
+ // Braço recebe apenas o braço e seus controles. Nunca é movido para outro módulo.
+ const bcard=el("div","moduleCard",'<p class="small">Visualização livre do braço. Escolha um acorde ou escala em Acordes/Escalas para atualizar as notas.</p>');
+ const legend=content.querySelector(".legend"),viewbar=content.querySelector(".viewbar"),bw=$("boardWrap"),overlay=$("landscapeOverlay");
+ [legend,viewbar,bw,overlay].forEach(x=>{if(x)bcard.appendChild(x)});
+ board.appendChild(bcard);
+ content.remove();
 
- const board=mk("section","toolScreen"); board.id="screenBoard"; board.innerHTML='<div class="screenHead"><button data-home>‹ Início</button><h2>Braço do violão</h2></div><div class="card" id="boardCard"><p class="small">Escolha primeiro um acorde ou escala. Aqui você visualiza a posição das notas ao longo das 24 casas.</p></div>';
- const bc=board.querySelector("#boardCard");
- ["legend","viewbar"].forEach(c=>{const e=contentCard.querySelector("."+c);if(e)bc.appendChild(e)});
- ["boardWrap","landscapeOverlay"].forEach(id=>{const e=document.getElementById(id);if(e)bc.appendChild(e)});
- const boardP=[...contentCard.querySelectorAll("p.small")].find(x=>x.textContent.includes("Arraste o braço"));if(boardP)bc.appendChild(boardP);
+ // Exercícios: seleção + metrônomo compacto + 5 boxes da pentatônica menor.
+ exercise.innerHTML += '<div class="moduleCard"><div class="label">EXERCÍCIO</div><div class="exerciseGrid"><label class="small">Tônica<select id="exRoot"><option value="0">Dó</option><option value="1">Dó♯/Ré♭</option><option value="2">Ré</option><option value="3">Ré♯/Mi♭</option><option value="4" selected>Mi</option><option value="5">Fá</option><option value="6">Fá♯/Sol♭</option><option value="7">Sol</option><option value="8">Sol♯/Lá♭</option><option value="9">Lá</option><option value="10">Lá♯/Si♭</option><option value="11">Si</option></select></label><label class="small">Escala<select id="exScale"><option value="minPent">Pentatônica menor</option></select></label></div><div class="label">METRÔNOMO DO EXERCÍCIO</div><div class="exToolbar"><input id="exBpm" type="range" min="40" max="220" value="90"><span id="exBpmTxt">90 BPM</span><button id="exMetro">▶</button></div><div class="label">POSIÇÕES (BOXES)</div><div class="positionBar" id="positionBar"></div><div style="overflow-x:auto" id="exBoardScroll"><div class="exBoard"><div id="exFret" class="exFret"></div></div></div><div class="swipeHint">← Arraste para navegar entre as posições →</div></div>';
 
- contentCard.remove(); if(oldTabs)oldTabs.remove();
- main.append(home,music,tuner,metro,board);
+ const noteNames=["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+ const openMidi=[64,59,55,50,45,40]; // cordas visualmente: e B G D A E
+ let exPos=0;
+ function pentNotes(root){return [0,3,5,7,10].map(i=>(root+i)%12)}
+ function positionStart(root,pos){
+   // Box 1 da pentatônica menor começa na tônica grave; demais seguem pontos sucessivos da escala.
+   const base=((root-4+12)%12); // E=0 casa, A=5 etc.
+   const offsets=[0,3,5,7,10];
+   let st=base+offsets[pos]; while(st<0)st+=12; while(st>19)st-=12;
+   return st;
+ }
+ function drawExercise(){
+   const root=+$("exRoot").value,start=positionStart(root,exPos),notes=pentNotes(root),f=$("exFret");
+   f.innerHTML='<div class="exStrings">'+Array(6).fill('<div class="exString"></div>').join("")+'</div><div class="exFrets">'+Array.from({length:5},(_,i)=>'<div class="exFretLine"><span>'+(start+i)+'</span></div>').join("")+'</div>';
+   for(let si=0;si<6;si++)for(let col=0;col<5;col++){
+     const fret=start+col,midi=openMidi[si]+fret,pc=midi%12;if(!notes.includes(pc))continue;
+     const d=el("div","exDot"+(pc===root?" root":""),noteNames[pc]);
+     d.style.left=((col+.5)*20)+"%";d.style.top=((si+.5)/6*86+4)+"%";f.appendChild(d);
+   }
+   document.querySelectorAll("#positionBar button").forEach((b,i)=>b.classList.toggle("active",i===exPos));
+ }
+ for(let i=0;i<5;i++){const b=el("button","", "Posição "+(i+1));b.onclick=()=>{exPos=i;drawExercise()};$("positionBar").appendChild(b)}
+ $("exRoot").onchange=drawExercise;drawExercise();
 
- const nav=mk("nav","bottomNav");
- nav.innerHTML='<button data-go="chord"><span class="navIco">🎵</span>Acordes</button><button data-go="scale"><span class="navIco">🎼</span>Escalas</button><button data-go="board"><span class="navIco">🎸</span>Braço</button><button data-go="tuner"><span class="navIco">🎤</span>Afinador</button><button data-go="metro"><span class="navIco">⏱️</span>Metrônomo</button>';
+ let exOn=false,exTimer=null,exBeat=0;
+ function exClick(accent){try{const a=window.audioCtx||new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain(),t=a.currentTime;o.type="square";o.frequency.value=accent?1450:1000;g.gain.setValueAtTime(accent?.45:.25,t);g.gain.exponentialRampToValueAtTime(.0001,t+.06);o.connect(g);g.connect(a.destination);o.start();o.stop(t+.055)}catch(e){}}
+ function exTick(){if(!exOn)return;exClick(exBeat===0);exBeat=(exBeat+1)%4;exTimer=setTimeout(exTick,60000/(+$("exBpm").value))}
+ $("exBpm").oninput=()=>$("exBpmTxt").textContent=$("exBpm").value+" BPM";
+ $("exMetro").onclick=()=>{exOn=!exOn;$("exMetro").textContent=exOn?"■":"▶";if(exOn){exBeat=0;exTick()}else clearTimeout(exTimer)};
+
+ const nav=el("nav","bottomNav",'<button data-go="chord"><span class="navIco">🎵</span>Acordes</button><button data-go="scale"><span class="navIco">🎼</span>Escalas</button><button data-go="board"><span class="navIco">🎸</span>Braço</button><button data-go="exercise"><span class="navIco">🏋️</span>Exercícios</button><button data-go="tuner"><span class="navIco">🎤</span>Afinador</button><button data-go="metro"><span class="navIco">⏱️</span>Metrônomo</button>');
  document.body.appendChild(nav);
 
  function show(which){
-   home.classList.add("hidden"); document.querySelectorAll(".toolScreen").forEach(x=>x.classList.remove("active"));nav.querySelectorAll("button").forEach(x=>x.classList.remove("active"));
+   document.body.classList.add("launched");
+   document.querySelectorAll(".toolScreen").forEach(x=>x.classList.remove("active"));
+   nav.querySelectorAll("button").forEach(x=>x.classList.remove("active"));
+   let target;
    if(which==="chord"||which==="scale"){
-     music.classList.add("active");
-     if(which==="chord") document.getElementById("btChord").click(); else document.getElementById("btScale").click();
-     document.getElementById("musicScreenTitle").textContent=which==="chord"?"Acordes":"Escalas";
-   }else document.getElementById("screen"+({board:"Board",tuner:"Tuner",metro:"Metro"}[which])).classList.add("active");
-   nav.querySelector('[data-go="'+which+'"]')?.classList.add("active"); window.scrollTo(0,0);
+     target=music;$("musicScreenTitle")&&($("musicScreenTitle").textContent=which==="chord"?"Acordes":"Escalas");
+     const btn=$(which==="chord"?"btChord":"btScale");if(btn)btn.click();
+     music.querySelector("h2").textContent=which==="chord"?"Acordes":"Escalas";
+   } else target=$({board:"screenBoard",exercise:"screenExercise",tuner:"screenTuner",metro:"screenMetro"}[which]);
+   if(target)target.classList.add("active");
+   nav.querySelector('[data-go="'+which+'"]')?.classList.add("active");scrollTo(0,0);
  }
- function goHome(){document.querySelectorAll(".toolScreen").forEach(x=>x.classList.remove("active"));home.classList.remove("hidden");nav.querySelectorAll("button").forEach(x=>x.classList.remove("active"));window.scrollTo(0,0)}
- document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.go)));
- document.querySelectorAll("[data-home]").forEach(b=>b.addEventListener("click",goHome));
+ window.launchTool=show;
+ document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+ document.querySelectorAll("[data-home]").forEach(b=>b.onclick=()=>{document.querySelectorAll(".toolScreen").forEach(x=>x.classList.remove("active"));document.body.classList.remove("launched");nav.querySelectorAll("button").forEach(x=>x.classList.remove("active"));scrollTo(0,0)});
 })();
 </script></body></html>
