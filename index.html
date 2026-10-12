@@ -6,7 +6,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 </style></head><body><button id="force">↻ Atualizar</button><script>
 (()=>{
  const btn=document.getElementById("force");
- const PUBLISHED={version:"5.15",build:"force515",app:"app-5.9.html"};
+ const PUBLISHED={version:"5.15",build:"355960fb",app:"app-5.9.html"};
  let frame=null,busy=false;
  function appUrl(m){return "./"+m.app+"?v="+encodeURIComponent(m.version)+"&b="+encodeURIComponent(m.build)+"&t="+Date.now()}
  function mount(m){
