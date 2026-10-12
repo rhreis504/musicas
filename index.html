@@ -27,26 +27,32 @@ function launchTool(tool){
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
 </style><script id="freshVersionCheck">
 (function(){
- const APP_VERSION="2.3";
- const KEY="meuViolaoVersion";
- try{
-   const previous=localStorage.getItem(KEY);
-   localStorage.setItem(KEY,APP_VERSION);
-   // Mantém o endereço permanente: nunca adiciona número de versão à URL.
-   // Se o iPhone restaurou uma página congelada pelo cache de navegação, revalida uma vez.
-   window.addEventListener("pageshow",function(ev){
-     if(ev.persisted || (previous && previous!==APP_VERSION)){
-       const once="meuViolaoRefresh_"+APP_VERSION;
-       if(!sessionStorage.getItem(once)){
-         sessionStorage.setItem(once,"1");
-         location.reload();
-       }
-     }
-   });
- }catch(e){}
+ "use strict";
+ const CURRENT="2.4";
+ let checking=false,lastCheck=0;
+ async function verify(){
+   if(checking || Date.now()-lastCheck<2500)return;
+   checking=true;lastCheck=Date.now();
+   try{
+     const response=await fetch("./version.json?_check="+Date.now(),{cache:"no-store",credentials:"same-origin"});
+     if(!response.ok)return;
+     const data=await response.json();
+     if(!data.version || data.version===CURRENT)return;
+     const target=new URL(location.href);
+     // O atalho salvo no iPhone permanece o mesmo. O parâmetro abaixo
+     // só é usado internamente para buscar um HTML novo no servidor.
+     if(target.searchParams.get("_atualizacao")===String(data.version))return;
+     target.searchParams.set("_atualizacao",String(data.version));
+     location.replace(target.href);
+   }catch(err){/* sem internet: mantém a versão disponível */}
+   finally{checking=false}
+ }
+ window.addEventListener("pageshow",verify);
+ document.addEventListener("visibilitychange",function(){if(!document.hidden)verify()});
+ window.addEventListener("focus",verify);
 })();
-</script></head><body><div id="appVersionBadge">v2.3</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 2.3</div>
+</script></head><body><div id="appVersionBadge">v2.4</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 2.4</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
