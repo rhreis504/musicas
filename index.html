@@ -5,7 +5,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 #force:active{background:#f59e0b;color:#111}
 </style></head><body><button id="force">↻ Atualizar</button><script>
 (()=>{let frame=null,currentKey="",busy=false;const btn=document.getElementById("force");
-const PUBLISHED={version:"5.10",build:"6b6c2c8a",app:"app-5.9.html"};
+const PUBLISHED={version:"5.11",build:"d2f62aab",app:"app-5.9.html"};
 const manifestUrl=()=> "https://raw.githubusercontent.com/rhreis504/musicas/main/version.json?nocache="+Date.now();
 const appUrl=m=>"./"+m.app+"?build="+encodeURIComponent(m.build||m.version)+"&nocache="+Date.now();
 function mount(m){
