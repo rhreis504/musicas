@@ -12,8 +12,7 @@ async function check(){
   if(!f)show(p,m.version);else{const html=await test.text();if(html.includes("v"+m.version))show(p,m.version)}
  }catch(e){}finally{busy=false}
 }
-const fallback=setTimeout(()=>{if(!f)show("./app-3.9.html?fallback=1","3.9")},2800);
-check().finally(()=>{if(f)clearTimeout(fallback)});
+check();
 setInterval(check,60000);addEventListener("focus",check);addEventListener("pageshow",check);document.addEventListener("visibilitychange",()=>{if(!document.hidden)check()});
 })();
 </script></body></html>
