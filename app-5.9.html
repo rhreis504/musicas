@@ -625,7 +625,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   [[7,10],[8,10],[7,9],[7,9],[7,10],[7,10]],
   [[10,12],[10,12],[9,12],[9,12],[10,12],[10,12]]
  ];
- let studyPositions=[],exPos=0;
+ let studyPositions=[];
  function makeStudyPositions(){
   const root=+$("exRoot").value,shift=((root-4+12)%12),arr=[];
   for(const cycle of [-1,0,1,2]){
