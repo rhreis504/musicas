@@ -132,6 +132,8 @@ body{padding-bottom:92px}
 @keyframes stringVibrateVertical{0%,100%{transform:translateY(-50%) scaleY(1)}12%{transform:translateY(calc(-50% - 5px)) scaleY(2.6)}25%{transform:translateY(calc(-50% + 5px)) scaleY(1.4)}37%{transform:translateY(calc(-50% - 4px)) scaleY(2.3)}50%{transform:translateY(calc(-50% + 4px)) scaleY(1.3)}62%{transform:translateY(calc(-50% - 3px)) scaleY(2)}75%{transform:translateY(calc(-50% + 3px)) scaleY(1.3)}87%{transform:translateY(calc(-50% - 2px)) scaleY(1.7)}}
 .mcbLine.stringPlaying{animation:stringVibrateVertical .12s linear infinite!important;background:#fff!important;box-shadow:0 -5px 9px #f59e0b99,0 5px 9px #f59e0b99,0 0 13px #fff!important;z-index:8}
 .mcbOpenMark.allPlaying,.chordFinger.allPlaying{filter:drop-shadow(0 0 8px #f59e0b)}
+</style><style id="v40BarreHint">
+.barreHint{position:absolute;width:10px;transform:translate(-50%,0);border-radius:8px;background:#f59e0b55;border:2px dashed #fbbf24;z-index:2;pointer-events:none}.barreHint span{position:absolute;left:-7px;top:50%;transform:translateY(-50%);font-size:22px;color:#fff;font-weight:900;text-shadow:0 0 8px #f59e0b}.barreHint em{position:absolute;left:13px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#111827e8;color:#fff;border:1px solid #f59e0b;border-radius:7px;padding:3px 6px;font-size:9px;font-style:normal;font-weight:800}.chordFinger{z-index:5}
 </style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v4.0</div><section id="launchHome" aria-label="Tela inicial">
 <div class="launchBadge">CENTRAL MUSICAL • VERSÃO 4.0</div>
 <div class="launchTitle">🎸 Meu Violão</div>
@@ -478,6 +480,10 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   b.innerHTML='<div class="mcbNut"></div>';if(!v.available){b.innerHTML='<div style="padding:65px 20px;text-align:center;color:#fff;font-weight:700">Posição ainda não validada na biblioteca.<br>Não será reproduzida uma digitação incorreta.</div>';return}const y=si=>36+si*31;
   for(let si=0;si<6;si++){const line=document.createElement("div");line.className="mcbLine";line.dataset.stringLine=si;line.style.top=y(si)+"px";b.appendChild(line);const lab=document.createElement("div");lab.className="mcbStringName";lab.style.top=y(si)+"px";lab.textContent=names[si];b.appendChild(lab)}
   for(let fr=0;fr<=4;fr++){const line=document.createElement("div");line.className="mcbFretLine";line.style.left=(76+fr*((b.clientWidth-94)/4))+"px";b.appendChild(line)}
+  // Indicação didática de pestana: preserva os marcadores individuais e mostra a técnica por trás.
+  const pressed=v.frets.map((fr,si)=>({fr,si})).filter(x=>x.fr>0),groups={};
+  pressed.forEach(x=>(groups[x.fr]??=[]).push(x.si));
+  Object.entries(groups).forEach(([fr,ss])=>{fr=+fr;const lo=Math.min(...ss),hi=Math.max(...ss);if(ss.length>=2&&hi-lo>=1){const bar=document.createElement("div");bar.className="barreHint";bar.style.left=(76+(fr-.5)*((b.clientWidth-94)/4))+"px";bar.style.top=y(lo)+"px";bar.style.height=(y(hi)-y(lo))+"px";bar.innerHTML='<span>↕</span><em>Pestana '+fr+'ª casa</em>';b.appendChild(bar)}});
   v.frets.forEach((fr,si)=>{
     const mark=document.createElement("button");mark.type="button";mark.className="mcbOpenMark";mark.dataset.string=si;mark.style.top=y(si)+"px";
     if(fr<0){mark.textContent="×";mark.classList.add("muted");mark.disabled=true;b.appendChild(mark);return}
