@@ -136,7 +136,7 @@ body{padding-bottom:92px}
 .barreHint{position:absolute;width:10px;transform:translate(-50%,0);border-radius:8px;background:#f59e0b55;border:2px dashed #fbbf24;z-index:2;pointer-events:none}.barreHint span{position:absolute;left:-7px;top:50%;transform:translateY(-50%);font-size:22px;color:#fff;font-weight:900;text-shadow:0 0 8px #f59e0b}.barreHint em{position:absolute;left:13px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#111827e8;color:#fff;border:1px solid #f59e0b;border-radius:7px;padding:3px 6px;font-size:9px;font-style:normal;font-weight:800}.chordFinger{z-index:5}
 </style><style id="v40BarreExplicit">
 .barreHint.explicit{width:18px!important;background:#f59e0b88!important;border:3px solid #ffd166!important;border-radius:12px!important;box-shadow:0 0 0 4px #f59e0b22,0 0 14px #f59e0b88!important;z-index:3!important}.barreHint.explicit em{left:20px!important;font-size:10px!important;z-index:9}.barreHint.explicit span{left:-8px!important}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v4.1</div><section id="launchHome" aria-label="Tela inicial">
+</style><style id="forceUpdateStyle">#appVersionBadge{display:flex!important;align-items:center;gap:7px}#forceUpdateBtn{min-height:28px!important;padding:3px 8px!important;border-radius:999px!important;font-size:10px!important;background:#f59e0b!important;color:#17100a!important;border:0!important;white-space:nowrap}</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v4.1 <button id="forceUpdateBtn" type="button">↻ Atualizar</button></div><section id="launchHome" aria-label="Tela inicial">
 <div class="launchBadge">CENTRAL MUSICAL • VERSÃO 4.1</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
@@ -515,4 +515,4 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  document.addEventListener("click",e=>{if(e.target?.matches('[data-go="chord"]'))setTimeout(()=>{ensureUI();drawMini()},50)});
  window.addEventListener("resize",()=>setTimeout(drawMini,80));
 })();
-</script></body></html>
+</script><script id="forceUpdateScript">(()=>{const b=document.getElementById("forceUpdateBtn");if(!b)return;b.onclick=async()=>{b.disabled=true;b.textContent="Verificando…";try{const r=await fetch("https://raw.githubusercontent.com/rhreis504/musicas/main/version.json?t="+Date.now(),{cache:"no-store",mode:"cors"}),m=await r.json();b.textContent="Abrindo v"+m.version+"…";const u=new URL(m.app,location.href);u.searchParams.set("build",m.build||m.version);u.searchParams.set("force",Date.now());location.replace(u.href)}catch(e){b.textContent="Tentar novamente";b.disabled=false}}})();</script></body></html>
