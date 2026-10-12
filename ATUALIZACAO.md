@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.16
-- **build:** v516-md-controller
+- **version:** 5.17
+- **build:** 30f3cee2
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.16 |
-| Acordes | app-5.9.html | 5.16 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.16 |
-| Braço do violão | app-5.9.html | 5.16 |
-| Afinador | app-5.9.html | 5.16 |
-| Metrônomo | app-5.9.html | 5.16 |
-| Loader / Atualizar | index.html | 5.16 |
+| Inicial / navegação | app-5.9.html | 5.17 |
+| Acordes | app-5.9.html | 5.17 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.17 |
+| Braço do violão | app-5.9.html | 5.17 |
+| Afinador | app-5.9.html | 5.17 |
+| Metrônomo | app-5.9.html | 5.17 |
+| Loader / Atualizar | index.html | 5.17 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.17** — exercício guiado passa a montar a sequência exclusivamente com as notas visíveis do shape selecionado; notas fora do desenho não entram no Play.
 
 - **5.16** — controlador MD de atualização criado; botão Atualizar passa a validar este arquivo como fonte principal.
 - **5.15** — hard refresh e limpeza de cache.
