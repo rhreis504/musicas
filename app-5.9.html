@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.18";
+const CURRENT="5.19";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -412,8 +412,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .openLabel{left:1%!important;width:12%!important;bottom:5px!important}
 #screenExercise .exDot{width:34px!important;height:34px!important;font-size:12px!important}
 @media(max-height:780px){#screenExercise #exBoardScroll,#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important}}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.18</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.18</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.19</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.19</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -715,7 +715,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      const map=new Map([...document.querySelectorAll("#exFret .exDot")].map(d=>[d.dataset.si+":"+d.dataset.fret,d]));
      const ascending=[];
      // A sequência nasce da matriz do próprio shape, nunca da escala completa nem de notas fora do desenho.
-     for(let si=5;si>=0;si--){for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){const d=map.get(si+":"+fret);if(d)ascending.push(d)}}
+     for(let si=0;si<6;si++){for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){const d=map.get(si+":"+fret);if(d)ascending.push(d)}}
      const dir=$("exDirection").value;
      if(dir==="up")return ascending;
      if(dir==="down")return ascending.slice().reverse();
