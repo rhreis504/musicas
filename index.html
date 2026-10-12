@@ -23,8 +23,39 @@ function launchTool(tool){
  if(section){document.querySelectorAll('.toolScreen').forEach(function(x){x.classList.remove('active')});section.classList.add('active')}
  window.scrollTo(0,0);
 }
-</script></head><body><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 2.1</div>
+</script><style id="versionStyles">
+#appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
+</style><script id="freshVersionCheck">
+(function(){
+ const APP_VERSION="2.2";
+ const KEY="meuViolaoLoadedVersion";
+ // Em modo instalado/atalho, força uma única recarga quando a versão do HTML muda.
+ // O parâmetro evita reutilização da navegação em cache sem criar loop.
+ try{
+   const previous=sessionStorage.getItem(KEY);
+   const url=new URL(location.href);
+   const stamped=url.searchParams.get("_v");
+   if(previous!==APP_VERSION || stamped!==APP_VERSION){
+     sessionStorage.setItem(KEY,APP_VERSION);
+     if(stamped!==APP_VERSION){
+       url.searchParams.set("_v",APP_VERSION);
+       location.replace(url.toString());
+       return;
+     }
+   }
+ }catch(e){}
+ // Solicita ao navegador que revalide o documento na próxima abertura.
+ window.addEventListener("pageshow",function(ev){
+   try{
+     if(ev.persisted){
+       const k="meuViolaoBFReload";
+       if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,"1");location.reload();}
+     }
+   }catch(e){}
+ });
+})();
+</script></head><body><div id="appVersionBadge">v2.2</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 2.2</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
