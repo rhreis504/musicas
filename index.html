@@ -1,18 +1,12 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08101f"><title>Meu Violão</title><style>html,body{margin:0;width:100%;height:100%;background:#08101f;color:#fff;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}#boot{position:fixed;inset:0;display:grid;place-items:center;text-align:center}iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;background:#08101f}</style></head><body><div id="boot">🎸 Meu Violão<br><small>Abrindo…</small></div><script>
-(()=>{let f=null,v="",busy=false;
-function show(src,ver){const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=src;n.onload=()=>{document.getElementById("boot")?.remove();if(f)f.remove();f=n;v=ver||v};document.body.appendChild(n)}
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08101f"><title>Meu Violão</title><style>
+html,body{margin:0;width:100%;height:100%;background:#08101f;color:#fff;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}#boot{position:fixed;inset:0;display:grid;place-items:center;text-align:center}iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;background:#08101f}#force{position:fixed;z-index:99999;right:12px;top:calc(12px + env(safe-area-inset-top));border:1px solid #f59e0b;background:#111a2e;color:#fff;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;box-shadow:0 4px 18px #0008}#force:active{background:#f59e0b;color:#111}
+</style></head><body><div id="boot">🎸 Meu Violão<br><small>Abrindo…</small></div><button id="force">↻ Atualizar</button><script>
+(()=>{let f=null,key="",busy=false;const btn=document.getElementById("force");
+function show(src,k){const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=src;n.onload=()=>{document.getElementById("boot")?.remove();if(f)f.remove();f=n;key=k||key;localStorage.setItem("mv-last-key",key)};document.body.appendChild(n)}
 function timeout(ms){return new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),ms))}
-async function check(){
- if(busy)return;busy=true;
- try{
-  const r=await Promise.race([fetch("https://raw.githubusercontent.com/rhreis504/musicas/main/version.json?t="+Date.now(),{cache:"no-store",mode:"cors"}),timeout(2500)]);
-  if(!r.ok)return;const m=await r.json();if(!m.version||m.version===v)return;
-  const p="./"+(m.app||("app-"+m.version+".html"))+"?build="+encodeURIComponent(m.build||m.version)+"&t="+Date.now();
-  const test=await Promise.race([fetch(p,{cache:"no-store"}),timeout(2500)]);if(!test.ok)return;
-  if(!f)show(p,m.version);else{const html=await test.text();if(html.includes("v"+m.version))show(p,m.version)}
- }catch(e){}finally{busy=false}
-}
-check();
-setInterval(check,60000);addEventListener("focus",check);addEventListener("pageshow",check);document.addEventListener("visibilitychange",()=>{if(!document.hidden)check()});
+async function manifest(){const r=await Promise.race([fetch("https://raw.githubusercontent.com/rhreis504/musicas/main/version.json?t="+Date.now(),{cache:"no-store",mode:"cors"}),timeout(5000)]);if(!r.ok)throw Error("manifest");return r.json()}
+async function check(force=false){if(busy&&!force)return;busy=true;try{const m=await manifest(),k=m.version+"@"+(m.build||"");if(!force&&k===key)return;const p="./"+(m.app||("app-"+m.version+".html"))+"?build="+encodeURIComponent(m.build||m.version)+"&t="+Date.now();const test=await Promise.race([fetch(p,{cache:"reload"}),timeout(5000)]);if(!test.ok)throw Error("app");show(p,k)}catch(e){if(force){btn.textContent="Tentar novamente";setTimeout(()=>btn.textContent="↻ Atualizar",1800)}}finally{busy=false}}
+btn.onclick=async()=>{btn.textContent="Atualizando…";await check(true);btn.textContent="↻ Atualizar"};
+check();setInterval(()=>check(false),60000);addEventListener("focus",()=>check(false));addEventListener("pageshow",()=>check(false));document.addEventListener("visibilitychange",()=>{if(!document.hidden)check(false)});
 })();
 </script></body></html>
