@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.26";
+const CURRENT="5.27";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -432,8 +432,21 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exFrets{grid-template-columns:repeat(var(--shape-cols),1fr)!important;left:18%!important}
 #screenExercise .exFretNumbersBottom{grid-template-columns:18% repeat(var(--shape-cols),1fr)!important}
 #screenExercise .positionBar button{min-width:142px;white-space:normal}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.26</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.26</div>
+</style><style id="v527ShapeFitFix">
+/* O shape inteiro precisa caber na tela: 6 cordas, números das casas e sem corte vertical. */
+#screenExercise #exBoardScroll{overflow:visible!important;padding-top:0!important;padding-bottom:58px!important}
+#screenExercise .exBoard{overflow:visible!important;height:auto!important;min-height:390px!important}
+#screenExercise .exFret{height:300px!important;min-height:300px!important;margin-top:58px!important;overflow:visible!important}
+#screenExercise .exFretNumbersBottom{bottom:-52px!important}
+#screenExercise .swipeHint{margin-top:14px!important}
+#screenExercise .moduleCard{overflow:visible!important}
+@media(max-width:430px){
+ #screenExercise .exFret{height:270px!important;min-height:270px!important}
+ #screenExercise .exBoard{min-height:360px!important}
+ #screenExercise .exDot{width:30px!important;height:30px!important}
+}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.27</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.27</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
