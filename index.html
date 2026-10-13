@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08101f"><title>Meu Violão</title><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08101f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Meu Violão</title><style>
 html,body{margin:0;width:100%;height:100%;background:#08101f;color:#fff;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
 iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;background:#08101f}
 #boot{position:fixed;z-index:100000;inset:0;display:flex;align-items:center;justify-content:center;background:#08101f;padding:28px}
@@ -12,6 +12,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 <div id="boot"><div id="box"><div class="guitar">🎸</div><h1>Meu Violão</h1><div id="status">Preparando atualização…</div><div class="track"><div id="bar"></div></div><div id="pct">0%</div><button id="retry">Tentar novamente</button></div></div>
 <script>
 (()=>{
+ try{if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{})}catch(e){}
  const REQUIRED_VERSION="5.36",APP="./app-5.9.html",boot=document.getElementById("boot"),status=document.getElementById("status"),bar=document.getElementById("bar"),pct=document.getElementById("pct"),retry=document.getElementById("retry");
  const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2),progress=(n,t)=>{bar.style.width=n+"%";pct.textContent=n+"%";if(t)status.textContent=t};
  const versionOf=h=>(h.match(/const CURRENT="([^"]+)"/)||[])[1]||"atual",sleep=ms=>new Promise(r=>setTimeout(r,ms));
