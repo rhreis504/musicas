@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.23
-- **build:** 993dfb02
+- **version:** 5.24
+- **build:** c7590810
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.23 |
-| Acordes | app-5.9.html | 5.23 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.23 |
-| Braço do violão | app-5.9.html | 5.23 |
-| Afinador | app-5.9.html | 5.23 |
-| Metrônomo | app-5.9.html | 5.23 |
-| Loader / Atualizar | index.html | 5.23 |
+| Inicial / navegação | app-5.9.html | 5.24 |
+| Acordes | app-5.9.html | 5.24 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.24 |
+| Braço do violão | app-5.9.html | 5.24 |
+| Afinador | app-5.9.html | 5.24 |
+| Metrônomo | app-5.9.html | 5.24 |
+| Loader / Atualizar | index.html | 5.24 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.24** — shapes pentatônicos continuam em sequência pelas oitavas até a casa 24; cada botão abre sua região para treino, preservando apenas notas existentes entre as casas 0 e 24.
 
 - **5.23** — identificação permanente das casas abaixo do braço: “casa 1”, “casa 2” etc.; casa 0 identificada como solta.
 
