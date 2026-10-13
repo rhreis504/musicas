@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.38";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.39";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,8 +399,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.38</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.38</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.39</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.39</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -897,13 +897,15 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   }
   drawMini();
  }
- let chordCatalog=null;
+ let chordCatalog=null,chordVoicingIndex=0;
  const qualityMap={"Maior":"maj","Menor":"m","5 Power":"5","6":"6","m6":"m6","7 dominante":"7","Maj7":"maj7","m7":"m7","mMaj7":"mMaj7","9":"9","Maj9":"maj9","m9":"m9","add9":"add9","m(add9)":"madd9","sus2":"sus2","sus4":"sus4","7sus4":"7sus4","Diminuto":"dim","Diminuto 7":"dim7","m7♭5":"m7b5","Aumentado":"aug","7♭5":"7b5","7♯5":"7#5","7♭9":"7b9","7♯9":"7#9","11":"11","m11":"m11","13":"13","m13":"m13"};
  const rootKeys=["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
  async function loadChordCatalog(){try{const r=await fetch("./acordes.json?schema=1",{cache:"no-store"});if(!r.ok)throw Error("catalog");const j=await r.json();if(j.schema!==1||!j.chords)throw Error("schema");chordCatalog=j;drawMini()}catch(e){console.warn("Biblioteca indisponível",e);setTimeout(loadChordCatalog,15000)}}
  function voicing(){
  const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]];
- const entry=record?.voicings?.[0];
+ const list=record?.voicings||[];
+ if(chordVoicingIndex>=list.length)chordVoicingIndex=0;
+ const entry=list[chordVoicingIndex];
  if(!entry)return {start:0,pts:[],frets:Array(6).fill(-1),available:false,barre:null};
  const frets=entry.frets.slice().reverse(),pts=[];
  frets.forEach((fr,si)=>{if(fr>=0){const pc=(openMidi[si]+fr)%12;pts.push({si,fr,pc,iv:(pc-root+12)%12})}});
@@ -912,8 +914,16 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  return {start,pts,frets,barre,available:true};
  }
  loadChordCatalog();
+ function ensureVoicingPicker(){
+  const box=document.querySelector(".chordBoardBox"),head=box?.querySelector(".chordBoardHead");if(!box||!head)return;
+  let sel=document.getElementById("chordVoicing");if(!sel){sel=document.createElement("select");sel.id="chordVoicing";sel.setAttribute("aria-label","Forma do acorde");sel.style.cssText="margin-left:auto;max-width:190px;background:#111a2e;color:#fff;border:1px solid #33405f;border-radius:9px;padding:7px;font-weight:700";head.appendChild(sel);sel.onchange=()=>{chordVoicingIndex=+sel.value;drawMini()}}
+  const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];
+  const signature=list.map((v,i)=>i+":"+(v.barres?.length?"Pestana":"Aberta/alternativa")).join("|");
+  if(sel.dataset.sig!==signature){sel.innerHTML="";list.forEach((v,i)=>{const o=document.createElement("option");o.value=i;o.textContent=(v.barres?.length?"Com pestana":"Sem pestana")+" · Forma "+(i+1);sel.appendChild(o)});sel.dataset.sig=signature}
+  if(chordVoicingIndex>=list.length)chordVoicingIndex=0;sel.value=String(chordVoicingIndex);sel.style.display=list.length>1?"block":"none";
+ }
  function drawMini(){
-  const b=document.getElementById("miniChordBoard");if(!b)return;const v=voicing(),N=spell==="s"?S:F;
+  const b=document.getElementById("miniChordBoard");if(!b)return;ensureVoicingPicker();const v=voicing(),N=spell==="s"?S:F;
   b.innerHTML='<div class="mcbNut"></div>';if(!v.available){b.innerHTML='<div style="padding:65px 20px;text-align:center;color:#fff;font-weight:700">Posição não disponível na biblioteca.<br>Não será reproduzida uma digitação não verificada.</div>';return}const y=si=>36+si*31;const pos=v.frets.filter(fr=>fr>0),start=pos.length?Math.max(1,Math.max(...pos)-3):1;
   for(let si=0;si<6;si++){const line=document.createElement("div");line.className="mcbLine";line.dataset.stringLine=si;line.style.top=y(si)+"px";b.appendChild(line);const lab=document.createElement("div");lab.className="mcbStringName";lab.style.top=y(si)+"px";lab.textContent=names[si];b.appendChild(lab)}
   for(let fr=0;fr<=4;fr++){const line=document.createElement("div");line.className="mcbFretLine";line.style.left=(76+fr*((b.clientWidth-94)/4))+"px";b.appendChild(line)}if(start>1){const tag=document.createElement("span");tag.textContent="Casa "+start;tag.style.cssText="position:absolute;right:12px;top:3px;color:#fff;font-size:11px;font-weight:700";b.appendChild(tag)}
@@ -930,7 +940,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  window.flashInterval=function(iv,dur=900){const n=document.querySelector('.chordFinger[data-iv="'+iv+'"]');if(n){n.classList.add("playing");setTimeout(()=>n.classList.remove("playing"),dur)}}
  window.flashAllChord=function(on){document.querySelectorAll(".chordFinger").forEach(n=>n.classList.toggle("allPlaying",on));const v=voicing();v.pts.forEach(p=>{const line=document.querySelector('[data-string-line="'+p.si+'"]'),mark=document.querySelector('[data-string="'+p.si+'"]');if(line)line.classList.toggle("stringPlaying",on);if(mark)mark.classList.toggle("allPlaying",on)})}
  const oldRender=window.render;
- window.render=function(){oldRender();setTimeout(drawMini,0)};
+ window.render=function(){chordVoicingIndex=0;oldRender();setTimeout(drawMini,0)};
  // redefine didactic player with synchronized board animation
  window.playChord=function(){
    ctx();stopAll();let token=playToken,v=voicing();if(!v.available)return;let strings=v.pts.slice().sort((a,b)=>b.si-a.si);
