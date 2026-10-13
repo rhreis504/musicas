@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.21";
+const CURRENT="5.22";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -412,8 +412,15 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .openLabel{left:1%!important;width:12%!important;bottom:5px!important}
 #screenExercise .exDot{width:34px!important;height:34px!important;font-size:12px!important}
 @media(max-height:780px){#screenExercise #exBoardScroll,#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important}}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.21</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.21</div>
+</style><style id="v522FretLabels">
+#screenExercise #exBoardScroll{overflow:visible!important;padding-top:47px!important}
+#screenExercise .exBoard{position:relative!important}
+#screenExercise .exFretNumbers{position:absolute;left:0;right:0;top:-43px;height:40px;display:grid;grid-template-columns:18% repeat(5,1fr);align-items:center;z-index:12;pointer-events:none}
+#screenExercise .exFretNumbers span{text-align:center;color:#f8fafc;font-size:17px;font-weight:900;background:#18233b;border:1px solid #435675;border-radius:7px;margin:0 2px;padding:5px 0}
+#screenExercise .exFretNumbers small{font-size:8px;display:block}
+#screenExercise .exFretLine span{display:none!important}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.22</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.22</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -660,13 +667,13 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    if(scale==="minPent"||scale==="majPent"){
      for(let shape=0;shape<5;shape++){
        const raw=traditionalPentShape(root,shape,scale==="majPent");
-       for(const oct of [-12,0,12]){
+       for(const oct of [0]){
          const strings=raw.map(pair=>pair.map(f=>f+oct));
          if(strings.flat().every(f=>f>=0&&f<=24)&&strings.every((pair,si)=>pair.every(fr=>pentNotes(root).includes((openMidi[si]+fr)%12))))
            arr.push({shape,strings,start:Math.min(...strings.flat())});
        }
      }
-     arr.sort((a,b)=>a.start-b.start||a.shape-b.shape);
+     arr.sort((a,b)=>a.shape-b.shape);
    }else{
      // Regiões calculadas por notas da escala, sem alegar que são boxes CAGED ou 3NPS padronizados.
      for(let start=0;start<=20;start+=3){
@@ -687,7 +694,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    f.classList.toggle("openPosition",isOpen);
    f.innerHTML='<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'" data-ex-string="'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut" aria-label="Pestana do violão"></div><div class="openLabel">SOLTAS</div>':'')+
-   '<div class="exFrets">'+Array.from({length:fretCount},(_,i)=>'<div class="exFretLine"><span>Casa '+(firstFret+i)+'</span></div>').join("")+'</div>';
+   '<div class="exFrets">'+Array.from({length:fretCount},(_,i)=>'<div class="exFretLine"><span>'+(firstFret+i)+'</span></div>').join("")+'</div>'+ '<div class="exFretNumbers">'+(isOpen?'<span>0<br><small>Solta</small></span>':'<span></span>')+Array.from({length:fretCount},(_,i)=>'<span>'+(firstFret+i)+'</span>').join('')+'</div>';
    for(let si=0;si<6;si++)for(const fret of position.strings[si]){
      if(fret<0||fret>24||!notes.includes((openMidi[si]+fret)%12))continue;
      const midi=openMidi[si]+fret,pc=midi%12;
