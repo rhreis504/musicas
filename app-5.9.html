@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.42";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.43";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -400,8 +400,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.42</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.42</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.43</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.43</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -758,15 +758,21 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  let exOn=false,exTimer=null,exBeat=0,exGuideOn=false,exGuidePaused=false,exGuideTimer=null,exGuideIndex=0,exGuideSeq=[];
  function exClick(accent){try{const a=ctx();if(a.state==="suspended")a.resume();const o=a.createOscillator(),g=a.createGain(),t=a.currentTime;o.type="square";o.frequency.value=accent?1450:1000;const mv=(+$('exMetroVolume').value||0)/100;g.gain.setValueAtTime(Math.max(.0001,(accent?.12:.07)*mv),t);g.gain.exponentialRampToValueAtTime(.0001,t+.055);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.06)}catch(e){}}
  function exercisePluck(midi,level=.72){
-   const inst=$("exInstrument")?.value||"acoustic_guitar_nylon";
-   try{const a=ctx();if(a.state==="suspended")a.resume()}catch(e){}
+   const inst=$("exInstrument")?.value||"acoustic_guitar_nylon",a=ctx();
+   // O fallback sintético toca imediatamente. No iOS/PWA não podemos esperar
+   // download/decode assíncrono para produzir o primeiro som após o gesto.
+   if(a.state==="suspended")a.resume().catch(()=>{});
+   if(inst==="synth"){synthPluck(midi,0,1.1,Math.min(.5,level*.55));return}
+   let sounded=false;
+   const fallback=setTimeout(()=>{if(!sounded){sounded=true;synthPluck(midi,0,1.1,Math.min(.42,level*.45))}},90);
    loadInstrument(inst).then(()=>getBuffer(inst,midi)).then(item=>{
-    if(!item)throw Error("sample");
-    const a=ctx(),src=a.createBufferSource(),gain=a.createGain(),t=a.currentTime;
+    if(!item){clearTimeout(fallback);if(!sounded){sounded=true;synthPluck(midi,0,1.1,Math.min(.42,level*.45))}return}
+    if(sounded)return; sounded=true;clearTimeout(fallback);
+    const aa=ctx(),src=aa.createBufferSource(),gain=aa.createGain(),t=aa.currentTime;
     src.buffer=item.audio;src.playbackRate.value=item.rate;
     gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(Math.min(1,level*1.25),t+.006);gain.gain.setTargetAtTime(.0001,t+.8,.28);
-    src.connect(gain);gain.connect(a.destination);src.start(t);src.stop(t+1.8);
-   }).catch(()=>{synthPluck(midi,0,1.1,Math.min(.35,level*.35))});
+    src.connect(gain);gain.connect(aa.destination);src.start(t);src.stop(t+1.8);
+   }).catch(()=>{clearTimeout(fallback);if(!sounded){sounded=true;synthPluck(midi,0,1.1,Math.min(.42,level*.45))}});
  }
  function stopExMetro(){exOn=false;clearTimeout(exTimer);exTimer=null;$("exMetro").textContent="▶ Metrônomo";$("exMetro").classList.remove("active")}
  function exTick(){if(!exOn)return;exClick(exBeat===0);exBeat=(exBeat+1)%4;exTimer=setTimeout(exTick,60000/(+$("exBpm").value))}
@@ -801,7 +807,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  $("exBpmPlus").onclick=()=>{$("exBpm").value=Math.min(220,+$("exBpm").value+5);$("exBpm").oninput()};
  $("exInstrument").onchange=()=>{const inst=$("exInstrument").value;$("exSoundStatus").textContent="Carregando…";loadInstrument(inst).then(()=>{$("exSoundStatus").textContent=$("exInstrument").selectedOptions[0].text+" pronto"}).catch(()=>{$("exSoundStatus").textContent="Falha no sample"})};$("exVolume").oninput=()=>{$("exVolumeTxt").textContent=$("exVolume").value+"%"};$("exMetroVolume").oninput=()=>{$("exMetroVolumeTxt").textContent=$("exMetroVolume").value+"%"};
  $("exMetro").onclick=()=>{try{ctx().resume()}catch(e){};exOn?stopExMetro():startExMetro()};
- $("exGuide").onclick=()=>{try{const a=ctx();if(a.state==="suspended")a.resume()}catch(e){};
+ $("exGuide").onclick=()=>{try{const a=ctx();if(a.state==="suspended")a.resume().catch(()=>{});const inst=$("exInstrument")?.value||"acoustic_guitar_nylon";if(inst!=="synth")loadInstrument(inst).catch(()=>{})}catch(e){};
  if(exGuideOn&&!exGuidePaused){exGuidePaused=true;clearTimeout(exGuideTimer);stopExMetro();$("exGuide").textContent="▶ Continuar";$("exNow").textContent="Pausado";return}
  if(exGuideOn&&exGuidePaused){exGuidePaused=false;$("exGuide").textContent="Ⅱ Pausar";startExMetro();guideStep();return}
  exGuideSeq=buildGuide();if(!exGuideSeq.length){$("exNow").textContent="Sem notas nesta faixa";return}exGuideIndex=0;exGuideOn=true;exGuidePaused=false;$("exGuide").textContent="Ⅱ Pausar";
