@@ -6,12 +6,12 @@
 
 ## Versão publicada
 
-- **version:** 5.29
-- **build:** bb2eb1e7
+- **version:** 5.30
+- **build:** 3321d842
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
-## Registro da versão 5.29
+## Registro da versão 5.30
 
 - Padronização universal da primeira posição: shapes que começam entre as casas 1 e 5 exibem o braço desde a casa 0, com nut/pestana e cordas soltas válidas.
 
