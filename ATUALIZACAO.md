@@ -6,10 +6,19 @@
 
 ## Versão publicada
 
-- **version:** 5.26
-- **build:** a665d365
+- **version:** 5.28
+- **build:** 61aa6935
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
+
+## Registro da versão 5.28
+
+- Gerador de shapes por tônica e família de escala.
+- Pentatônicas: boxes tradicionais transpostos por tônica.
+- Escalas de sete notas: posições 3NPS calculadas.
+- Demais escalas: boxes compactos calculados, sem atribuição incorreta ao sistema CAGED.
+- O Play percorre somente as notas realmente renderizadas no desenho selecionado.
+- Referências e limites: ver REFERENCIAS_SHAPES.md.
 
 ## Módulos ativos
 
