@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.35";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.36";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -693,7 +693,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      for(let octave=-24;octave<=24;octave+=12){
        for(let shape=0;shape<MIN_PENT_SHAPES.length;shape++){
          const strings=MIN_PENT_SHAPES[shape].map(row=>row.map(fr=>fr+shift+octave));
-         if(strings.flat().every(fr=>fr>=0&&fr<=24))add(strings,"Pentatônica · padrão "+(shape+1));
+         if(strings.flat().every(fr=>fr>=0&&fr<=24))add(strings,"Pentatônica · padrão "+(shape+1),shape+1);
        }
      }
    }else if(exerciseIntervals().length===7){
@@ -730,7 +730,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    const cols=isOpen?end:Math.max(1,end-start+1);
    f.classList.toggle("openPosition",isOpen);
    f.style.setProperty("--shape-cols",cols);
-   f.innerHTML='<div class="shapeCaption"><b>Shape '+(p.shape+1)+'</b><span>Casas '+start+'–'+end+'</span></div>'+
+   f.innerHTML='<div class="shapeCaption"><b>Shape '+p.shape+'</b><span>Casas '+start+'–'+end+'</span></div>'+
    '<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut"></div>':'')+
    '<div class="exFrets">'+Array.from({length:cols},(_,i)=>'<div class="exFretLine"></div>').join("")+'</div>'+
@@ -743,7 +743,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      const left=fret===0?7:(isOpen?18+((fret-.5)/cols)*82:18+((fret-firstFret+.5)/cols)*82);
      d.style.left=left+"%";d.style.top=((si+.5)/6*100)+"%";d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
    }
-   $("exStartFret").value=start;$("exStartTxt").textContent="Shape "+(p.shape%5+1)+" • Casas "+start+"–"+end;
+   $("exStartFret").value=start;$("exStartTxt").textContent= "Shape "+p.shape+" • Casas "+start+"–"+end;
    document.querySelectorAll("#positionBar button").forEach((b,i)=>b.classList.toggle("active",i===exPos));
  }
  function updateStudyName(){$("studyName").textContent=$("exRoot").selectedOptions[0].textContent+" • "+$("exScale").selectedOptions[0].textContent}
