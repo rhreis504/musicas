@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.41";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.42";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -73,6 +73,7 @@ body{padding-bottom:92px}
 .mcbStringName{left:14px!important;width:28px;text-align:center;color:#fff!important;background:#111827cc;border-radius:7px;padding:3px 2px;font-size:11px!important;transform:translateY(-50%)!important}
 .mcbOpenMark{position:absolute;left:45px;width:20px;text-align:center;transform:translateY(-50%);color:#fff;font-size:18px;font-weight:900}.mcbOpenMark.muted{color:#fca5a5}
 .chordFinger{width:38px!important;height:38px!important;font-size:12px!important;color:#fff!important}.chordFinger.root{background:#ef4444!important;border-color:#fecaca!important}
+.chordVariationNav{display:flex;align-items:center;gap:8px;margin-left:auto}.chordVariationNav button{width:40px;height:40px;border-radius:10px;background:#111a2e;color:#fff;border:1px solid #33405f;font-size:22px;font-weight:900}.chordVariationNav span{min-width:150px;text-align:center;color:#fff;font-size:12px;font-weight:800;line-height:1.25}
 </style><style id="v38Polish">
 #title{color:#fff!important;font-weight:700!important}.moduleCard #title{color:#fff!important}
 .mcbOpenMark{border:0;background:transparent;padding:0;cursor:pointer}.mcbOpenMark.open{font-size:22px;color:#fff}.mcbOpenMark.playing{color:#f59e0b!important;transform:translateY(-50%) scale(1.35);text-shadow:0 0 14px #f59e0b}
@@ -399,8 +400,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.41</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.41</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.42</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.42</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -916,19 +917,22 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  loadChordCatalog();
  function ensureVoicingPicker(){
   const box=document.querySelector(".chordBoardBox"),head=box?.querySelector(".chordBoardHead");if(!box||!head)return;
-  let sel=document.getElementById("chordVoicing");if(!sel){sel=document.createElement("select");sel.id="chordVoicing";sel.setAttribute("aria-label","Forma do acorde");sel.style.cssText="margin-left:auto;max-width:190px;background:#111a2e;color:#fff;border:1px solid #33405f;border-radius:9px;padding:7px;font-weight:700";head.appendChild(sel);sel.onchange=()=>{chordVoicingIndex=+sel.value;drawMini()}}
+  let nav=document.getElementById("chordVariationNav");
+  if(!nav){nav=document.createElement("div");nav.id="chordVariationNav";nav.className="chordVariationNav";nav.innerHTML='<button type="button" id="chordPrev" aria-label="Variação anterior">‹</button><span id="chordVariationLabel"></span><button type="button" id="chordNext" aria-label="Próxima variação">›</button>';head.appendChild(nav);document.getElementById("chordPrev").onclick=()=>stepVoicing(-1);document.getElementById("chordNext").onclick=()=>stepVoicing(1)}
   const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];
-  const signature=list.map((v,i)=>i+":"+(v.barres?.length?"Pestana":"Aberta/alternativa")+":"+v.frets.join(",")).join("|");
-  if(sel.dataset.sig!==signature){sel.innerHTML="";list.forEach((v,i)=>{const o=document.createElement("option");o.value=i;const positive=v.frets.filter(f=>f>0),min=positive.length?Math.min(...positive):0,max=positive.length?Math.max(...positive):0;o.textContent=(v.barres?.length?"Com pestana":"Sem pestana")+" · Forma "+(i+1)+(max?" · casas "+min+"–"+max:"");sel.appendChild(o)});sel.dataset.sig=signature}
-  if(chordVoicingIndex>=list.length)chordVoicingIndex=0;sel.value=String(chordVoicingIndex);sel.style.display=list.length>1?"block":"none";
+  if(chordVoicingIndex>=list.length)chordVoicingIndex=0;
+  const v=list[chordVoicingIndex],label=document.getElementById("chordVariationLabel");
+  if(label)label.textContent=list.length?("Variação "+(chordVoicingIndex+1)+" de "+list.length+" · "+(v?.barres?.length?"com pestana":"sem pestana")):"Sem variações";
+  nav.style.display=list.length>1?"flex":"none";
  }
+ function stepVoicing(dir){const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];if(!list.length)return;chordVoicingIndex=(chordVoicingIndex+dir+list.length)%list.length;drawMini()}
  function drawMini(){
   const b=document.getElementById("miniChordBoard");if(!b)return;ensureVoicingPicker();const v=voicing(),N=spell==="s"?S:F;
-  b.innerHTML='<div class="mcbNut"></div>';if(!v.available){b.innerHTML='<div style="padding:65px 20px;text-align:center;color:#fff;font-weight:700">Posição não disponível na biblioteca.<br>Não será reproduzida uma digitação não verificada.</div>';return}const y=si=>36+si*31;const pos=v.frets.filter(fr=>fr>0),start=pos.length?Math.max(1,Math.max(...pos)-3):1;
+  b.innerHTML='<div class="mcbNut"></div>';if(!v.available){b.innerHTML='<div style="padding:65px 20px;text-align:center;color:#fff;font-weight:700">Posição não disponível na biblioteca.<br>Não será reproduzida uma digitação não verificada.</div>';return}const y=si=>36+(5-si)*31;const pos=v.frets.filter(fr=>fr>0),start=pos.length?Math.max(1,Math.max(...pos)-3):1;
   for(let si=0;si<6;si++){const line=document.createElement("div");line.className="mcbLine";line.dataset.stringLine=si;line.style.top=y(si)+"px";line.style.height=([1.2,1.5,1.8,2.2,2.7,3.2][si])+"px";b.appendChild(line);const lab=document.createElement("div");lab.className="mcbStringName";lab.style.top=y(si)+"px";lab.textContent=names[si];b.appendChild(lab)}
   for(let fr=0;fr<=4;fr++){const line=document.createElement("div");line.className="mcbFretLine";line.style.left=(76+fr*((b.clientWidth-94)/4))+"px";b.appendChild(line)}if(start>1){const tag=document.createElement("span");tag.textContent="Casa "+start;tag.style.cssText="position:absolute;right:12px;top:3px;color:#fff;font-size:11px;font-weight:700";b.appendChild(tag)}
   // Pestana vem explicitamente do voicing validado; não é inferida do desenho.
-  if(v.barre){const fr=v.barre.fret,bar=document.createElement("div");bar.className="barreHint explicit";bar.style.left=(76+(fr-start+.5)*((b.clientWidth-94)/4))+"px";bar.style.top=y(v.barre.to)+"px";bar.style.height=(y(v.barre.from)-y(v.barre.to))+"px";bar.innerHTML='<em>'+fr+'ª</em>';b.appendChild(bar)}
+  if(v.barre){const fr=v.barre.fret,bar=document.createElement("div");bar.className="barreHint explicit";bar.style.left=(76+(fr-start+.5)*((b.clientWidth-94)/4))+"px";bar.style.top=Math.min(y(v.barre.to),y(v.barre.from))+"px";bar.style.height=Math.abs(y(v.barre.from)-y(v.barre.to))+"px";bar.innerHTML='<em>'+fr+'ª</em>';b.appendChild(bar)}
   v.frets.forEach((fr,si)=>{
     const mark=document.createElement("button");mark.type="button";mark.className="mcbOpenMark";mark.dataset.string=si;mark.style.top=y(si)+"px";
     if(fr<0){mark.textContent="×";mark.classList.add("muted");mark.disabled=true;b.appendChild(mark);return}
