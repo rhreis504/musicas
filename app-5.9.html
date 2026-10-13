@@ -26,55 +26,9 @@ function launchTool(tool){
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
 </style><script id="freshVersionCheck">
-(function(){
-"use strict";
-const CURRENT="5.29";
-let inFlight=null, last=0;
-function reveal(){document.documentElement.classList.remove("checking-update")}
-async function check(force){
- if(inFlight)return inFlight;
- if(!force&&Date.now()-last<1200)return;
- last=Date.now();
- inFlight=(async()=>{
-  const timeout=setTimeout(reveal,6500);
-  try{
-   if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{});
-   }
-   const response=await fetch("./version.json?_="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
-   if(!response.ok)throw Error("manifesto indisponível");
-   const info=await response.json();
-   if(info.version&&info.version!==CURRENT){
-    const target=new URL(location.href);
-    // Não modifica o link do atalho salvo. O parâmetro é apenas da navegação interna.
-    const stamp=String(info.version);
-    if(target.searchParams.get("_build")!==stamp){
-      target.searchParams.set("_build",stamp);
-      target.searchParams.set("_fresh",String(Date.now()));
-      location.replace(target.href);
-      return;
-    }
-    // Se a navegação ainda entregou HTML antigo, busca HTML sem cache
-    // e o instala diretamente, evitando uma sequência infinita de reloads.
-    const fresh=await fetch("./index.html?_fresh="+Date.now(),{cache:"no-store"});
-    if(fresh.ok){
-      const html=await fresh.text();
-      if(html.includes('const CURRENT="'+stamp+'"')){
-        document.open();document.write(html);document.close();
-        return;
-      }
-    }
-   }
-  }catch(e){console.warn("Atualização:",e)}
-  finally{clearTimeout(timeout);reveal()}
- })();
- try{await inFlight}finally{inFlight=null}
-}
-/* launcher performs version checks */
-
-
-
-})();
+/* A atualização é responsabilidade exclusiva do index.html.
+   O app interno nunca recarrega, substitui documento ou registra service worker. */
+(function(){"use strict";const CURRENT="5.30";document.documentElement.classList.remove("checking-update");})();
 </script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
@@ -449,8 +403,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.29</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.29</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.30</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.30</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
