@@ -11,10 +11,10 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
  const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2);
  const status=t=>{btn.textContent=t;btn.setAttribute("aria-label",t)};
  function parseMD(md){
-  const version=(md.match(/\\*\\*version:\\*\\*\\s*([^\\s]+)/i)||[])[1];
-  const build=(md.match(/\\*\\*build:\\*\\*\\s*([^\\s]+)/i)||[])[1];
-  const entry=(md.match(/\\*\\*entry:\\*\\*\\s*([^\\s]+)/i)||[])[1]||APP;
-  if(!version||!build||!/^[\\w.-]+\\.html$/.test(entry))throw Error("Manifesto inválido");
+  const line=(key)=>md.split("\n").find(x=>x.toLowerCase().includes("**"+key+":**"));
+  const value=(key)=>{const row=line(key);return row?row.split("**").pop().trim().split(" ")[0]:null};
+  const version=value("version"),build=value("build"),entry=value("entry")||APP;
+  if(!version||!build||!entry.endsWith(".html"))throw Error("Manifesto inválido");
   return {version,build,entry};
  }
  async function fetchText(path,fromRaw){
@@ -52,7 +52,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
    const html=await verifiedHtml(m);
    mount(html,m);
   }catch(e){
-   status("Aguardando publicação — tente em 2 min");
+   status("Erro na atualização — toque para tentar");
    console.warn("Atualização Meu Violão:",e);
   }finally{busy=false}
  }
