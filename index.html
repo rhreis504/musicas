@@ -17,7 +17,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
  const progress=(n,t)=>{bar.style.width=n+"%";pct.textContent=n+"%";if(t)status.textContent=t};
  const versionOf=h=>(h.match(/const CURRENT="([^"]+)"/)||[])[1]||null;
  const manifestVersion=md=>{const m=md.match(/- \*\*version:\*\*\s*([^\s]+)/i);return m?m[1]:null};
- async function get(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"fresh="+bust(),{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store, must-revalidate","Pragma":"no-cache"}});if(!r.ok)throw Error("HTTP "+r.status);return r.text()}
+ async function get(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"fresh="+bust(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.text()}
  async function purge(){
    progress(8,"Limpando cache…");
    try{if("serviceWorker" in navigator){const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(x=>x.unregister()))}}catch(e){}
@@ -26,10 +26,10 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
  }
  async function waitForPublished(){
    progress(30,"Verificando versão mais recente no GitHub…");
-   const md=await get(RAW+"ATUALIZACAO.md"),wanted=manifestVersion(md);
+   let md;try{md=await get("./ATUALIZACAO.md")}catch(e){md=await get(RAW+"ATUALIZACAO.md")}const wanted=manifestVersion(md);
    if(!wanted)throw Error("manifesto sem versão");
    let tries=0;
-   while(true){
+   while(tries<36){
      tries++;
      try{
        const html=await get("./"+APP),published=versionOf(html);
@@ -39,6 +39,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
      }catch(e){progress(35,"Aguardando publicação da v"+wanted+"…")}
      await new Promise(ok=>setTimeout(ok,5000));
    }
+   throw Error("Publicação ainda não concluída (3 minutos)");
  }
  async function start(){
    retry.style.display="none";
@@ -52,7 +53,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
      const frame=document.createElement("iframe");frame.allow="microphone; autoplay";frame.src="./"+APP+"?version="+encodeURIComponent(fresh.version)+"&session="+bust();frame.style.visibility="hidden";
      frame.onload=()=>{progress(94,"Finalizando v"+fresh.version+"…");setTimeout(()=>{progress(100,"v"+fresh.version+" atualizada");setTimeout(()=>{frame.style.visibility="visible";requestAnimationFrame(()=>boot.remove())},280)},220)};
      document.body.appendChild(frame);
-   }catch(e){progress(0,"Não foi possível verificar a atualização.");retry.style.display="block"}
+   }catch(e){progress(0,"Falha na verificação: "+(e?.message||"rede indisponível"));retry.style.display="block"}
  }
  retry.onclick=start;start();
 })();
