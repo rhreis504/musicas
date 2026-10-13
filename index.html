@@ -10,62 +10,43 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 @keyframes updatePulse{50%{opacity:.55;box-shadow:0 0 22px #f59e0b66}}
 </style></head><body><button id="force">↻ Atualizar</button><script>
 (()=>{
- const btn=document.getElementById("force"),APP="app-5.9.html",raw="https://raw.githubusercontent.com/rhreis504/musicas/main/";
- let frame=null,pendingTimer=null,pendingSince=0,lastManifest=null,loadedVersion=null,pendingChecks=0;
+ const btn=document.getElementById("force"),APP="app-5.9.html";
+ let frame=null,loadedVersion=null,available=null,timer=null;
  const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2);
  const setState=(kind,text)=>{btn.className=kind;btn.textContent=text;btn.setAttribute("aria-label",text)};
- function parseMD(md){
-  const value=key=>{const row=md.split("\n").find(x=>x.toLowerCase().includes("**"+key+":**"));return row?row.split("**").pop().trim().split(" ")[0]:null};
-  const version=value("version"),build=value("build"),entry=value("entry")||APP;
-  if(!version||!build||!entry.endsWith(".html"))throw Error("Manifesto inválido");
-  return {version,build,entry};
- }
- async function get(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"fresh="+bust(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.text()}
+ async function get(url){const sep=url.includes("?")?"&":"?";const r=await fetch(url+sep+"v="+bust(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});if(!r.ok)throw Error("HTTP "+r.status);return r.text()}
  function versionOf(html){return (html.match(/const CURRENT="([^"]+)"/)||[])[1]||null}
- function mountUrl(url,version){
-  const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=url;
-  n.onload=()=>{if(frame)frame.remove();frame=n;loadedVersion=version||loadedVersion};
-  document.body.appendChild(n);
- }
- async function manifest(){return parseMD(await get(raw+"ATUALIZACAO.md"))}
- async function pagesReady(m){
-  try{const h=await get("./"+m.entry);return versionOf(h)===m.version}catch(e){return false}
- }
- function pending(m){
-  lastManifest=m;if(!pendingSince){pendingSince=Date.now();pendingChecks=0}clearInterval(pendingTimer);
-  const paint=()=>{
-   const sec=Math.floor((Date.now()-pendingSince)/1000);
-   if(sec>=120)setState("error","⚠ v"+m.version+" aguardando publicação");
-   else setState("pending","● v"+m.version+" publicando · "+sec+"s");
-  };
-  paint();pendingTimer=setInterval(async()=>{
-   pendingChecks++;if(await pagesReady(m)){clearInterval(pendingTimer);pendingTimer=null;pendingSince=0;pendingChecks=0;setState("ready","● v"+m.version+" pronta — atualizar");return}
-   paint();
-   if(Date.now()-pendingSince>=300000){clearInterval(pendingTimer);pendingTimer=null;setState("error","⚠ v"+m.version+" não publicada — verificar")}
-  },5000);
+ function mount(url,version){
+   const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=url;
+   n.onload=()=>{if(frame)frame.remove();frame=n;loadedVersion=version||versionOf(n.contentDocument?.documentElement?.innerHTML||"")||loadedVersion};
+   document.body.appendChild(n);
  }
  async function check(){
-  try{
-   const m=await manifest();lastManifest=m;
-   if(m.version===loadedVersion){setState("","↻ Atualizar");return}
-   if(await pagesReady(m)){setState("ready","● v"+m.version+" pronta — atualizar")}else pending(m);
-  }catch(e){setState("","↻ Atualizar");console.warn("Atualização:",e)}
+   try{
+     // A própria página publicada é a fonte de verdade. Não depende mais de manifesto/raw GitHub.
+     const html=await get("./"+APP),published=versionOf(html);
+     if(!published)throw Error("versão ausente");
+     available={version:published};
+     if(!loadedVersion){
+       const shown=frame?.contentDocument?.querySelector("#appVersionBadge")?.textContent||"";
+       loadedVersion=(shown.match(/([0-9]+\.[0-9]+)/)||[])[1]||null;
+     }
+     if(published!==loadedVersion)setState("ready","● Nova v"+published+" publicada — atualizar aplicativo");
+     else setState("","↻ Atualizar");
+   }catch(err){setState("error","⚠ Verificar atualização")}
  }
  btn.onclick=async()=>{
-  if(btn.classList.contains("error")){pendingSince=0;pendingChecks=0;clearInterval(pendingTimer);pendingTimer=null;setState("","Verificando…");check();return}
-  if(btn.classList.contains("ready")&&lastManifest){
-   setState("ok","Abrindo v"+lastManifest.version+"…");
-   mountUrl("./"+lastManifest.entry+"?version="+encodeURIComponent(lastManifest.version)+"&build="+encodeURIComponent(lastManifest.build)+"&fresh="+bust(),lastManifest.version);
-   setTimeout(()=>setState("","↻ Atualizar"),2500);return;
-  }
-  check();
+   if(btn.classList.contains("ready")&&available){
+     setState("ok","Atualizando para v"+available.version+"…");
+     mount("./"+APP+"?version="+encodeURIComponent(available.version)+"&fresh="+bust(),available.version);
+     setTimeout(check,1800);return;
+   }
+   setState("","Verificando…");await check();
  };
- // Limpeza não bloqueante de caches antigos: nunca impede a abertura do app.
- if("serviceWorker" in navigator)navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+ mount("./"+APP+"?boot="+bust(),null);
+ setTimeout(check,900);
+ timer=setInterval(check,30000);
+ if("serviceWorker" in navigator)navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(x=>x.unregister())).catch(()=>{});
  if("caches" in window)caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k)))).catch(()=>{});
- // REGRA: primeiro abre o app atual, sem aguardar rede, manifesto ou GitHub.
- mountUrl("./"+APP, null);
- // Só depois do carregamento visual consulta atualização em segundo plano.
- setTimeout(async()=>{try{const h=await get("./"+APP);loadedVersion=versionOf(h);check()}catch(e){check()}},1200);
 })();
 </script></body></html>
