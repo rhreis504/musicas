@@ -1,0 +1,5831 @@
+{
+  "schema": "pentatonic-shapes-v1",
+  "version": "1.0.0",
+  "status": "algorithmically_verified",
+  "pedagogicalSystem": "five two-notes-per-string connected boxes",
+  "orientation": "strings low E to high E",
+  "frets": [
+    0,
+    24
+  ],
+  "sources": [
+    "https://www.fretjam.com/pentatonic-scale-patterns.html",
+    "https://online.berklee.edu/takenote/country-music-guitar-essentials-chicken-pickin-string-bending-and-more/",
+    "https://community.justinguitar.com/t/minor-pentatonic-the-5-patterns/1826"
+  ],
+  "notes": "Padrões completos apenas; shapes parciais junto à pestana não são inventados. Numeração refere-se ao padrão de Mi menor; a numeração é convenção pedagógica.",
+  "types": {
+    "minPent": {
+      "C": {
+        "rootPc": 0,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 8
+              },
+              {
+                "string": 3,
+                "fret": 10
+              },
+              {
+                "string": 6,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 10
+              },
+              {
+                "string": 5,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 15
+              },
+              {
+                "string": 5,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 15
+              },
+              {
+                "string": 4,
+                "fret": 17
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ]
+            ],
+            "range": [
+              17,
+              20
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 20
+              },
+              {
+                "string": 4,
+                "fret": 17
+              },
+              {
+                "string": 6,
+                "fret": 20
+              }
+            ]
+          }
+        ]
+      },
+      "C#/Db": {
+        "rootPc": 1,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          1,
+          4,
+          6,
+          8,
+          11
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 9
+              },
+              {
+                "string": 3,
+                "fret": 11
+              },
+              {
+                "string": 6,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 11
+              },
+              {
+                "string": 5,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 16
+              },
+              {
+                "string": 5,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                16,
+                19
+              ]
+            ],
+            "range": [
+              16,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 16
+              },
+              {
+                "string": 4,
+                "fret": 18
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                19,
+                21
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                19,
+                21
+              ]
+            ],
+            "range": [
+              18,
+              21
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 21
+              },
+              {
+                "string": 4,
+                "fret": 18
+              },
+              {
+                "string": 6,
+                "fret": 21
+              }
+            ]
+          }
+        ]
+      },
+      "D": {
+        "rootPc": 2,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          2,
+          5,
+          7,
+          9,
+          0
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 10
+              },
+              {
+                "string": 3,
+                "fret": 12
+              },
+              {
+                "string": 6,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 12
+              },
+              {
+                "string": 5,
+                "fret": 15
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 17
+              },
+              {
+                "string": 5,
+                "fret": 15
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                17,
+                20
+              ]
+            ],
+            "range": [
+              17,
+              20
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 17
+              },
+              {
+                "string": 4,
+                "fret": 19
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                20,
+                22
+              ],
+              [
+                20,
+                22
+              ],
+              [
+                19,
+                22
+              ],
+              [
+                19,
+                22
+              ],
+              [
+                20,
+                22
+              ],
+              [
+                20,
+                22
+              ]
+            ],
+            "range": [
+              19,
+              22
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 22
+              },
+              {
+                "string": 4,
+                "fret": 19
+              },
+              {
+                "string": 6,
+                "fret": 22
+              }
+            ]
+          }
+        ]
+      },
+      "D#/Eb": {
+        "rootPc": 3,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          3,
+          6,
+          8,
+          10,
+          1
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 11
+              },
+              {
+                "string": 3,
+                "fret": 13
+              },
+              {
+                "string": 6,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 13
+              },
+              {
+                "string": 5,
+                "fret": 16
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 18
+              },
+              {
+                "string": 5,
+                "fret": 16
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                18,
+                21
+              ]
+            ],
+            "range": [
+              18,
+              21
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 18
+              },
+              {
+                "string": 4,
+                "fret": 20
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                21,
+                23
+              ],
+              [
+                21,
+                23
+              ],
+              [
+                20,
+                23
+              ],
+              [
+                20,
+                23
+              ],
+              [
+                21,
+                23
+              ],
+              [
+                21,
+                23
+              ]
+            ],
+            "range": [
+              20,
+              23
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 23
+              },
+              {
+                "string": 4,
+                "fret": 20
+              },
+              {
+                "string": 6,
+                "fret": 23
+              }
+            ]
+          }
+        ]
+      },
+      "E": {
+        "rootPc": 4,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          4,
+          7,
+          9,
+          11,
+          2
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "range": [
+              0,
+              3
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 0
+              },
+              {
+                "string": 3,
+                "fret": 2
+              },
+              {
+                "string": 6,
+                "fret": 0
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                3,
+                5
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "range": [
+              2,
+              5
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 2
+              },
+              {
+                "string": 5,
+                "fret": 5
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 7
+              },
+              {
+                "string": 5,
+                "fret": 5
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 7
+              },
+              {
+                "string": 4,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 12
+              },
+              {
+                "string": 4,
+                "fret": 9
+              },
+              {
+                "string": 6,
+                "fret": 12
+              }
+            ]
+          }
+        ]
+      },
+      "F": {
+        "rootPc": 5,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          5,
+          8,
+          10,
+          0,
+          3
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "range": [
+              1,
+              4
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 1
+              },
+              {
+                "string": 3,
+                "fret": 3
+              },
+              {
+                "string": 6,
+                "fret": 1
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                4,
+                6
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ]
+            ],
+            "range": [
+              3,
+              6
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 3
+              },
+              {
+                "string": 5,
+                "fret": 6
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 8
+              },
+              {
+                "string": 5,
+                "fret": 6
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 8
+              },
+              {
+                "string": 4,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 13
+              },
+              {
+                "string": 4,
+                "fret": 10
+              },
+              {
+                "string": 6,
+                "fret": 13
+              }
+            ]
+          }
+        ]
+      },
+      "F#/Gb": {
+        "rootPc": 6,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          6,
+          9,
+          11,
+          1,
+          4
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "range": [
+              2,
+              5
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 2
+              },
+              {
+                "string": 3,
+                "fret": 4
+              },
+              {
+                "string": 6,
+                "fret": 2
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                5,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              7
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 4
+              },
+              {
+                "string": 5,
+                "fret": 7
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 9
+              },
+              {
+                "string": 5,
+                "fret": 7
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 9
+              },
+              {
+                "string": 4,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 14
+              },
+              {
+                "string": 4,
+                "fret": 11
+              },
+              {
+                "string": 6,
+                "fret": 14
+              }
+            ]
+          }
+        ]
+      },
+      "G": {
+        "rootPc": 7,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          7,
+          10,
+          0,
+          2,
+          5
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            "range": [
+              3,
+              6
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 3
+              },
+              {
+                "string": 3,
+                "fret": 5
+              },
+              {
+                "string": 6,
+                "fret": 3
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                6,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 5
+              },
+              {
+                "string": 5,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 10
+              },
+              {
+                "string": 5,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 10
+              },
+              {
+                "string": 4,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 15
+              },
+              {
+                "string": 4,
+                "fret": 12
+              },
+              {
+                "string": 6,
+                "fret": 15
+              }
+            ]
+          }
+        ]
+      },
+      "G#/Ab": {
+        "rootPc": 8,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          8,
+          11,
+          1,
+          3,
+          6
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              7
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 4
+              },
+              {
+                "string": 3,
+                "fret": 6
+              },
+              {
+                "string": 6,
+                "fret": 4
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                7,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 6
+              },
+              {
+                "string": 5,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 11
+              },
+              {
+                "string": 5,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 11
+              },
+              {
+                "string": 4,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 16
+              },
+              {
+                "string": 4,
+                "fret": 13
+              },
+              {
+                "string": 6,
+                "fret": 16
+              }
+            ]
+          }
+        ]
+      },
+      "A": {
+        "rootPc": 9,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          9,
+          0,
+          2,
+          4,
+          7
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 5
+              },
+              {
+                "string": 3,
+                "fret": 7
+              },
+              {
+                "string": 6,
+                "fret": 5
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 7
+              },
+              {
+                "string": 5,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 12
+              },
+              {
+                "string": 5,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 12
+              },
+              {
+                "string": 4,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 17
+              },
+              {
+                "string": 4,
+                "fret": 14
+              },
+              {
+                "string": 6,
+                "fret": 17
+              }
+            ]
+          }
+        ]
+      },
+      "A#/Bb": {
+        "rootPc": 10,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          10,
+          1,
+          3,
+          5,
+          8
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 6
+              },
+              {
+                "string": 3,
+                "fret": 8
+              },
+              {
+                "string": 6,
+                "fret": 6
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 8
+              },
+              {
+                "string": 5,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 13
+              },
+              {
+                "string": 5,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 13
+              },
+              {
+                "string": 4,
+                "fret": 15
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 18
+              },
+              {
+                "string": 4,
+                "fret": 15
+              },
+              {
+                "string": 6,
+                "fret": 18
+              }
+            ]
+          }
+        ]
+      },
+      "B": {
+        "rootPc": 11,
+        "intervals": [
+          0,
+          3,
+          5,
+          7,
+          10
+        ],
+        "pitchClasses": [
+          11,
+          2,
+          4,
+          6,
+          9
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 7
+              },
+              {
+                "string": 3,
+                "fret": 9
+              },
+              {
+                "string": 6,
+                "fret": 7
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 9
+              },
+              {
+                "string": 5,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 14
+              },
+              {
+                "string": 5,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 14
+              },
+              {
+                "string": 4,
+                "fret": 16
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ]
+            ],
+            "range": [
+              16,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 19
+              },
+              {
+                "string": 4,
+                "fret": 16
+              },
+              {
+                "string": 6,
+                "fret": 19
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "majPent": {
+      "C": {
+        "rootPc": 0,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 8
+              },
+              {
+                "string": 4,
+                "fret": 5
+              },
+              {
+                "string": 6,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 8
+              },
+              {
+                "string": 3,
+                "fret": 10
+              },
+              {
+                "string": 6,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 10
+              },
+              {
+                "string": 5,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 15
+              },
+              {
+                "string": 5,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 15
+              },
+              {
+                "string": 4,
+                "fret": 17
+              }
+            ]
+          }
+        ]
+      },
+      "C#/Db": {
+        "rootPc": 1,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          1,
+          3,
+          5,
+          8,
+          10
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 9
+              },
+              {
+                "string": 4,
+                "fret": 6
+              },
+              {
+                "string": 6,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 9
+              },
+              {
+                "string": 3,
+                "fret": 11
+              },
+              {
+                "string": 6,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 11
+              },
+              {
+                "string": 5,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 16
+              },
+              {
+                "string": 5,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 16
+              },
+              {
+                "string": 4,
+                "fret": 18
+              }
+            ]
+          }
+        ]
+      },
+      "D": {
+        "rootPc": 2,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          2,
+          4,
+          6,
+          9,
+          11
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 10
+              },
+              {
+                "string": 4,
+                "fret": 7
+              },
+              {
+                "string": 6,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 10
+              },
+              {
+                "string": 3,
+                "fret": 12
+              },
+              {
+                "string": 6,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 12
+              },
+              {
+                "string": 5,
+                "fret": 15
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 17
+              },
+              {
+                "string": 5,
+                "fret": 15
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ]
+            ],
+            "range": [
+              16,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 17
+              },
+              {
+                "string": 4,
+                "fret": 19
+              }
+            ]
+          }
+        ]
+      },
+      "D#/Eb": {
+        "rootPc": 3,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          3,
+          5,
+          7,
+          10,
+          0
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 11
+              },
+              {
+                "string": 4,
+                "fret": 8
+              },
+              {
+                "string": 6,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 11
+              },
+              {
+                "string": 3,
+                "fret": 13
+              },
+              {
+                "string": 6,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 13
+              },
+              {
+                "string": 5,
+                "fret": 16
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 18
+              },
+              {
+                "string": 5,
+                "fret": 16
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ]
+            ],
+            "range": [
+              17,
+              20
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 18
+              },
+              {
+                "string": 4,
+                "fret": 20
+              }
+            ]
+          }
+        ]
+      },
+      "E": {
+        "rootPc": 4,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          4,
+          6,
+          8,
+          11,
+          1
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 12
+              },
+              {
+                "string": 4,
+                "fret": 9
+              },
+              {
+                "string": 6,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 12
+              },
+              {
+                "string": 3,
+                "fret": 14
+              },
+              {
+                "string": 6,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              17
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 14
+              },
+              {
+                "string": 5,
+                "fret": 17
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                16,
+                19
+              ]
+            ],
+            "range": [
+              16,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 19
+              },
+              {
+                "string": 5,
+                "fret": 17
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                19,
+                21
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                19,
+                21
+              ]
+            ],
+            "range": [
+              18,
+              21
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 19
+              },
+              {
+                "string": 4,
+                "fret": 21
+              }
+            ]
+          }
+        ]
+      },
+      "F": {
+        "rootPc": 5,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          5,
+          7,
+          9,
+          0,
+          2
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 13
+              },
+              {
+                "string": 4,
+                "fret": 10
+              },
+              {
+                "string": 6,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 13
+              },
+              {
+                "string": 3,
+                "fret": 15
+              },
+              {
+                "string": 6,
+                "fret": 13
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                15,
+                17
+              ],
+              [
+                14,
+                17
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                15,
+                17
+              ]
+            ],
+            "range": [
+              14,
+              18
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 15
+              },
+              {
+                "string": 5,
+                "fret": 18
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                17,
+                19
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                17,
+                20
+              ]
+            ],
+            "range": [
+              17,
+              20
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 20
+              },
+              {
+                "string": 5,
+                "fret": 18
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                20,
+                22
+              ],
+              [
+                20,
+                22
+              ],
+              [
+                19,
+                22
+              ],
+              [
+                19,
+                22
+              ],
+              [
+                20,
+                22
+              ],
+              [
+                20,
+                22
+              ]
+            ],
+            "range": [
+              19,
+              22
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 20
+              },
+              {
+                "string": 4,
+                "fret": 22
+              }
+            ]
+          }
+        ]
+      },
+      "F#/Gb": {
+        "rootPc": 6,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          6,
+          8,
+          10,
+          1,
+          3
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 14
+              },
+              {
+                "string": 4,
+                "fret": 11
+              },
+              {
+                "string": 6,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 14
+              },
+              {
+                "string": 3,
+                "fret": 16
+              },
+              {
+                "string": 6,
+                "fret": 14
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                16,
+                18
+              ],
+              [
+                15,
+                18
+              ],
+              [
+                16,
+                19
+              ],
+              [
+                16,
+                18
+              ]
+            ],
+            "range": [
+              15,
+              19
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 16
+              },
+              {
+                "string": 5,
+                "fret": 19
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                21
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                18,
+                20
+              ],
+              [
+                19,
+                21
+              ],
+              [
+                18,
+                21
+              ]
+            ],
+            "range": [
+              18,
+              21
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 21
+              },
+              {
+                "string": 5,
+                "fret": 19
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                21,
+                23
+              ],
+              [
+                21,
+                23
+              ],
+              [
+                20,
+                23
+              ],
+              [
+                20,
+                23
+              ],
+              [
+                21,
+                23
+              ],
+              [
+                21,
+                23
+              ]
+            ],
+            "range": [
+              20,
+              23
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 21
+              },
+              {
+                "string": 4,
+                "fret": 23
+              }
+            ]
+          }
+        ]
+      },
+      "G": {
+        "rootPc": 7,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          7,
+          9,
+          11,
+          2,
+          4
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "range": [
+              0,
+              3
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 3
+              },
+              {
+                "string": 4,
+                "fret": 0
+              },
+              {
+                "string": 6,
+                "fret": 3
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                3,
+                5
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "range": [
+              2,
+              5
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 3
+              },
+              {
+                "string": 3,
+                "fret": 5
+              },
+              {
+                "string": 6,
+                "fret": 3
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 5
+              },
+              {
+                "string": 5,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 10
+              },
+              {
+                "string": 5,
+                "fret": 8
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 10
+              },
+              {
+                "string": 4,
+                "fret": 12
+              }
+            ]
+          }
+        ]
+      },
+      "G#/Ab": {
+        "rootPc": 8,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          8,
+          10,
+          0,
+          3,
+          5
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "range": [
+              1,
+              4
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 4
+              },
+              {
+                "string": 4,
+                "fret": 1
+              },
+              {
+                "string": 6,
+                "fret": 4
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                4,
+                6
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ]
+            ],
+            "range": [
+              3,
+              6
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 4
+              },
+              {
+                "string": 3,
+                "fret": 6
+              },
+              {
+                "string": 6,
+                "fret": 4
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 6
+              },
+              {
+                "string": 5,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 11
+              },
+              {
+                "string": 5,
+                "fret": 9
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 11
+              },
+              {
+                "string": 4,
+                "fret": 13
+              }
+            ]
+          }
+        ]
+      },
+      "A": {
+        "rootPc": 9,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          9,
+          11,
+          1,
+          4,
+          6
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "range": [
+              2,
+              5
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 5
+              },
+              {
+                "string": 4,
+                "fret": 2
+              },
+              {
+                "string": 6,
+                "fret": 5
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                5,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              7
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 5
+              },
+              {
+                "string": 3,
+                "fret": 7
+              },
+              {
+                "string": 6,
+                "fret": 5
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 7
+              },
+              {
+                "string": 5,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                9,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 12
+              },
+              {
+                "string": 5,
+                "fret": 10
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                12,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 12
+              },
+              {
+                "string": 4,
+                "fret": 14
+              }
+            ]
+          }
+        ]
+      },
+      "A#/Bb": {
+        "rootPc": 10,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          10,
+          0,
+          2,
+          5,
+          7
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            "range": [
+              3,
+              6
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 6
+              },
+              {
+                "string": 4,
+                "fret": 3
+              },
+              {
+                "string": 6,
+                "fret": 6
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                6,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 6
+              },
+              {
+                "string": 3,
+                "fret": 8
+              },
+              {
+                "string": 6,
+                "fret": 6
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 8
+              },
+              {
+                "string": 5,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                10,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 13
+              },
+              {
+                "string": 5,
+                "fret": 11
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                12,
+                15
+              ],
+              [
+                13,
+                15
+              ],
+              [
+                13,
+                15
+              ]
+            ],
+            "range": [
+              12,
+              15
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 13
+              },
+              {
+                "string": 4,
+                "fret": 15
+              }
+            ]
+          }
+        ]
+      },
+      "B": {
+        "rootPc": 11,
+        "intervals": [
+          0,
+          2,
+          4,
+          7,
+          9
+        ],
+        "pitchClasses": [
+          11,
+          1,
+          3,
+          6,
+          8
+        ],
+        "shapes": [
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              7
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 7
+              },
+              {
+                "string": 4,
+                "fret": 4
+              },
+              {
+                "string": 6,
+                "fret": 7
+              }
+            ]
+          },
+          {
+            "pattern": 2,
+            "strings": [
+              [
+                7,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 7
+              },
+              {
+                "string": 3,
+                "fret": 9
+              },
+              {
+                "string": 6,
+                "fret": 7
+              }
+            ]
+          },
+          {
+            "pattern": 3,
+            "strings": [
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 3,
+                "fret": 9
+              },
+              {
+                "string": 5,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 4,
+            "strings": [
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                12,
+                14
+              ],
+              [
+                11,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 14
+              },
+              {
+                "string": 5,
+                "fret": 12
+              }
+            ]
+          },
+          {
+            "pattern": 5,
+            "strings": [
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                13,
+                16
+              ],
+              [
+                14,
+                16
+              ],
+              [
+                14,
+                16
+              ]
+            ],
+            "range": [
+              13,
+              16
+            ],
+            "rootPositions": [
+              {
+                "string": 2,
+                "fret": 14
+              },
+              {
+                "string": 4,
+                "fret": 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
