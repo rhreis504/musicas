@@ -702,8 +702,18 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    if(scale==="minPent"||scale==="majPent"){
      // Cinco boxes tradicionais, transpostos pela tônica, repetidos a cada 12 casas.
      for(let oct=-12;oct<=24;oct+=12)for(let shape=0;shape<5;shape++){
-       const raw=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct));
-       if(raw.flat().every(fr=>fr>=0&&fr<=24))make(raw,shape,"Pentatônica · box");
+       let raw=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct));
+       // Na primeira posição física do braço, preservar a pestana/nut e as cordas soltas.
+       // Boxes que atravessariam a casa 0 são recortados no nut, em vez de desaparecerem.
+       if(raw.flat().some(fr=>fr<0)&&raw.flat().some(fr=>fr>=0)){
+         raw=raw.map((pair,si)=>{
+           const visible=pair.filter(fr=>fr>=0&&fr<=24);
+           const openPc=openMidi[si]%12;
+           if(pcs.includes(openPc)&&!visible.includes(0))visible.unshift(0);
+           return visible;
+         });
+         if(raw.every(row=>row.length))make(raw,shape,"Pentatônica · box aberto");
+       }else if(raw.flat().every(fr=>fr>=0&&fr<=24))make(raw,shape,"Pentatônica · box");
      }
    }else if(exerciseIntervals().length===7){
      // Sete posições 3NPS: cada corda possui as três notas consecutivas da escala
