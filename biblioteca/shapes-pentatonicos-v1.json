@@ -1,7 +1,7 @@
 {
   "schema": "pentatonic-shapes-v1",
-  "version": "1.2.0",
-  "status": "pitch_verified_pedagogical_naming_convention_documented",
+  "version": "1.3.0",
+  "status": "geometric_template_and_pitch_verified_external_examples_cross_checked",
   "pedagogicalSystem": "five two-notes-per-string connected boxes",
   "orientation": "strings low E to high E",
   "frets": [
@@ -16846,12 +16846,91 @@
       "Shapes que cruzam pestana ou casa 24 não podem ser recortados e rotulados como padrão completo."
     ],
     "majorNamingCorrected": true,
-    "independentDiagramAudit": "pending"
+    "independentDiagramAudit": "partial",
+    "geometricTemplatesVerified": 120,
+    "notesRechecked": 1440,
+    "externalComparisonStatus": "partial"
   },
   "naming": {
     "minor": "Pattern 1 has tonic on low E string at first fret of box",
     "major": "Pattern 1 is reference minor pattern 2; pattern 2 -> reference 3, 3 -> reference 4, 4 -> reference 5, 5 -> reference 1",
     "reference": "https://www.fretjam.com/pentatonic-scale-patterns.html",
     "note": "Numbering is conventional and varies by school; referencePattern preserves original template index."
+  },
+  "externalComparison": {
+    "date": "2026-10-12",
+    "verifiedExamples": [
+      {
+        "scale": "A minor pentatonic",
+        "pattern": 1,
+        "frets": [
+          [
+            5,
+            8
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            5,
+            8
+          ]
+        ],
+        "source": "https://scales.beatkey.app/pentatonic-scale-guitar",
+        "result": "match"
+      },
+      {
+        "scale": "G major pentatonic",
+        "pattern": 1,
+        "frets": [
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "source": "https://chordwiki.com/guitar/scales/g-major-pentatonic/",
+        "result": "match"
+      },
+      {
+        "scale": "E minor pentatonic",
+        "patterns": 5,
+        "source": "https://www.theorylessons.com/pent002positions.php",
+        "result": "five-position order and transposition principle corroborated; not pixel-by-pixel comparison"
+      }
+    ],
+    "remaining": "External independent note-by-note comparison of all five canonical templates is not yet evidenced. Mathematical transpositions cannot substitute for verifying the templates."
   }
 }
