@@ -1,25 +1,20 @@
-# Bateria de testes — 3NPS v2.0.1 e aplicativo v5.34
+# Relatório de testes de homologação — aplicativo v5.34
 Data: 2026-10-12
 
-## Defeito crítico identificado e corrigido
-O arquivo de biblioteca no GitHub estava **vazio** (0 bytes). A integração v5.34 não podia carregar os padrões, apesar de o código da interface existir. Foi reconstruído e publicado em commit `239225a2474dfcabbb8dd3d97a90c4fe56bf2b69` e relido via GitHub, retornando 153.172 caracteres de JSON válido.
+## Bateria automatizada executada
+- 588 diagramas 3NPS, abrangendo 7 famílias, 12 tônicas e 7 graus por família: **588/588 passaram nos invariantes matemáticos e geométricos**.
+- Cada padrão: 6 cordas × 3 notas = 18 notas; 10.584 verificações de pertinência cromática.
+- Progressão MIDI estritamente ascendente entre todas as 18 notas de cada padrão: **588/588 aprovados**.
+- Amplitude entre a menor e a maior casa de cada padrão: **5 a 6 casas**; nenhuma superior a 6.
+- 973 posições de oitava completas dentro de 0–24 casas, sem repetições geométricas por escala e tonalidade.
+- Biblioteca recuperada do GitHub com 153.172 caracteres e JSON válido; versão **2.0.1**.
+- Código do app recuperado do GitHub: checagem estática da aceitação 2.0.x, consulta da biblioteca, grafia contextual e fallback local.
+- Tags de script no HTML: 8 aberturas e 8 fechamentos.
 
-A aplicação verificava exclusivamente `version === '2.0.0'`, portanto rejeitaria a biblioteca corrigida v2.0.1. Ajustado para aceitar versões 2.0.x, commit `824fe4ddb7efeb42f3a0c45c202e16ac3f342168`.
+## Limites desta bateria
+Os 588 desenhos foram auditados **por dados e regras geométricas**, não por inspeção de 588 capturas de tela. Não houve navegador gráfico nem acesso ao dispositivo do usuário neste ambiente. Assim, **não é verdadeiro declarar conferência visual individual dos 588 diagramas**, reprodução sonora real, usabilidade mobile, carregamento real no GitHub Pages, atualização do iframe ou testes de cache concluídos.
 
-## Testes executados
-- Geração integral: 7 famílias × 12 tônicas × 7 graus = **588 padrões**.
-- Cada padrão: seis cordas × três notas = **18 notas**, total **10.584 notas**.
-- Verificação de pertinência das notas à escala por classe cromática: **10.584/10.584**.
-- Amplitude geométrica máxima: **6 casas**; padrões com amplitude maior: **0**.
-- Repetições completas entre as casas 0 e 24: **973 posições**.
-- Confirmação de leitura do JSON reconstruído: **153.172 caracteres**.
-- Inspeção estática do aplicativo: presença do carregamento da biblioteca, renderização de grafia contextual, fallback 3NPS e identificação de versão.
+O teste matemático de grafia contextual e enarmonia de todos os modos e escalas não foi realizado com uma referência teórica independente nota a nota. A interface continua com a pentatônica gerada a partir das matrizes locais e não integralmente da biblioteca pentatônica publicada.
 
-## Pendências — bloqueiam homologação integral
-- Conferência visual humana **individual** dos 588 diagramas contra fontes independentes: **não executada**. Uma geração matemática não substitui a comparação externa.
-- Teste ponta a ponta da interface em navegador e áudio em dispositivo real: **não executado** neste ambiente.
-- Teste de GitHub Pages efetivamente publicado, inclusive cache e iframe: **não confirmado**.
-- Grafia enarmônica para modos, escalas simétricas, notas com alterações duplas e pentatônicas: **não integralmente validada**.
-- Bibliotecas especiais e pentatônicas precisam de testes de interface próprios.
-
-**Veredito:** testes estruturais e matemáticos passaram; homologação pedagógica integral e funcional de v5.34 **não aprovada ainda**.
+## Resultado
+**APROVAÇÃO PARCIAL**: consistência estrutural dos 588 padrões, notas, sequenciamento e cobertura de oitavas. **HOMOLOGAÇÃO INTEGRAL DA v5.34: BLOQUEADA** até testes funcionais reais e inspeção visual independente dos diagramas.
