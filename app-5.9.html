@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.37";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.38";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,8 +399,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.37</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.37</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.38</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.38</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -426,7 +426,9 @@ function stopAll(){playToken++;timers.forEach(clearTimeout);timers=[];audioNodes
 function currentInts(){return (mode==="c"?C:Q)[type]}
 function midiForPc(pc,base=60){let m=base+((pc-base%12+12)%12);return m}
 function playChord(){
- ctx();stopAll();
+ const a=ctx();stopAll();
+ // iOS/PWA: resume precisa ocorrer diretamente no gesto do usuário.
+ if(a.state==="suspended")a.resume().catch(()=>{});
  let token=playToken,I=[...currentInts()],base=60+root;
  // Demonstração: cada nota sustentada e, ao final, o acorde completo.
  const step=1.05,noteDur=1.55;
@@ -488,7 +490,8 @@ async function getBuffer(inst,midi){
  return decodedSamples[key];
 }
 function pluck(midi,when=0,dur=1.15,vol=.16){
- ctx(); // ativa o áudio durante o toque do usuário (Safari/iOS)
+ const a0=ctx(); // ativa o áudio durante o toque do usuário (Safari/iOS)
+ if(a0.state==="suspended")a0.resume().catch(()=>{});
  const inst=activeInstrument;
  if(inst==="synth"){synthPluck(midi,when,dur,vol);return}
  const token=playToken;
