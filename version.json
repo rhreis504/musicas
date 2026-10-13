@@ -1,6 +1,6 @@
 {
-  "version": "5.16",
+  "version": "5.20",
   "published": "2026-10-12",
-  "build": "v516-md-controller",
+  "build": "3714d0ca",
   "app": "app-5.9.html"
 }
