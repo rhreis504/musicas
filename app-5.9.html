@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.31";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.32";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,8 +399,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.31</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.31</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.32</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.32</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -643,80 +643,58 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  let studyPositions=[];
  function makeStudyPositions(){
    const root=+$("exRoot").value,scale=$("exScale").value,arr=[],pcs=pentNotes(root);
-   const make=(strings,shape,method)=>{
-     const flat=strings.flat();if(!flat.length)return;
-     if(!strings.every((row,si)=>row.every(fr=>fr>=0&&fr<=24&&pcs.includes((openMidi[si]+fr)%12))))return;
-     const start=Math.min(...flat),end=Math.max(...flat);
-     if(!arr.some(p=>JSON.stringify(p.strings)===JSON.stringify(strings)))arr.push({shape,strings,start,end,method});
+   const valid=(si,fr)=>fr>=0&&fr<=24&&pcs.includes((openMidi[si]+fr)%12);
+   const add=(strings,method)=>{
+     strings=strings.map((row,si)=>[...new Set(row)].filter(fr=>valid(si,fr)).sort((a,b)=>a-b));
+     if(strings.some(row=>!row.length))return;
+     const flat=strings.flat(),start=Math.min(...flat),end=Math.max(...flat);
+     const key=JSON.stringify(strings);if(!arr.some(p=>p.key===key))arr.push({strings,start,end,method,key});
    };
    if(scale==="minPent"||scale==="majPent"){
-     // Cinco boxes tradicionais, transpostos pela tônica, repetidos a cada 12 casas.
-     for(let oct=-12;oct<=24;oct+=12)for(let shape=0;shape<5;shape++){
-       let raw=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct));
-       // Na primeira posição física do braço, preservar a pestana/nut e as cordas soltas.
-       // Boxes que atravessariam a casa 0 são recortados no nut, em vez de desaparecerem.
-       if(raw.flat().some(fr=>fr<0)&&raw.flat().some(fr=>fr>=0)){
-         raw=raw.map((pair,si)=>{
-           const visible=pair.filter(fr=>fr>=0&&fr<=24);
-           const openPc=openMidi[si]%12;
-           if(pcs.includes(openPc)&&!visible.includes(0))visible.unshift(0);
-           return visible;
-         });
-         if(raw.every(row=>row.length))make(raw,shape,"Pentatônica · box aberto");
-       }else if(raw.flat().every(fr=>fr>=0&&fr<=24))make(raw,shape,"Pentatônica · box");
-     }
-   }else if(exerciseIntervals().length===7){
-     // Sete posições 3NPS: cada corda possui as três notas consecutivas da escala
-     // a partir da posição diatônica escolhida na sexta corda.
-     const lowE=openMidi[0];
-     const starts=Array.from({length:25},(_,f)=>f).filter(f=>pcs.includes((lowE+f)%12));
-     for(const base of starts){
-       const strings=openMidi.map(midi=>{
-         const notes=[];for(let fret=Math.max(0,base-2);fret<=Math.min(24,base+7);fret++)if(pcs.includes((midi+fret)%12))notes.push(fret);
-         // 3NPS: escolher o trio cuja primeira nota está mais próxima da mão.
-         const eligible=notes.filter(f=>f>=base-1);
-         return eligible.slice(0,3);
+     // Boxes pentatônicos autênticos: duas notas da escala por corda, sem inserir
+     // cordas soltas artificialmente em shapes fechados.
+     const candidates=[];
+     for(let base=0;base<=24;base++){
+       const strings=openMidi.map((midi,si)=>{
+         const notes=[];for(let fr=Math.max(0,base-1);fr<=Math.min(24,base+4);fr++)if(valid(si,fr))notes.push(fr);
+         return notes;
        });
-       if(strings.every(row=>row.length===3)&&Math.max(...strings.flat())-Math.min(...strings.flat())<=7)make(strings,arr.length,"3 notas por corda");
+       if(strings.every(row=>row.length>=2)){
+         const two=strings.map(row=>row.slice(0,2)),flat=two.flat();
+         if(Math.max(...flat)-Math.min(...flat)<=5)candidates.push(two);
+       }
+     }
+     candidates.forEach(s=>add(s,"Pentatônica · box"));
+   }else if(exerciseIntervals().length===7){
+     // Posições 3NPS: exatamente três notas válidas por corda e extensão compacta.
+     for(let base=0;base<=24;base++){
+       const strings=openMidi.map((midi,si)=>{
+         const notes=[];for(let fr=Math.max(0,base-1);fr<=Math.min(24,base+6);fr++)if(valid(si,fr))notes.push(fr);
+         return notes.slice(0,3);
+       });
+       if(strings.every(row=>row.length===3)&&Math.max(...strings.flat())-Math.min(...strings.flat())<=7)add(strings,"3 notas por corda");
      }
    }else{
-     // Escalas simétricas e blues: boxes compactos derivados matematicamente
-     // das notas da escala, sem rotulá-los incorretamente como CAGED/3NPS.
-     for(let start=0;start<=24;start+=3){
-       const end=Math.min(24,start+4);
-       const strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pcs.includes((midi+fr)%12)));
-       if(strings.every(row=>row.length))make(strings,arr.length,"Box calculado");
+     // Demais escalas: boxes compactos reais, nunca shapes vazios.
+     for(let base=0;base<=24;base+=2){
+       const strings=openMidi.map((midi,si)=>{
+         const notes=[];for(let fr=base;fr<=Math.min(24,base+4);fr++)if(valid(si,fr))notes.push(fr);
+         return notes;
+       });
+       if(strings.every(row=>row.length))add(strings,"Box calculado");
      }
    }
-   // Normalização UNIVERSAL: a geometria do braço é independente da escala.
-   // Todo shape que começa nas casas 1–5 é desenhado desde a pestana (casa 0).
-   // Cordas soltas aparecem apenas quando a nota aberta pertence à escala.
-   const normalized=[];
-   for(const p of arr){
-     const original=p.strings.map(row=>[...new Set(row.filter(fr=>fr>=0&&fr<=24))].sort((a,b)=>a-b));
-     const flat0=original.flat();
-     if(!flat0.length)continue;
-     const physicalFirstPosition=Math.min(...flat0)<=5;
-     const strings=original.map((row,si)=>{
-       const clean=row.slice();
-       if(physicalFirstPosition&&pcs.includes(openMidi[si]%12)&&!clean.includes(0))clean.unshift(0);
-       return clean;
-     });
-     const flat=strings.flat();
-     const q=physicalFirstPosition
-       ?{...p,strings,start:0,end:Math.max(...flat),openPosition:true}
-       :{...p,strings,start:Math.min(...flat),end:Math.max(...flat),openPosition:false};
-     if(strings.every(row=>row.length)&&!normalized.some(x=>JSON.stringify(x.strings)===JSON.stringify(strings)))normalized.push(q);
-   }
-   normalized.sort((x,y)=>x.start-y.start||x.end-y.end);
-   arr.length=0;arr.push(...normalized);
-   studyPositions=arr;if(exPos>=arr.length)exPos=0;
+   arr.sort((a,b)=>a.start-b.start||a.end-b.end);
+   // Mantém apenas posições distintas e úteis. A pestana só aparece quando o shape
+   // realmente contém ao menos uma nota de corda solta.
+   studyPositions=arr.map((p,i)=>({...p,shape:i,openPosition:p.strings.some(row=>row.includes(0))}));
+   if(exPos>=studyPositions.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   arr.forEach((p,i)=>{const b=el("button","", "Shape "+(i+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   studyPositions.forEach((p,i)=>{const b=el("button","","Shape "+(i+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
    const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),p=studyPositions[exPos];if(!p)return;
-   const start=p.start,end=p.end,isOpen=start===0,firstFret=isOpen?1:start;
+   const start=p.start,end=p.end,isOpen=!!p.openPosition,firstFret=isOpen?1:start;
    // O quadro horizontal é o mesmo shape da referência vertical: cordas continuam E A D G B E de cima para baixo.
    const cols=isOpen?end:Math.max(1,end-start+1);
    f.classList.toggle("openPosition",isOpen);
