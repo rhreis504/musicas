@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.25
-- **build:** bf942cc4
+- **version:** 5.26
+- **build:** a665d365
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.26** — modo Exercício redesenhado por shapes: cada seleção abre o desenho horizontal fechado do shape, com faixa exata de casas e playback limitado às notas exibidas.
 
 - **5.25** — cada botão representa um shape pentatônico individual, com sua própria faixa real de casas e playback restrito às notas visíveis; os cinco shapes se repetem por oitava até a casa 24.
 
