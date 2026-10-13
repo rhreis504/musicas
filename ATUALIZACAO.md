@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.24
-- **build:** c7590810
+- **version:** 5.25
+- **build:** bf942cc4
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.25** — cada botão representa um shape pentatônico individual, com sua própria faixa real de casas e playback restrito às notas visíveis; os cinco shapes se repetem por oitava até a casa 24.
 
 - **5.24** — shapes pentatônicos continuam em sequência pelas oitavas até a casa 24; cada botão abre sua região para treino, preservando apenas notas existentes entre as casas 0 e 24.
 
