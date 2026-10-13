@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.32";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.33";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,7 +399,7 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.32</div><section id="launchHome" aria-label="Tela inicial">
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.33</div><section id="launchHome" aria-label="Tela inicial">
 <div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.32</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
@@ -651,20 +651,17 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      const key=JSON.stringify(strings);if(!arr.some(p=>p.key===key))arr.push({strings,start,end,method,key});
    };
    if(scale==="minPent"||scale==="majPent"){
-     // Boxes pentatônicos autênticos: duas notas da escala por corda, sem inserir
-     // cordas soltas artificialmente em shapes fechados.
-     const candidates=[];
-     for(let base=0;base<=24;base++){
-       const strings=openMidi.map((midi,si)=>{
-         const notes=[];for(let fr=Math.max(0,base-1);fr<=Math.min(24,base+4);fr++)if(valid(si,fr))notes.push(fr);
-         return notes;
-       });
-       if(strings.every(row=>row.length>=2)){
-         const two=strings.map(row=>row.slice(0,2)),flat=two.flat();
-         if(Math.max(...flat)-Math.min(...flat)<=5)candidates.push(two);
+     // Cinco padrões fixos da pentatônica menor de Mi, transpostos cromaticamente.
+     // Maior usa a relativa menor (tônica maior + 9 semitons).
+     // Somente padrões INTEIROS de seis cordas; não recortar boxes no nut/casa 24.
+     const minorRoot=(root+(scale==="majPent"?9:0))%12;
+     const shift=((minorRoot-4+12)%12);
+     for(let octave=-24;octave<=24;octave+=12){
+       for(let shape=0;shape<MIN_PENT_SHAPES.length;shape++){
+         const strings=MIN_PENT_SHAPES[shape].map(row=>row.map(fr=>fr+shift+octave));
+         if(strings.flat().every(fr=>fr>=0&&fr<=24))add(strings,"Pentatônica · padrão "+(shape+1));
        }
      }
-     candidates.forEach(s=>add(s,"Pentatônica · box"));
    }else if(exerciseIntervals().length===7){
      // Posições 3NPS: exatamente três notas válidas por corda e extensão compacta.
      for(let base=0;base<=24;base++){
