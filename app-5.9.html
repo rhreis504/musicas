@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.24";
+const CURRENT="5.25";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -425,8 +425,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exFretNumbersBottom span{text-align:center;color:#f8fafc;font-weight:900;line-height:1;background:#101a2d;border:1px solid #435675;border-radius:7px;margin:2px;padding:5px 1px}
 #screenExercise .exFretNumbersBottom small{display:block;font-size:8px;color:#aeb8cc;text-transform:uppercase;margin-bottom:2px}
 #screenExercise .exFretNumbersBottom b{font-size:17px}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.24</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.24</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.25</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.25</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -682,7 +682,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
        }
      }
      arr.sort((a,b)=>a.start-b.start||a.shape-b.shape);
-     // Remove qualquer janela idêntica e conserva a progressão real até a casa 24.
+     // Cada botão é um shape real. Depois da casa 12, os 5 shapes se repetem uma oitava acima até a casa 24.
      const seen=new Set();
      for(let i=arr.length-1;i>=0;i--){const k=JSON.stringify(arr[i].strings);if(seen.has(k))arr.splice(i,1);else seen.add(k)}
    }else{
@@ -696,12 +696,12 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    studyPositions=arr;
    if(exPos>=studyPositions.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   studyPositions.forEach((p,i)=>{const b=el("button","", "Posição "+(i+1)+" · casa "+p.start);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   studyPositions.forEach((p,i)=>{const cycle=Math.floor((p.start+0.01)/12),shapeNo=p.shape+1;const b=el("button","", "Shape "+shapeNo+(cycle?" · oitava +"+cycle:"")+" · casa "+p.start);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
    const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),position=studyPositions[exPos];
    if(!position)return;
-   const start=position.start,isOpen=start===0,firstFret=isOpen?1:start,fretCount=Math.max(1,Math.min(5,25-firstFret));
+   const start=position.start,isOpen=start===0,firstFret=isOpen?1:start,end=Math.min(24,position.end??(start+4)),fretCount=Math.max(1,end-firstFret+1);
    f.classList.toggle("openPosition",isOpen);
    f.innerHTML='<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'" data-ex-string="'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut" aria-label="Pestana do violão"></div><div class="openLabel">SOLTAS</div>':'')+
@@ -710,12 +710,12 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      if(fret<0||fret>24||!notes.includes((openMidi[si]+fret)%12))continue;
      const midi=openMidi[si]+fret,pc=midi%12;
      const d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),noteNames[pc]);
-     d.style.left=(fret===0?7:isOpen?18+(fret-.5)*16:((fret-firstFret+.5)/5)*82+18)+"%";
+     d.style.left=(fret===0?7:isOpen?18+(fret-.5)*(82/fretCount):18+((fret-firstFret+.5)/fretCount)*82)+"%";
      d.style.top=((si+.5)/6*100)+"%";
      d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;
      d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
    }
-   $("exStartFret").value=start;$("exStartTxt").textContent="Casas "+(isOpen?"0 (solta), 1":"")+ (isOpen?"–"+fretCount:start+"–"+Math.min(24,start+fretCount-1));
+   $("exStartFret").value=start;$("exStartTxt").textContent="Shape "+(position.shape+1)+" • Casas "+(isOpen?"0 (solta)–"+end:start+"–"+end);
    document.querySelectorAll("#positionBar button").forEach((b,i)=>b.classList.toggle("active",i===exPos));
  }
  function updateStudyName(){$("studyName").textContent=$("exRoot").selectedOptions[0].textContent+" • "+$("exScale").selectedOptions[0].textContent}
