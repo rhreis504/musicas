@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.19
-- **build:** 755cc7d3
+- **version:** 5.20
+- **build:** 3714d0ca
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.19 |
-| Acordes | app-5.9.html | 5.19 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.19 |
-| Braço do violão | app-5.9.html | 5.19 |
-| Afinador | app-5.9.html | 5.19 |
-| Metrônomo | app-5.9.html | 5.19 |
-| Loader / Atualizar | index.html | 5.19 |
+| Inicial / navegação | app-5.9.html | 5.20 |
+| Acordes | app-5.9.html | 5.20 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.20 |
+| Braço do violão | app-5.9.html | 5.20 |
+| Afinador | app-5.9.html | 5.20 |
+| Metrônomo | app-5.9.html | 5.20 |
+| Loader / Atualizar | index.html | 5.20 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.20** — criada regra funcional SHAPES_PLAY.md; desenho e Play passam a usar Mi grave no topo e Mi aguda embaixo; cordas afinam visualmente de cima para baixo; sequência percorre exclusivamente o shape nessa orientação.
 
 - **5.19** — corrigida a orientação da sequência do Play: a ordem agora segue as cordas exatamente como o shape é desenhado na tela. Na Posição 2 de Mi pentatônica menor, o exercício inicia no Si (B) do próprio shape, sem tocar Sol/Lá externos antes dele.
 
