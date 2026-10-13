@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.45";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.46";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -409,8 +409,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exInlays i{position:absolute!important;top:50%!important;transform:translate(-50%,-50%)!important;display:flex!important;gap:14px!important}
 #screenExercise .exInlays i b{display:block!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#efe6cf!important;box-shadow:0 0 0 1px #6f5639!important;opacity:.95!important}
 #screenExercise .exInlays i.double{top:50%!important;flex-direction:column!important;gap:28px!important}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.45</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.45</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.46</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.46</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -917,9 +917,21 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  const qualityMap={"Maior":"maj","Menor":"m","5 Power":"5","6":"6","m6":"m6","7 dominante":"7","Maj7":"maj7","m7":"m7","mMaj7":"mMaj7","9":"9","Maj9":"maj9","m9":"m9","add9":"add9","m(add9)":"madd9","sus2":"sus2","sus4":"sus4","7sus4":"7sus4","Diminuto":"dim","Diminuto 7":"dim7","m7♭5":"m7b5","Aumentado":"aug","7♭5":"7b5","7♯5":"7#5","7♭9":"7b9","7♯9":"7#9","11":"11","m11":"m11","13":"13","m13":"m13"};
  const rootKeys=["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
  async function loadChordCatalog(){try{const r=await fetch("./acordes.json?schema=1",{cache:"no-store"});if(!r.ok)throw Error("catalog");const j=await r.json();if(j.schema!==1||!j.chords)throw Error("schema");chordCatalog=j;drawMini()}catch(e){console.warn("Biblioteca indisponível",e);setTimeout(loadChordCatalog,15000)}}
+ function fullFretboardVoicings(record,rootPc){
+  if(!record)return[];
+  const base=(record.voicings||[]).slice(),seen=new Set(base.map(v=>v.frets.join(","))),pcs=new Set((record.intervals||[]).map(iv=>(rootPc+iv)%12)),out=base.slice();
+  // Gera inversões/voicings compactos por toda a extensão 0–24. Só entram notas do acorde,
+  // todas as classes de altura do acorde precisam estar presentes e a tônica também.
+  for(let zone=1;zone<=21;zone+=2){
+   const opts=openMidi.map((m,si)=>{const a=[-1];if(pcs.has(m%12))a.push(0);for(let f=zone;f<=Math.min(24,zone+4);f++)if(pcs.has((m+f)%12))a.push(f);return a});
+   let beam=[[]];for(let si=0;si<6;si++){const nx=[];for(const pre of beam)for(const f of opts[si])nx.push(pre.concat(f));nx.sort((x,y)=>y.filter(f=>f>=0).length-x.filter(f=>f>=0).length);beam=nx.slice(0,140)}
+   for(const frets of beam){const tones=frets.map((f,si)=>f>=0?(openMidi[si]+f)%12:null).filter(v=>v!==null),pos=frets.filter(f=>f>0);if(tones.length<3||!pos.length||Math.max(...pos)-Math.min(...pos)>4||![...pcs].every(pc=>tones.includes(pc))||!tones.includes(rootPc))continue;const key=frets.join(",");if(seen.has(key))continue;seen.add(key);out.push({frets,fingers:null,barres:[],source:"generated_full_fretboard",status:"pitch_validated"});break}
+  }
+  return out.sort((x,y)=>{const fx=x.frets.filter(f=>f>0),fy=y.frets.filter(f=>f>0),ax=fx.length?Math.min(...fx):0,ay=fy.length?Math.min(...fy):0;return ax-ay});
+ }
  function voicing(){
  const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]];
- const list=record?.voicings||[];
+ const baseList=record?.voicings||[],list=fullFretboardVoicings(record,root);
  if(chordVoicingIndex>=list.length)chordVoicingIndex=0;
  const entry=list[chordVoicingIndex];
  if(!entry)return {start:0,pts:[],frets:Array(6).fill(-1),available:false,barre:null};
@@ -934,13 +946,13 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   const box=document.querySelector(".chordBoardBox"),head=box?.querySelector(".chordBoardHead");if(!box||!head)return;
   let nav=document.getElementById("chordVariationNav");
   if(!nav){nav=document.createElement("div");nav.id="chordVariationNav";nav.className="chordVariationNav";nav.innerHTML='<button type="button" id="chordPrev" aria-label="Variação anterior">‹</button><span id="chordVariationLabel"></span><button type="button" id="chordNext" aria-label="Próxima variação">›</button>';head.appendChild(nav);document.getElementById("chordPrev").onclick=()=>stepVoicing(-1);document.getElementById("chordNext").onclick=()=>stepVoicing(1)}
-  const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];
+  const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=fullFretboardVoicings(record,root);
   if(chordVoicingIndex>=list.length)chordVoicingIndex=0;
   const v=list[chordVoicingIndex],label=document.getElementById("chordVariationLabel");
   if(label)label.textContent=list.length?("Variação "+(chordVoicingIndex+1)+" de "+list.length+" · "+(v?.barres?.length?"com pestana":"sem pestana")):"Sem variações";
   nav.style.display=list.length>1?"flex":"none";
  }
- function stepVoicing(dir){const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];if(!list.length)return;chordVoicingIndex=(chordVoicingIndex+dir+list.length)%list.length;drawMini()}
+ function stepVoicing(dir){const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=fullFretboardVoicings(record,root);if(!list.length)return;chordVoicingIndex=(chordVoicingIndex+dir+list.length)%list.length;drawMini()}
  function drawMini(){
   const b=document.getElementById("miniChordBoard");if(!b)return;ensureVoicingPicker();const v=voicing(),N=spell==="s"?S:F;
   b.innerHTML='<div class="mcbNut"></div>';if(!v.available){b.innerHTML='<div style="padding:65px 20px;text-align:center;color:#fff;font-weight:700">Posição não disponível na biblioteca.<br>Não será reproduzida uma digitação não verificada.</div>';return}const y=si=>36+(5-si)*31;const pos=v.frets.filter(fr=>fr>0),start=pos.length?Math.max(1,Math.max(...pos)-3):1;
