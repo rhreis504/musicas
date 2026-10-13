@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.39";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.40";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,8 +399,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.39</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.39</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.40</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.40</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -918,8 +918,8 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   const box=document.querySelector(".chordBoardBox"),head=box?.querySelector(".chordBoardHead");if(!box||!head)return;
   let sel=document.getElementById("chordVoicing");if(!sel){sel=document.createElement("select");sel.id="chordVoicing";sel.setAttribute("aria-label","Forma do acorde");sel.style.cssText="margin-left:auto;max-width:190px;background:#111a2e;color:#fff;border:1px solid #33405f;border-radius:9px;padding:7px;font-weight:700";head.appendChild(sel);sel.onchange=()=>{chordVoicingIndex=+sel.value;drawMini()}}
   const record=chordCatalog?.chords?.[rootKeys[root]+":"+qualityMap[type]],list=record?.voicings||[];
-  const signature=list.map((v,i)=>i+":"+(v.barres?.length?"Pestana":"Aberta/alternativa")).join("|");
-  if(sel.dataset.sig!==signature){sel.innerHTML="";list.forEach((v,i)=>{const o=document.createElement("option");o.value=i;o.textContent=(v.barres?.length?"Com pestana":"Sem pestana")+" · Forma "+(i+1);sel.appendChild(o)});sel.dataset.sig=signature}
+  const signature=list.map((v,i)=>i+":"+(v.barres?.length?"Pestana":"Aberta/alternativa")+":"+v.frets.join(",")).join("|");
+  if(sel.dataset.sig!==signature){sel.innerHTML="";list.forEach((v,i)=>{const o=document.createElement("option");o.value=i;const positive=v.frets.filter(f=>f>0),min=positive.length?Math.min(...positive):0,max=positive.length?Math.max(...positive):0;o.textContent=(v.barres?.length?"Com pestana":"Sem pestana")+" · Forma "+(i+1)+(max?" · casas "+min+"–"+max:"");sel.appendChild(o)});sel.dataset.sig=signature}
   if(chordVoicingIndex>=list.length)chordVoicingIndex=0;sel.value=String(chordVoicingIndex);sel.style.display=list.length>1?"block":"none";
  }
  function drawMini(){
