@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.28";
+const CURRENT="5.29";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -449,8 +449,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.28</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.28</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.29</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.29</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -738,20 +738,24 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
        if(strings.every(row=>row.length))make(strings,arr.length,"Box calculado");
      }
    }
-   // Normalização UNIVERSAL de shapes: qualquer escala/tônica que alcance o início
-   // físico do braço usa a mesma representação da casa 0 (nut + cordas soltas válidas).
-   // Isto vale para pentatônicas, diatônicas/3NPS, blues e boxes calculados.
+   // Normalização UNIVERSAL: a geometria do braço é independente da escala.
+   // Todo shape que começa nas casas 1–5 é desenhado desde a pestana (casa 0).
+   // Cordas soltas aparecem apenas quando a nota aberta pertence à escala.
    const normalized=[];
    for(const p of arr){
-     const strings=p.strings.map((row,si)=>{
-       const clean=[...new Set(row.filter(fr=>fr>=0&&fr<=24))].sort((a,b)=>a-b);
-       const touchesFirstPosition=clean.some(fr=>fr<=4);
-       if(touchesFirstPosition&&pcs.includes(openMidi[si]%12)&&!clean.includes(0))clean.unshift(0);
+     const original=p.strings.map(row=>[...new Set(row.filter(fr=>fr>=0&&fr<=24))].sort((a,b)=>a-b));
+     const flat0=original.flat();
+     if(!flat0.length)continue;
+     const physicalFirstPosition=Math.min(...flat0)<=5;
+     const strings=original.map((row,si)=>{
+       const clean=row.slice();
+       if(physicalFirstPosition&&pcs.includes(openMidi[si]%12)&&!clean.includes(0))clean.unshift(0);
        return clean;
      });
      const flat=strings.flat();
-     const startsNearNut=flat.length&&Math.min(...flat)<=4;
-     const q=startsNearNut?{...p,strings,start:0,end:Math.max(...flat),openPosition:true}:{...p,strings,start:Math.min(...flat),end:Math.max(...flat),openPosition:false};
+     const q=physicalFirstPosition
+       ?{...p,strings,start:0,end:Math.max(...flat),openPosition:true}
+       :{...p,strings,start:Math.min(...flat),end:Math.max(...flat),openPosition:false};
      if(strings.every(row=>row.length)&&!normalized.some(x=>JSON.stringify(x.strings)===JSON.stringify(strings)))normalized.push(q);
    }
    normalized.sort((x,y)=>x.start-y.start||x.end-y.end);
