@@ -12,48 +12,43 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 <div id="boot"><div id="box"><div class="guitar">🎸</div><h1>Meu Violão</h1><div id="status">Preparando atualização…</div><div class="track"><div id="bar"></div></div><div id="pct">0%</div><button id="retry">Tentar novamente</button></div></div>
 <script>
 (()=>{
- const APP="app-5.9.html",RAW="https://raw.githubusercontent.com/rhreis504/musicas/main/",boot=document.getElementById("boot"),status=document.getElementById("status"),bar=document.getElementById("bar"),pct=document.getElementById("pct"),retry=document.getElementById("retry");
+ const APP="./app-5.9.html",boot=document.getElementById("boot"),status=document.getElementById("status"),bar=document.getElementById("bar"),pct=document.getElementById("pct"),retry=document.getElementById("retry");
  const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2);
  const progress=(n,t)=>{bar.style.width=n+"%";pct.textContent=n+"%";if(t)status.textContent=t};
- const versionOf=h=>(h.match(/const CURRENT="([^"]+)"/)||[])[1]||null;
- const manifestVersion=md=>{const m=md.match(/- \*\*version:\*\*\s*([^\s]+)/i);return m?m[1]:null};
- async function get(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"fresh="+bust(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.text()}
+ const versionOf=h=>(h.match(/const CURRENT="([^"]+)"/)||[])[1]||"atual";
+ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  async function purge(){
-   progress(8,"Limpando cache…");
-   try{if("serviceWorker" in navigator){const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(x=>x.unregister()))}}catch(e){}
-   try{if("caches" in window){const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}
-   progress(20,"Cache limpo");
+  progress(10,"Limpando cache…");
+  try{if("serviceWorker" in navigator){const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(x=>x.unregister()))}}catch(e){}
+  try{if("caches" in window){const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}}catch(e){}
+  progress(25,"Cache limpo");
  }
- async function waitForPublished(){
-   progress(30,"Verificando versão mais recente no GitHub…");
-   let md;try{md=await get("./ATUALIZACAO.md")}catch(e){md=await get(RAW+"ATUALIZACAO.md")}const wanted=manifestVersion(md);
-   if(!wanted)throw Error("manifesto sem versão");
-   let tries=0;
-   while(tries<36){
-     tries++;
-     try{
-       const html=await get("./"+APP),published=versionOf(html);
-       if(published===wanted){progress(70,"v"+wanted+" publicada no GitHub Pages");return {html,version:wanted}}
-       const p=35+Math.min(30,tries*2);
-       progress(p,"v"+wanted+" ainda publicando no GitHub… aguardando");
-     }catch(e){progress(35,"Aguardando publicação da v"+wanted+"…")}
-     await new Promise(ok=>setTimeout(ok,5000));
-   }
-   throw Error("Publicação ainda não concluída (3 minutos)");
+ async function publishedApp(){
+  progress(38,"Verificando publicação no GitHub Pages…");
+  let last=null;
+  for(let n=0;n<36;n++){
+   try{
+    const u=APP+"?fresh="+bust(),r=await fetch(u,{cache:"no-store"});
+    if(r.ok){const html=await r.text(),v=versionOf(html);if(html.includes("<html")||html.includes("<!doctype")){progress(70,"Versão v"+v+" disponível");return {version:v,url:u}}}
+    last=Error("HTTP "+r.status);
+   }catch(e){last=e}
+   progress(Math.min(65,40+n),"Aguardando GitHub Pages publicar…");
+   await sleep(5000);
+  }
+  throw last||Error("GitHub Pages indisponível");
  }
  async function start(){
-   retry.style.display="none";
-   try{
-     await purge();
-     const fresh=await waitForPublished();
-     progress(78,"Baixando v"+fresh.version+" sem cache…");
-     const finalHtml=await get("./"+APP);
-     if(versionOf(finalHtml)!==fresh.version)throw Error("publicação mudou durante download");
-     progress(86,"Preparando v"+fresh.version+"…");
-     const frame=document.createElement("iframe");frame.allow="microphone; autoplay";frame.src="./"+APP+"?version="+encodeURIComponent(fresh.version)+"&session="+bust();frame.style.visibility="hidden";
-     frame.onload=()=>{progress(94,"Finalizando v"+fresh.version+"…");setTimeout(()=>{progress(100,"v"+fresh.version+" atualizada");setTimeout(()=>{frame.style.visibility="visible";requestAnimationFrame(()=>boot.remove())},280)},220)};
-     document.body.appendChild(frame);
-   }catch(e){progress(0,"Falha na verificação: "+(e?.message||"rede indisponível"));retry.style.display="block"}
+  retry.style.display="none";
+  try{
+   await purge();
+   const fresh=await publishedApp();
+   progress(82,"Abrindo v"+fresh.version+"…");
+   const frame=document.createElement("iframe");frame.allow="microphone; autoplay";frame.style.visibility="hidden";frame.src=fresh.url;
+   let done=false;
+   const timeout=setTimeout(()=>{if(!done){frame.remove();progress(0,"O aplicativo demorou para abrir.");retry.style.display="block"}},20000);
+   frame.addEventListener("load",()=>{if(done)return;done=true;clearTimeout(timeout);progress(100,"v"+fresh.version+" pronta");setTimeout(()=>{frame.style.visibility="visible";boot.remove()},250)},{once:true});
+   document.body.appendChild(frame);
+  }catch(e){progress(0,"GitHub Pages indisponível. Tente novamente.");retry.style.display="block"}
  }
  retry.onclick=start;start();
 })();
