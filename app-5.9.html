@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.20";
+const CURRENT="5.21";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -412,8 +412,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .openLabel{left:1%!important;width:12%!important;bottom:5px!important}
 #screenExercise .exDot{width:34px!important;height:34px!important;font-size:12px!important}
 @media(max-height:780px){#screenExercise #exBoardScroll,#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important}}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.20</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.20</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.21</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.21</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -624,73 +624,86 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  content.remove();
 
  // Exercícios: seleção + metrônomo compacto + 5 boxes da pentatônica menor.
- exercise.innerHTML += '<div class="moduleCard"><div class="studyHero"><span>ESTUDO GUIADO</span><strong id="studyName">Mi • Pentatônica menor</strong><small>Ouça, acompanhe no braço e toque junto.</small></div><div class="exerciseGrid"><label class="small">Tônica<select id="exRoot"><option value="0">Dó</option><option value="1">Dó♯/Ré♭</option><option value="2">Ré</option><option value="3">Ré♯/Mi♭</option><option value="4" selected>Mi</option><option value="5">Fá</option><option value="6">Fá♯/Sol♭</option><option value="7">Sol</option><option value="8">Sol♯/Lá♭</option><option value="9">Lá</option><option value="10">Lá♯/Si♭</option><option value="11">Si</option></select></label><label class="small">Escala<select id="exScale"><option value="minPent">Pentatônica menor</option><option value="majPent">Pentatônica maior</option><option value="major">Maior (Jônio)</option><option value="minor">Menor natural (Eólio)</option><option value="blues">Blues menor</option></select></label></div><div class="label">VELOCIDADE E SOM</div><div class="exToolbar"><button id="exBpmMinus" aria-label="Diminuir BPM">−</button><input id="exBpm" type="range" min="40" max="220" step="1" value="90"><button id="exBpmPlus" aria-label="Aumentar BPM">+</button><span id="exBpmTxt">90 BPM</span><button id="exMetro">▶ Metrônomo</button></div><div class="exSoundRow"><label>Timbre<select id="exInstrument"><option value="acoustic_guitar_nylon">Violão nylon</option><option value="acoustic_guitar_steel">Violão aço</option><option value="electric_guitar_clean">Guitarra limpa</option></select></label><span id="exSoundStatus">Violão nylon</span></div><div class="practiceOptions"><label>Subdivisão<select id="exSub"><option value="1">♩ 1 nota/batida</option><option value="2">♫ 2 notas/batida</option><option value="4">4 notas/batida</option></select></label><label>Sentido<select id="exDirection"><option value="both">Subir e descer</option><option value="up">Somente subir</option><option value="down">Somente descer</option></select></label><label class="countIn"><input id="exCountIn" type="checkbox" checked> Contagem 1–2–3–4</label></div><div class="exMixer"><label>🎸 Exercício <input id="exVolume" type="range" min="0" max="150" value="125"><b id="exVolumeTxt">125%</b></label><label>⏱️ Metrônomo <input id="exMetroVolume" type="range" min="0" max="150" value="90"><b id="exMetroVolumeTxt">90%</b></label></div><div class="label">SHAPE</div><div class="positionBar" id="positionBar"></div><details class="advancedStudy"><summary>Configurações do exercício</summary><div class="exToolbar advancedRow"><input id="exStartFret" type="range" min="0" max="21" value="0"><span id="exStartTxt">Casas 0–4</span><button id="exGuide">▶ Play</button><button id="exStop">■ Stop</button><label class="exLoopCtl"><input id="exLoop" type="checkbox" checked> Loop</label><span id="exNow">Pronto</span></div></details><div class="studyTransport"><button id="studyPrev">‹</button><button id="studyPlay">▶</button><button id="studyStop">■</button><button id="studyNext">›</button><label><input id="studyLoop" type="checkbox" checked> Loop</label></div><div id="studyStatus">Pronto para tocar</div><div style="overflow-x:auto" id="exBoardScroll"><div class="exBoard"><div id="exFret" class="exFret"></div></div></div><div class="swipeHint">← Arraste para navegar entre as posições →</div></div>';
+ exercise.innerHTML += '<div class="moduleCard"><div class="studyHero"><span>ESTUDO GUIADO</span><strong id="studyName">Mi • Pentatônica menor</strong><small>Ouça, acompanhe no braço e toque junto.</small></div><div class="exerciseGrid"><label class="small">Tônica<select id="exRoot"><option value="0">Dó</option><option value="1">Dó♯/Ré♭</option><option value="2">Ré</option><option value="3">Ré♯/Mi♭</option><option value="4" selected>Mi</option><option value="5">Fá</option><option value="6">Fá♯/Sol♭</option><option value="7">Sol</option><option value="8">Sol♯/Lá♭</option><option value="9">Lá</option><option value="10">Lá♯/Si♭</option><option value="11">Si</option></select></label><label class="small">Escala<select id="exScale"><option value="minPent">Pentatônica menor</option><option value="majPent">Pentatônica maior</option><option value="major">Maior (Jônio)</option><option value="minor">Menor natural (Eólio)</option><option value="majBlues">Blues maior</option><option value="dorian">Dórico</option><option value="phrygian">Frígio</option><option value="lydian">Lídio</option><option value="mixolydian">Mixolídio</option><option value="locrian">Lócrio</option><option value="harmMinor">Menor harmônica</option><option value="melMinor">Menor melódica (jazz)</option><option value="phrygDom">Frígio dominante</option><option value="wholeTone">Tons inteiros</option><option value="dimWH">Diminuta tom-semitom</option><option value="dimHW">Diminuta semitom-tom</option><option value="chromatic">Cromática</option></select></label></div><div class="label">VELOCIDADE E SOM</div><div class="exToolbar"><button id="exBpmMinus" aria-label="Diminuir BPM">−</button><input id="exBpm" type="range" min="40" max="220" step="1" value="90"><button id="exBpmPlus" aria-label="Aumentar BPM">+</button><span id="exBpmTxt">90 BPM</span><button id="exMetro">▶ Metrônomo</button></div><div class="exSoundRow"><label>Timbre<select id="exInstrument"><option value="acoustic_guitar_nylon">Violão nylon</option><option value="acoustic_guitar_steel">Violão aço</option><option value="electric_guitar_clean">Guitarra limpa</option></select></label><span id="exSoundStatus">Violão nylon</span></div><div class="practiceOptions"><label>Subdivisão<select id="exSub"><option value="1">♩ 1 nota/batida</option><option value="2">♫ 2 notas/batida</option><option value="4">4 notas/batida</option></select></label><label>Sentido<select id="exDirection"><option value="both">Subir e descer</option><option value="up">Somente subir</option><option value="down">Somente descer</option></select></label><label class="countIn"><input id="exCountIn" type="checkbox" checked> Contagem 1–2–3–4</label></div><div class="exMixer"><label>🎸 Exercício <input id="exVolume" type="range" min="0" max="150" value="125"><b id="exVolumeTxt">125%</b></label><label>⏱️ Metrônomo <input id="exMetroVolume" type="range" min="0" max="150" value="90"><b id="exMetroVolumeTxt">90%</b></label></div><div class="label">SHAPE</div><div class="positionBar" id="positionBar"></div><details class="advancedStudy"><summary>Configurações do exercício</summary><div class="exToolbar advancedRow"><input id="exStartFret" type="range" min="0" max="21" value="0"><span id="exStartTxt">Casas 0–4</span><button id="exGuide">▶ Play</button><button id="exStop">■ Stop</button><label class="exLoopCtl"><input id="exLoop" type="checkbox" checked> Loop</label><span id="exNow">Pronto</span></div></details><div class="studyTransport"><button id="studyPrev">‹</button><button id="studyPlay">▶</button><button id="studyStop">■</button><button id="studyNext">›</button><label><input id="studyLoop" type="checkbox" checked> Loop</label></div><div id="studyStatus">Pronto para tocar</div><div style="overflow-x:auto" id="exBoardScroll"><div class="exBoard"><div id="exFret" class="exFret"></div></div></div><div class="swipeHint">← Arraste para navegar entre as posições →</div></div>';
 
  const noteNames=["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
  const openMidi=[40,45,50,55,59,64]; // visual: E grave, A, D, G, B, E aguda
  let exPos=0;
- function exerciseIntervals(){return {minPent:[0,3,5,7,10],majPent:[0,2,4,7,9],major:[0,2,4,5,7,9,11],minor:[0,2,3,5,7,8,10],blues:[0,3,5,6,7,10]}[$("exScale").value]||[0,3,5,7,10]} function pentNotes(root){return exerciseIntervals().map(i=>(root+i)%12)}
-
- // Shapes tradicionais: exatamente 2 notas por corda.
- // A posição 1 é ancorada na tônica da 6ª corda. Em Mi menor aberto:
- // E: 0-3, A: 0-2, D: 0-2, G: 0-2, B: 0-3, e: 0-3.
- function traditionalPentShape(root,shape){
-   const anchor=((root-4+12)%12); // casa da tônica na 6ª corda
-   const lowToHigh=[
-    [[0,3],[0,2],[0,2],[0,2],[0,3],[0,3]],
-    [[3,5],[2,5],[2,5],[2,4],[3,5],[3,5]],
-    [[5,7],[5,7],[5,7],[4,7],[5,8],[5,7]],
-    [[7,10],[7,10],[7,9],[7,9],[8,10],[7,10]],
-    [[10,12],[10,12],[9,12],[9,12],[10,12],[10,12]]
-   ][shape];
-   // tela usa cordas da aguda para a grave, por isso inverte.
-   return lowToHigh.slice().reverse().map(pair=>pair.map(fr=>fr+anchor));
+ const SCALE_INTERVALS={
+ minPent:[0,3,5,7,10],majPent:[0,2,4,7,9],
+ major:[0,2,4,5,7,9,11],minor:[0,2,3,5,7,8,10],
+ blues:[0,3,5,6,7,10],majBlues:[0,2,3,4,7,9],
+ dorian:[0,2,3,5,7,9,10],phrygian:[0,1,3,5,7,8,10],
+ lydian:[0,2,4,6,7,9,11],mixolydian:[0,2,4,5,7,9,10],
+ locrian:[0,1,3,5,6,8,10],harmMinor:[0,2,3,5,7,8,11],
+ melMinor:[0,2,3,5,7,9,11],phrygDom:[0,1,4,5,7,8,10],
+ wholeTone:[0,2,4,6,8,10],dimWH:[0,2,3,5,6,8,9,11],
+ dimHW:[0,1,3,4,6,7,9,10],chromatic:[0,1,2,3,4,5,6,7,8,9,10,11]
+ };
+ function exerciseIntervals(){return SCALE_INTERVALS[$("exScale").value]||SCALE_INTERVALS.minPent}
+ function pentNotes(root){return exerciseIntervals().map(i=>(root+i)%12)}
+ const MIN_PENT_SHAPES=[
+  [[0,3],[0,2],[0,2],[0,2],[0,3],[0,3]],
+  [[3,5],[2,5],[2,5],[2,4],[3,5],[3,5]],
+  [[5,7],[5,7],[5,7],[4,7],[5,8],[5,7]],
+  [[7,10],[7,10],[7,9],[7,9],[8,10],[7,10]],
+  [[10,12],[10,12],[9,12],[9,12],[10,12],[10,12]]
+ ];
+ function traditionalPentShape(root,shape,major){
+   const minorRoot=(root+(major?9:0))%12;
+   const anchor=(minorRoot-4+12)%12;
+   return MIN_PENT_SHAPES[shape].map(pair=>pair.map(fr=>fr+anchor));
  }
  let studyPositions=[];
  function makeStudyPositions(){
    const root=+$("exRoot").value,scale=$("exScale").value,arr=[];
-   if(scale==="minPent"){
+   if(scale==="minPent"||scale==="majPent"){
      for(let shape=0;shape<5;shape++){
-       const raw=traditionalPentShape(root,shape);
+       const raw=traditionalPentShape(root,shape,scale==="majPent");
        for(const oct of [-12,0,12]){
          const strings=raw.map(pair=>pair.map(f=>f+oct));
-         if(strings.flat().every(f=>f>=0&&f<=24))arr.push({shape,strings,start:Math.min(...strings.flat())});
+         if(strings.flat().every(f=>f>=0&&f<=24)&&strings.every((pair,si)=>pair.every(fr=>pentNotes(root).includes((openMidi[si]+fr)%12))))
+           arr.push({shape,strings,start:Math.min(...strings.flat())});
        }
      }
      arr.sort((a,b)=>a.start-b.start||a.shape-b.shape);
    }else{
-     // Demais escalas continuam como regiões; não são rotuladas como os 5 boxes da pentatônica menor.
-     for(let start=0;start<=20;start+=4)arr.push({shape:0,strings:null,start});
+     // Regiões calculadas por notas da escala, sem alegar que são boxes CAGED ou 3NPS padronizados.
+     for(let start=0;start<=20;start+=3){
+       const end=Math.min(24,start+4);
+       const strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pentNotes(root).includes((midi+fr)%12)));
+       if(strings.some(pair=>pair.length))arr.push({shape:arr.length,strings,start});
+     }
    }
-   studyPositions=arr.filter((p,i,a)=>!i||p.start!==a[i-1].start||JSON.stringify(p.strings)!==JSON.stringify(a[i-1].strings));
+   studyPositions=arr;
    if(exPos>=studyPositions.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   studyPositions.forEach((p,i)=>{const b=el("button","","Posição "+(i+1));b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   studyPositions.forEach((p,i)=>{const b=el("button","", "Posição "+(i+1)+" · casa "+p.start);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
-   const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),isPent=$("exScale").value==="minPent",position=studyPositions[exPos];
-   const start=position?position.start:0,isOpen=start===0,firstFret=isOpen?1:start,fretCount=5;
+   const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),position=studyPositions[exPos];
+   if(!position)return;
+   const start=position.start,isOpen=start===0,firstFret=isOpen?1:start,fretCount=5;
    f.classList.toggle("openPosition",isOpen);
    f.innerHTML='<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'" data-ex-string="'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut" aria-label="Pestana do violão"></div><div class="openLabel">SOLTAS</div>':'')+
-   '<div class="exFrets">'+Array.from({length:fretCount},(_,i)=>'<div class="exFretLine"><span>'+(firstFret+i)+'</span></div>').join("")+'</div>';
-   const addDot=(si,fret)=>{
-     if(fret<0||fret>24)return;const midi=openMidi[si]+fret,pc=midi%12;if(!notes.includes(pc))return;
+   '<div class="exFrets">'+Array.from({length:fretCount},(_,i)=>'<div class="exFretLine"><span>Casa '+(firstFret+i)+'</span></div>').join("")+'</div>';
+   for(let si=0;si<6;si++)for(const fret of position.strings[si]){
+     if(fret<0||fret>24||!notes.includes((openMidi[si]+fret)%12))continue;
+     const midi=openMidi[si]+fret,pc=midi%12;
      const d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),noteNames[pc]);
-     d.style.left=(fret===0?7:isOpen?18+(fret-.5)*16:(fret-firstFret+.5)*20)+"%";d.style.top=((si+.5)/6*100)+"%";
-     d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
-   };
-   for(let si=0;si<6;si++){
-     if(isPent&&position?.strings)position.strings[si].forEach(fr=>addDot(si,fr));
-     else{if(isOpen)addDot(si,0);for(let fr=firstFret;fr<firstFret+fretCount&&fr<=24;fr++)addDot(si,fr);}
+     d.style.left=(fret===0?7:isOpen?18+(fret-.5)*16:((fret-firstFret+.5)/5)*82+18)+"%";
+     d.style.top=((si+.5)/6*100)+"%";
+     d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;
+     d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
    }
-   $("exStartFret").value=start;$("exStartTxt").textContent="Casas "+start+"–"+Math.min(24,start+fretCount);
+   $("exStartFret").value=start;$("exStartTxt").textContent="Casas "+(isOpen?"0 (solta), 1":"")+ (isOpen?"–"+fretCount:start+"–"+Math.min(24,start+fretCount-1));
    document.querySelectorAll("#positionBar button").forEach((b,i)=>b.classList.toggle("active",i===exPos));
  }
  function updateStudyName(){$("studyName").textContent=$("exRoot").selectedOptions[0].textContent+" • "+$("exScale").selectedOptions[0].textContent}
  $("exRoot").onchange=()=>{stopGuide();exPos=0;makeStudyPositions();updateStudyName();drawExercise()};
  $("exScale").onchange=()=>{stopGuide();exPos=0;makeStudyPositions();updateStudyName();drawExercise()};
- $("exStartFret").oninput=()=>{let val=+$("exStartFret").value;exPos=studyPositions.reduce((best,p,i)=>Math.abs(p.start-val)<Math.abs(studyPositions[best].start-val)?i:best,0);drawExercise()};
+ $("exStartFret").oninput=()=>{if(!studyPositions.length)return;const val=+$("exStartFret").value;exPos=studyPositions.reduce((best,p,i)=>Math.abs(p.start-val)<Math.abs(studyPositions[best].start-val)?i:best,0);drawExercise()};
  makeStudyPositions();updateStudyName();drawExercise();
  let exOn=false,exTimer=null,exBeat=0,exGuideOn=false,exGuidePaused=false,exGuideTimer=null,exGuideIndex=0,exGuideSeq=[];
  function exClick(accent){try{const a=ctx();if(a.state==="suspended")a.resume();const o=a.createOscillator(),g=a.createGain(),t=a.currentTime;o.type="square";o.frequency.value=accent?1450:1000;const mv=(+$('exMetroVolume').value||0)/100;g.gain.setValueAtTime(Math.max(.0001,(accent?.12:.07)*mv),t);g.gain.exponentialRampToValueAtTime(.0001,t+.055);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.06)}catch(e){}}
@@ -710,19 +723,16 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  function startExMetro(){if(exOn)return;exOn=true;exBeat=0;$("exMetro").textContent="■ Parar";$("exMetro").classList.add("active");exTick()}
  function stopGuide(stopMetro=true){exGuideOn=false;clearTimeout(exGuideTimer);exGuideTimer=null;document.querySelectorAll("#exFret .exDot").forEach(x=>x.classList.remove("playing"));document.querySelectorAll("#exFret .exString").forEach(x=>x.classList.remove("playing"));$("exGuide").textContent="▶ Play";exGuidePaused=false;$("exNow").textContent="Pronto";if(stopMetro)stopExMetro()}
  function buildGuide(){
-   const position=studyPositions[exPos],isPent=$("exScale").value==="minPent";
-   if(isPent&&position?.strings){
-     const map=new Map([...document.querySelectorAll("#exFret .exDot")].map(d=>[d.dataset.si+":"+d.dataset.fret,d]));
-     const ascending=[];
-     // A sequência nasce da matriz do próprio shape, nunca da escala completa nem de notas fora do desenho.
-     for(let si=0;si<6;si++){for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){const d=map.get(si+":"+fret);if(d)ascending.push(d)}}
-     const dir=$("exDirection").value;
-     if(dir==="up")return ascending;
-     if(dir==="down")return ascending.slice().reverse();
-     return ascending.length<2?ascending:[...ascending,...ascending.slice(0,-1).reverse()];
+   const position=studyPositions[exPos];if(!position)return [];
+   const dots=new Map([...document.querySelectorAll("#exFret .exDot")].map(d=>[d.dataset.si+":"+d.dataset.fret,d]));
+   const seq=[];
+   for(let si=0;si<6;si++)for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){
+     const d=dots.get(si+":"+fret);if(d)seq.push(d);
    }
-   const dots=[...document.querySelectorAll("#exFret .exDot")].sort((a,b)=>{const ds=(+b.dataset.si)-(+a.dataset.si);return ds||(+a.dataset.fret)-(+b.dataset.fret)}),dir=$("exDirection").value;
-   if(dir==="up")return dots;if(dir==="down")return dots.slice().reverse();return dots.length<2?dots:[...dots,...dots.slice(0,-1).reverse()]
+   const dir=$("exDirection").value;
+   if(dir==="up")return seq;
+   if(dir==="down")return seq.slice().reverse();
+   return seq.length<2?seq:[...seq,...seq.slice(0,-1).reverse()];
  }
  function guideStep(){
    if(!exGuideOn||!exGuideSeq.length)return;
