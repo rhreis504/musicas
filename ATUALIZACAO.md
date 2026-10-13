@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.22
-- **build:** 74985b17
+- **version:** 5.23
+- **build:** 993dfb02
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.22 |
-| Acordes | app-5.9.html | 5.22 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.22 |
-| Braço do violão | app-5.9.html | 5.22 |
-| Afinador | app-5.9.html | 5.22 |
-| Metrônomo | app-5.9.html | 5.22 |
-| Loader / Atualizar | index.html | 5.22 |
+| Inicial / navegação | app-5.9.html | 5.23 |
+| Acordes | app-5.9.html | 5.23 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.23 |
+| Braço do violão | app-5.9.html | 5.23 |
+| Afinador | app-5.9.html | 5.23 |
+| Metrônomo | app-5.9.html | 5.23 |
+| Loader / Atualizar | index.html | 5.23 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.23** — identificação permanente das casas abaixo do braço: “casa 1”, “casa 2” etc.; casa 0 identificada como solta.
 
 - **5.22** — numeração das casas visível acima do braço, incluindo casa 0 (solta); removidas posições pentatônicas duplicadas por oitava.
 
