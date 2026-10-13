@@ -425,6 +425,10 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exFretNumbersBottom span{text-align:center;color:#f8fafc;font-weight:900;line-height:1;background:#101a2d;border:1px solid #435675;border-radius:7px;margin:2px;padding:5px 1px}
 #screenExercise .exFretNumbersBottom small{display:block;font-size:8px;color:#aeb8cc;text-transform:uppercase;margin-bottom:2px}
 #screenExercise .exFretNumbersBottom b{font-size:17px}
+#screenExercise .exInlays{position:absolute;inset:0;pointer-events:none;z-index:3}
+#screenExercise .exInlays i{position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;gap:28px}
+#screenExercise .exInlays i b{display:block;width:13px;height:13px;border-radius:50%;background:#e8dfc8;box-shadow:0 1px 3px #0008;opacity:.9}
+#screenExercise .exInlays i.double{flex-direction:column;gap:54px}
 </style><style id="v526ExactShapeCards">
 #screenExercise .exFret{min-width:0!important;width:100%!important;height:300px!important;overflow:visible!important;margin-top:58px}
 #screenExercise .shapeCaption{position:absolute;left:0;right:0;top:-58px;height:50px;display:flex;align-items:center;justify-content:center;gap:10px;background:#0e7490;border:1px solid #22d3ee;border-radius:14px 14px 0 0;color:#fff;z-index:20}
@@ -740,6 +744,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    '<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut"></div>':'')+
    '<div class="exFrets">'+Array.from({length:cols},(_,i)=>'<div class="exFretLine"></div>').join("")+'</div>'+
+   '<div class="exInlays">'+Array.from({length:cols},(_,i)=>{const fr=firstFret+i;if(![3,5,7,9,12,15,17,19,21,24].includes(fr))return "";const left=18+((i+.5)/cols)*82;return fr===12||fr===24?'<i class="double" style="left:'+left+'%"><b></b><b></b></i>':'<i style="left:'+left+'%"><b></b></i>'}).join("")+'</div>'+
    '<div class="exFretNumbersBottom">'+(isOpen?'<span><b>0</b><small>solta</small></span>':'<span></span>')+
    Array.from({length:cols},(_,i)=>'<span><small>casa</small><b>'+(firstFret+i)+'</b></span>').join('')+'</div>';
    for(let si=0;si<6;si++)for(const fret of p.strings[si]){
