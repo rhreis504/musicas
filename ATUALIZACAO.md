@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.30
-- **build:** 3321d842
+- **version:** 5.31
+- **build:** 1a24f833
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
