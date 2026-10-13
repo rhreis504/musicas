@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.33";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.34";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -627,6 +627,40 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  wholeTone:[0,2,4,6,8,10],dimWH:[0,2,3,5,6,8,9,11],
  dimHW:[0,1,3,4,6,7,9,10],chromatic:[0,1,2,3,4,5,6,7,8,9,10,11]
  };
+ // v5.34: biblioteca 3NPS publicada, grafia por graus e enarmonia.
+ const DIATONIC_KEYS=["C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab","A","A#/Bb","B"];
+ let DIATONIC_LIBRARY=null;
+ const LETTERS=["C","D","E","F","G","A","B"], NATURAL_PC=[0,2,4,5,7,9,11];
+ const ROOT_SPELLINGS=["C","Db","D","Eb","E","F","F#","G","Ab","A","Bb","B"];
+ function notePc(name){const i=LETTERS.indexOf(name[0]);if(i<0)return -1;return (NATURAL_PC[i]+(name.slice(1).match(/#/g)||[]).length-(name.slice(1).match(/b/g)||[]).length+120)%12}
+ function scaleSpelling(root,scale){
+   const intervals=SCALE_INTERVALS[scale]||SCALE_INTERVALS.minPent;
+   if(intervals.length!==7)return null; // escalas simétricas/pentatônicas exigem grafia específica.
+   const tonic=ROOT_SPELLINGS[root],start=LETTERS.indexOf(tonic[0]);
+   return intervals.map((step,i)=>{const letter=LETTERS[(start+i)%7],base=NATURAL_PC[(start+i)%7];let delta=((root+step-base+18)%12)-6;if(delta<-2||delta>2)return null;return letter+(delta>0?"#".repeat(delta):"b".repeat(-delta))});
+ }
+ function exerciseNoteName(pc,root,scale){
+   const spelling=scaleSpelling(root,scale),intervals=SCALE_INTERVALS[scale]||[];
+   if(spelling){const index=intervals.findIndex(v=>(root+v)%12===pc);if(index>=0&&spelling[index])return spelling[index].replace(/#/g,"♯").replace(/b/g,"♭")}
+   return noteNames[pc];
+ }
+ function canonical3Nps(root,scale){
+   const intervals=SCALE_INTERVALS[scale],pcs=intervals.map(v=>(root+v)%12),out=[];
+   for(let degree=0;degree<7;degree++){
+     const firstPc=pcs[degree],low=Array.from({length:25},(_,f)=>f).find(f=>(openMidi[0]+f)%12===firstPc);
+     if(low===undefined)continue;
+     let last=-1,rows=[];
+     for(let si=0;si<6;si++){const row=[];for(let f=si===0?low:0;f<=36&&row.length<3;f++){const pitch=openMidi[si]+f;if(pitch>last&&pcs.includes(pitch%12))row.push(f)}last=openMidi[si]+row[2];rows.push(row)}
+     for(let delta=-24;delta<=24;delta+=12){const shifted=rows.map(row=>row.map(f=>f+delta));if(shifted.flat().every(f=>f>=0&&f<=24))out.push({strings:shifted,degree:degree+1})}
+   }
+   return out;
+ }
+ Promise.all([
+  fetch("biblioteca/shapes-diatonicos-3nps-v1.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}),
+  fetch("biblioteca/shapes-pentatonicos-v1.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+ ]).then(([diatonic,pent])=>{
+   if(diatonic.version==="2.0.0"&&diatonic.scales){DIATONIC_LIBRARY=diatonic;window.PENTATONIC_LIBRARY=pent;makeStudyPositions();drawExercise()}
+ }).catch(e=>console.warn("Biblioteca indisponível; usando geometria local validada",e));
  function exerciseIntervals(){return SCALE_INTERVALS[$("exScale").value]||SCALE_INTERVALS.minPent}
  function pentNotes(root){return exerciseIntervals().map(i=>(root+i)%12)}
  const MIN_PENT_SHAPES=[
@@ -663,13 +697,13 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
        }
      }
    }else if(exerciseIntervals().length===7){
-     // Posições 3NPS: exatamente três notas válidas por corda e extensão compacta.
-     for(let base=0;base<=24;base++){
-       const strings=openMidi.map((midi,si)=>{
-         const notes=[];for(let fr=Math.max(0,base-1);fr<=Math.min(24,base+6);fr++)if(valid(si,fr))notes.push(fr);
-         return notes.slice(0,3);
-       });
-       if(strings.every(row=>row.length===3)&&Math.max(...strings.flat())-Math.min(...strings.flat())<=7)add(strings,"3 notas por corda");
+     const key=DIATONIC_KEYS[root],record=DIATONIC_LIBRARY?.scales?.[scale]?.tonalities?.[key];
+     if(record){
+       for(const p of record.patterns)for(const pos of p.positions||[]){
+         add(pos.strings,"3NPS · grau "+p.degree);
+       }
+     }else{
+       for(const p of canonical3Nps(root,scale))add(p.strings,"3NPS · grau "+p.degree);
      }
    }else{
      // Demais escalas: boxes compactos reais, nunca shapes vazios.
@@ -696,7 +730,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    const cols=isOpen?end:Math.max(1,end-start+1);
    f.classList.toggle("openPosition",isOpen);
    f.style.setProperty("--shape-cols",cols);
-   f.innerHTML='<div class="shapeCaption"><b>Shape '+(p.shape%5+1)+'</b><span>Casas '+start+'–'+end+'</span></div>'+
+   f.innerHTML='<div class="shapeCaption"><b>Shape '+(p.shape+1)+'</b><span>Casas '+start+'–'+end+'</span></div>'+
    '<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'"></div>').join("")+'</div>'+
    (isOpen?'<div class="exNut"></div>':'')+
    '<div class="exFrets">'+Array.from({length:cols},(_,i)=>'<div class="exFretLine"></div>').join("")+'</div>'+
@@ -705,7 +739,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    Array.from({length:cols},(_,i)=>'<span><small>casa</small><b>'+(firstFret+i)+'</b></span>').join('')+'</div>';
    for(let si=0;si<6;si++)for(const fret of p.strings[si]){
      if(!notes.includes((openMidi[si]+fret)%12))continue;
-     const midi=openMidi[si]+fret,pc=midi%12,d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),noteNames[pc]);
+     const midi=openMidi[si]+fret,pc=midi%12,d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),exerciseNoteName(pc,root,$("exScale").value));
      const left=fret===0?7:(isOpen?18+((fret-.5)/cols)*82:18+((fret-firstFret+.5)/cols)*82);
      d.style.left=left+"%";d.style.top=((si+.5)/6*100)+"%";d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
    }
