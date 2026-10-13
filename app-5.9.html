@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.34";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.35";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -678,11 +678,11 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  function makeStudyPositions(){
    const root=+$("exRoot").value,scale=$("exScale").value,arr=[],pcs=pentNotes(root);
    const valid=(si,fr)=>fr>=0&&fr<=24&&pcs.includes((openMidi[si]+fr)%12);
-   const add=(strings,method)=>{
+   const add=(strings,method,canonicalShape=null)=>{
      strings=strings.map((row,si)=>[...new Set(row)].filter(fr=>valid(si,fr)).sort((a,b)=>a-b));
      if(strings.some(row=>!row.length))return;
      const flat=strings.flat(),start=Math.min(...flat),end=Math.max(...flat);
-     const key=JSON.stringify(strings);if(!arr.some(p=>p.key===key))arr.push({strings,start,end,method,key});
+     const key=JSON.stringify(strings);if(!arr.some(p=>p.key===key))arr.push({strings,start,end,method,key,canonicalShape});
    };
    if(scale==="minPent"||scale==="majPent"){
      // Cinco padrões fixos da pentatônica menor de Mi, transpostos cromaticamente.
@@ -700,10 +700,10 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
      const key=DIATONIC_KEYS[root],record=DIATONIC_LIBRARY?.scales?.[scale]?.tonalities?.[key];
      if(record){
        for(const p of record.patterns)for(const pos of p.positions||[]){
-         add(pos.strings,"3NPS · grau "+p.degree);
+         add(pos.strings,"3NPS · grau "+p.degree,p.degree);
        }
      }else{
-       for(const p of canonical3Nps(root,scale))add(p.strings,"3NPS · grau "+p.degree);
+       for(const p of canonical3Nps(root,scale))add(p.strings,"3NPS · grau "+p.degree,p.degree);
      }
    }else{
      // Demais escalas: boxes compactos reais, nunca shapes vazios.
@@ -718,10 +718,10 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    arr.sort((a,b)=>a.start-b.start||a.end-b.end);
    // Mantém apenas posições distintas e úteis. A pestana só aparece quando o shape
    // realmente contém ao menos uma nota de corda solta.
-   studyPositions=arr.map((p,i)=>({...p,shape:i,openPosition:p.strings.some(row=>row.includes(0))}));
+   studyPositions=arr.map((p,i)=>({...p,shape:p.canonicalShape??(i+1),openPosition:p.strings.some(row=>row.includes(0))}));
    if(exPos>=studyPositions.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   studyPositions.forEach((p,i)=>{const b=el("button","","Shape "+(i+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   studyPositions.forEach((p,i)=>{const label=p.canonicalShape?"Shape "+p.canonicalShape:"Shape "+(i+1);const b=el("button","",label+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
    const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),p=studyPositions[exPos];if(!p)return;
