@@ -1,7 +1,7 @@
 {
   "schema": "pentatonic-shapes-v1",
-  "version": "1.1.0",
-  "status": "pitch_verified_pedagogical_diagram_comparison_pending",
+  "version": "1.2.0",
+  "status": "pitch_verified_pedagogical_naming_convention_documented",
   "pedagogicalSystem": "five two-notes-per-string connected boxes",
   "orientation": "strings low E to high E",
   "frets": [
@@ -78,7 +78,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -121,7 +124,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -164,7 +170,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -207,7 +216,10 @@
                 "string": 4,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -254,7 +266,10 @@
                 "string": 6,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -300,7 +315,10 @@
                 "string": 5,
                 "fret": 1
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -344,7 +362,10 @@
                 "string": 4,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -392,7 +413,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -440,7 +464,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -484,7 +511,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -528,7 +558,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -572,7 +605,10 @@
                 "string": 4,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -620,7 +656,10 @@
                 "string": 6,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -668,7 +707,10 @@
                 "string": 6,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -734,7 +776,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -777,7 +822,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -820,7 +868,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -863,7 +914,10 @@
                 "string": 4,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -910,7 +964,10 @@
                 "string": 6,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -956,7 +1013,10 @@
                 "string": 5,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -1000,7 +1060,10 @@
                 "string": 4,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -1048,7 +1111,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -1096,7 +1162,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -1140,7 +1209,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -1184,7 +1256,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -1228,7 +1303,10 @@
                 "string": 4,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -1276,7 +1354,10 @@
                 "string": 6,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -1324,7 +1405,10 @@
                 "string": 6,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -1390,7 +1474,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -1433,7 +1520,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -1476,7 +1566,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -1519,7 +1612,10 @@
                 "string": 4,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -1566,7 +1662,10 @@
                 "string": 6,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -1612,7 +1711,10 @@
                 "string": 5,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -1656,7 +1758,10 @@
                 "string": 5,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -1700,7 +1805,10 @@
                 "string": 4,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -1748,7 +1856,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -1796,7 +1907,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -1840,7 +1954,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -1884,7 +2001,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -1928,7 +2048,10 @@
                 "string": 4,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -1976,7 +2099,10 @@
                 "string": 6,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -2042,7 +2168,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -2085,7 +2214,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -2128,7 +2260,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -2171,7 +2306,10 @@
                 "string": 4,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -2218,7 +2356,10 @@
                 "string": 6,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -2264,7 +2405,10 @@
                 "string": 5,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -2308,7 +2452,10 @@
                 "string": 5,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -2352,7 +2499,10 @@
                 "string": 4,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -2400,7 +2550,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -2448,7 +2601,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -2492,7 +2648,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -2536,7 +2695,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -2580,7 +2742,10 @@
                 "string": 4,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -2628,7 +2793,10 @@
                 "string": 6,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -2694,7 +2862,10 @@
                 "string": 6,
                 "fret": 0
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -2737,7 +2908,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -2780,7 +2954,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -2823,7 +3000,10 @@
                 "string": 4,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -2870,7 +3050,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -2920,7 +3103,10 @@
                 "string": 6,
                 "fret": 0
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -2964,7 +3150,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -3008,7 +3197,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -3052,7 +3244,10 @@
                 "string": 4,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -3100,7 +3295,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -3148,7 +3346,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -3192,7 +3393,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -3236,7 +3440,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -3280,7 +3487,10 @@
                 "string": 4,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -3328,7 +3538,10 @@
                 "string": 6,
                 "fret": 24
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -3394,7 +3607,10 @@
                 "string": 6,
                 "fret": 1
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -3437,7 +3653,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -3480,7 +3699,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -3523,7 +3745,10 @@
                 "string": 4,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -3570,7 +3795,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -3620,7 +3848,10 @@
                 "string": 6,
                 "fret": 1
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -3664,7 +3895,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -3708,7 +3942,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -3752,7 +3989,10 @@
                 "string": 4,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -3800,7 +4040,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -3848,7 +4091,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -3892,7 +4138,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -3936,7 +4185,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -3980,7 +4232,10 @@
                 "string": 4,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -4046,7 +4301,10 @@
                 "string": 6,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -4089,7 +4347,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -4132,7 +4393,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -4175,7 +4439,10 @@
                 "string": 4,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -4222,7 +4489,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -4272,7 +4542,10 @@
                 "string": 6,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -4316,7 +4589,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -4360,7 +4636,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -4404,7 +4683,10 @@
                 "string": 4,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -4452,7 +4734,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -4500,7 +4785,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -4544,7 +4832,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -4588,7 +4879,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -4632,7 +4926,10 @@
                 "string": 4,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -4698,7 +4995,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -4741,7 +5041,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -4784,7 +5087,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -4827,7 +5133,10 @@
                 "string": 4,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -4874,7 +5183,10 @@
                 "string": 6,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -4924,7 +5236,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -4972,7 +5287,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -5016,7 +5334,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -5060,7 +5381,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -5104,7 +5428,10 @@
                 "string": 4,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -5152,7 +5479,10 @@
                 "string": 6,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -5200,7 +5530,10 @@
                 "string": 6,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -5244,7 +5577,10 @@
                 "string": 5,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -5288,7 +5624,10 @@
                 "string": 5,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -5354,7 +5693,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -5397,7 +5739,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -5440,7 +5785,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -5483,7 +5831,10 @@
                 "string": 4,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -5530,7 +5881,10 @@
                 "string": 6,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -5580,7 +5934,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -5628,7 +5985,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -5672,7 +6032,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -5716,7 +6079,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -5760,7 +6126,10 @@
                 "string": 4,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -5808,7 +6177,10 @@
                 "string": 6,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -5856,7 +6228,10 @@
                 "string": 6,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -5900,7 +6275,10 @@
                 "string": 5,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -5944,7 +6322,10 @@
                 "string": 5,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -6010,7 +6391,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -6053,7 +6437,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -6096,7 +6483,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -6139,7 +6529,10 @@
                 "string": 4,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -6186,7 +6579,10 @@
                 "string": 6,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -6232,7 +6628,10 @@
                 "string": 4,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -6280,7 +6679,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -6328,7 +6730,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -6372,7 +6777,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -6416,7 +6824,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -6460,7 +6871,10 @@
                 "string": 4,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -6508,7 +6922,10 @@
                 "string": 6,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -6556,7 +6973,10 @@
                 "string": 6,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -6600,7 +7020,10 @@
                 "string": 5,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -6666,7 +7089,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -6709,7 +7135,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -6752,7 +7181,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -6795,7 +7227,10 @@
                 "string": 4,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -6842,7 +7277,10 @@
                 "string": 6,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -6888,7 +7326,10 @@
                 "string": 4,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -6936,7 +7377,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -6984,7 +7428,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -7028,7 +7475,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -7072,7 +7522,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -7116,7 +7569,10 @@
                 "string": 4,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -7164,7 +7620,10 @@
                 "string": 6,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -7212,7 +7671,10 @@
                 "string": 6,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -7256,7 +7718,10 @@
                 "string": 5,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -7322,7 +7787,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -7365,7 +7833,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -7408,7 +7879,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -7451,7 +7925,10 @@
                 "string": 4,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -7498,7 +7975,10 @@
                 "string": 6,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -7544,7 +8024,10 @@
                 "string": 4,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -7592,7 +8075,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -7640,7 +8126,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -7684,7 +8173,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -7728,7 +8220,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -7772,7 +8267,10 @@
                 "string": 4,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -7820,7 +8318,10 @@
                 "string": 6,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -7868,7 +8369,10 @@
                 "string": 6,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -7912,7 +8416,10 @@
                 "string": 5,
                 "fret": 24
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       }
@@ -7936,53 +8443,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                5,
-                8
-              ],
-              [
-                5,
-                7
-              ],
-              [
-                5,
-                7
-              ],
-              [
-                5,
-                7
-              ],
-              [
-                5,
-                8
-              ],
-              [
-                5,
-                8
-              ]
-            ],
-            "range": [
-              5,
-              8
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 8
-              },
-              {
-                "string": 4,
-                "fret": 5
-              },
-              {
-                "string": 6,
-                "fret": 8
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -8027,7 +8487,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -8070,7 +8533,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -8113,7 +8579,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -8156,7 +8625,60 @@
                 "string": 4,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                7
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                5,
+                8
+              ]
+            ],
+            "range": [
+              5,
+              8
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 8
+              },
+              {
+                "string": 4,
+                "fret": 5
+              },
+              {
+                "string": 6,
+                "fret": 8
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -8202,7 +8724,10 @@
                 "string": 5,
                 "fret": 1
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -8246,7 +8771,10 @@
                 "string": 4,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -8294,7 +8822,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -8342,7 +8873,10 @@
                 "string": 6,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -8386,7 +8920,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -8430,7 +8967,10 @@
                 "string": 5,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -8474,7 +9014,10 @@
                 "string": 4,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -8522,7 +9065,10 @@
                 "string": 6,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -8570,7 +9116,10 @@
                 "string": 6,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -8592,53 +9141,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                6,
-                9
-              ],
-              [
-                6,
-                8
-              ],
-              [
-                6,
-                8
-              ],
-              [
-                6,
-                8
-              ],
-              [
-                6,
-                9
-              ],
-              [
-                6,
-                9
-              ]
-            ],
-            "range": [
-              6,
-              9
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 9
-              },
-              {
-                "string": 4,
-                "fret": 6
-              },
-              {
-                "string": 6,
-                "fret": 9
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -8683,7 +9185,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -8726,7 +9231,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -8769,7 +9277,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -8812,7 +9323,60 @@
                 "string": 4,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                8
+              ],
+              [
+                6,
+                9
+              ],
+              [
+                6,
+                9
+              ]
+            ],
+            "range": [
+              6,
+              9
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 9
+              },
+              {
+                "string": 4,
+                "fret": 6
+              },
+              {
+                "string": 6,
+                "fret": 9
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -8858,7 +9422,10 @@
                 "string": 5,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -8902,7 +9469,10 @@
                 "string": 4,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -8950,7 +9520,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -8998,7 +9571,10 @@
                 "string": 6,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -9042,7 +9618,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -9086,7 +9665,10 @@
                 "string": 5,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -9130,7 +9712,10 @@
                 "string": 4,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -9178,7 +9763,10 @@
                 "string": 6,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -9226,7 +9814,10 @@
                 "string": 6,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -9248,53 +9839,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                7,
-                10
-              ],
-              [
-                7,
-                9
-              ],
-              [
-                7,
-                9
-              ],
-              [
-                7,
-                9
-              ],
-              [
-                7,
-                10
-              ],
-              [
-                7,
-                10
-              ]
-            ],
-            "range": [
-              7,
-              10
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 10
-              },
-              {
-                "string": 4,
-                "fret": 7
-              },
-              {
-                "string": 6,
-                "fret": 10
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -9339,7 +9883,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -9382,7 +9929,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -9425,7 +9975,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -9468,7 +10021,60 @@
                 "string": 4,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                9
+              ],
+              [
+                7,
+                10
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "range": [
+              7,
+              10
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 10
+              },
+              {
+                "string": 4,
+                "fret": 7
+              },
+              {
+                "string": 6,
+                "fret": 10
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -9514,7 +10120,10 @@
                 "string": 5,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -9558,7 +10167,10 @@
                 "string": 4,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -9606,7 +10218,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -9654,7 +10269,10 @@
                 "string": 6,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -9698,7 +10316,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -9742,7 +10363,10 @@
                 "string": 5,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -9786,7 +10410,10 @@
                 "string": 4,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -9834,7 +10461,10 @@
                 "string": 6,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -9882,7 +10512,10 @@
                 "string": 6,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -9904,53 +10537,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                8,
-                11
-              ],
-              [
-                8,
-                10
-              ],
-              [
-                8,
-                10
-              ],
-              [
-                8,
-                10
-              ],
-              [
-                8,
-                11
-              ],
-              [
-                8,
-                11
-              ]
-            ],
-            "range": [
-              8,
-              11
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 11
-              },
-              {
-                "string": 4,
-                "fret": 8
-              },
-              {
-                "string": 6,
-                "fret": 11
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -9995,7 +10581,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -10038,7 +10627,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -10081,7 +10673,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -10124,7 +10719,60 @@
                 "string": 4,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                10
+              ],
+              [
+                8,
+                11
+              ],
+              [
+                8,
+                11
+              ]
+            ],
+            "range": [
+              8,
+              11
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 11
+              },
+              {
+                "string": 4,
+                "fret": 8
+              },
+              {
+                "string": 6,
+                "fret": 11
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -10170,7 +10818,10 @@
                 "string": 5,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -10214,7 +10865,10 @@
                 "string": 5,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -10258,7 +10912,10 @@
                 "string": 4,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -10306,7 +10963,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -10354,7 +11014,10 @@
                 "string": 6,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -10398,7 +11061,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -10442,7 +11108,10 @@
                 "string": 5,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -10486,7 +11155,10 @@
                 "string": 4,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -10534,7 +11206,10 @@
                 "string": 6,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -10556,53 +11231,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                9,
-                12
-              ],
-              [
-                9,
-                11
-              ],
-              [
-                9,
-                11
-              ],
-              [
-                9,
-                11
-              ],
-              [
-                9,
-                12
-              ],
-              [
-                9,
-                12
-              ]
-            ],
-            "range": [
-              9,
-              12
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 12
-              },
-              {
-                "string": 4,
-                "fret": 9
-              },
-              {
-                "string": 6,
-                "fret": 12
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -10647,7 +11275,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -10690,7 +11321,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -10733,7 +11367,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -10776,7 +11413,60 @@
                 "string": 4,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                11
+              ],
+              [
+                9,
+                12
+              ],
+              [
+                9,
+                12
+              ]
+            ],
+            "range": [
+              9,
+              12
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 12
+              },
+              {
+                "string": 4,
+                "fret": 9
+              },
+              {
+                "string": 6,
+                "fret": 12
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -10822,7 +11512,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -10866,7 +11559,10 @@
                 "string": 5,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -10910,7 +11606,10 @@
                 "string": 4,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -10958,7 +11657,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -11006,7 +11708,10 @@
                 "string": 6,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -11050,7 +11755,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -11094,7 +11802,10 @@
                 "string": 5,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -11138,7 +11849,10 @@
                 "string": 4,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -11186,7 +11900,10 @@
                 "string": 6,
                 "fret": 24
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -11208,53 +11925,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                10,
-                13
-              ],
-              [
-                10,
-                12
-              ],
-              [
-                10,
-                12
-              ],
-              [
-                10,
-                12
-              ],
-              [
-                10,
-                13
-              ],
-              [
-                10,
-                13
-              ]
-            ],
-            "range": [
-              10,
-              13
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 13
-              },
-              {
-                "string": 4,
-                "fret": 10
-              },
-              {
-                "string": 6,
-                "fret": 13
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -11299,7 +11969,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -11342,7 +12015,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -11385,7 +12061,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -11428,7 +12107,60 @@
                 "string": 4,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                12
+              ],
+              [
+                10,
+                13
+              ],
+              [
+                10,
+                13
+              ]
+            ],
+            "range": [
+              10,
+              13
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 13
+              },
+              {
+                "string": 4,
+                "fret": 10
+              },
+              {
+                "string": 6,
+                "fret": 13
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -11478,7 +12210,10 @@
                 "string": 6,
                 "fret": 1
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -11522,7 +12257,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -11566,7 +12304,10 @@
                 "string": 5,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -11610,7 +12351,10 @@
                 "string": 4,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -11658,7 +12402,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -11706,7 +12453,10 @@
                 "string": 6,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -11750,7 +12500,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -11794,7 +12547,10 @@
                 "string": 5,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -11838,7 +12594,10 @@
                 "string": 4,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -11860,53 +12619,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                11,
-                14
-              ],
-              [
-                11,
-                13
-              ],
-              [
-                11,
-                13
-              ],
-              [
-                11,
-                13
-              ],
-              [
-                11,
-                14
-              ],
-              [
-                11,
-                14
-              ]
-            ],
-            "range": [
-              11,
-              14
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 14
-              },
-              {
-                "string": 4,
-                "fret": 11
-              },
-              {
-                "string": 6,
-                "fret": 14
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -11951,7 +12663,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -11994,7 +12709,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -12037,7 +12755,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -12080,7 +12801,60 @@
                 "string": 4,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                13
+              ],
+              [
+                11,
+                14
+              ],
+              [
+                11,
+                14
+              ]
+            ],
+            "range": [
+              11,
+              14
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 14
+              },
+              {
+                "string": 4,
+                "fret": 11
+              },
+              {
+                "string": 6,
+                "fret": 14
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -12130,7 +12904,10 @@
                 "string": 6,
                 "fret": 2
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -12174,7 +12951,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -12218,7 +12998,10 @@
                 "string": 5,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -12262,7 +13045,10 @@
                 "string": 4,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -12310,7 +13096,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -12358,7 +13147,10 @@
                 "string": 6,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -12402,7 +13194,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -12446,7 +13241,10 @@
                 "string": 5,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -12490,7 +13288,10 @@
                 "string": 4,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -12512,53 +13313,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                0,
-                3
-              ],
-              [
-                0,
-                2
-              ],
-              [
-                0,
-                2
-              ],
-              [
-                0,
-                2
-              ],
-              [
-                0,
-                3
-              ],
-              [
-                0,
-                3
-              ]
-            ],
-            "range": [
-              0,
-              3
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 3
-              },
-              {
-                "string": 4,
-                "fret": 0
-              },
-              {
-                "string": 6,
-                "fret": 3
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -12603,7 +13357,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -12646,7 +13403,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -12689,7 +13449,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -12732,7 +13495,60 @@
                 "string": 4,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "range": [
+              0,
+              3
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 3
+              },
+              {
+                "string": 4,
+                "fret": 0
+              },
+              {
+                "string": 6,
+                "fret": 3
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -12782,7 +13598,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -12830,7 +13649,10 @@
                 "string": 6,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -12874,7 +13696,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -12918,7 +13743,10 @@
                 "string": 5,
                 "fret": 8
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -12962,7 +13790,10 @@
                 "string": 4,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -13010,7 +13841,10 @@
                 "string": 6,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -13058,7 +13892,10 @@
                 "string": 6,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -13102,7 +13939,10 @@
                 "string": 5,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -13146,7 +13986,10 @@
                 "string": 5,
                 "fret": 20
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -13190,7 +14033,10 @@
                 "string": 4,
                 "fret": 24
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -13212,53 +14058,6 @@
         ],
         "shapes": [
           {
-            "pattern": 1,
-            "strings": [
-              [
-                1,
-                4
-              ],
-              [
-                1,
-                3
-              ],
-              [
-                1,
-                3
-              ],
-              [
-                1,
-                3
-              ],
-              [
-                1,
-                4
-              ],
-              [
-                1,
-                4
-              ]
-            ],
-            "range": [
-              1,
-              4
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 4
-              },
-              {
-                "string": 4,
-                "fret": 1
-              },
-              {
-                "string": 6,
-                "fret": 4
-              }
-            ]
-          },
-          {
             "pattern": 2,
             "strings": [
               [
@@ -13303,7 +14102,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -13346,7 +14148,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -13389,7 +14194,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -13432,7 +14240,60 @@
                 "string": 4,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "range": [
+              1,
+              4
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 4
+              },
+              {
+                "string": 4,
+                "fret": 1
+              },
+              {
+                "string": 6,
+                "fret": 4
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -13482,7 +14343,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -13530,7 +14394,10 @@
                 "string": 6,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -13574,7 +14441,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -13618,7 +14488,10 @@
                 "string": 5,
                 "fret": 9
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -13662,7 +14535,10 @@
                 "string": 4,
                 "fret": 13
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -13710,7 +14586,10 @@
                 "string": 6,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -13758,7 +14637,10 @@
                 "string": 6,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -13802,7 +14684,10 @@
                 "string": 5,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -13846,7 +14731,10 @@
                 "string": 5,
                 "fret": 21
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -13867,53 +14755,6 @@
           6
         ],
         "shapes": [
-          {
-            "pattern": 1,
-            "strings": [
-              [
-                2,
-                5
-              ],
-              [
-                2,
-                4
-              ],
-              [
-                2,
-                4
-              ],
-              [
-                2,
-                4
-              ],
-              [
-                2,
-                5
-              ],
-              [
-                2,
-                5
-              ]
-            ],
-            "range": [
-              2,
-              5
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 5
-              },
-              {
-                "string": 4,
-                "fret": 2
-              },
-              {
-                "string": 6,
-                "fret": 5
-              }
-            ]
-          },
           {
             "pattern": 2,
             "strings": [
@@ -13959,7 +14800,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -14002,7 +14846,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -14045,7 +14892,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -14088,7 +14938,60 @@
                 "string": 4,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                5
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "range": [
+              2,
+              5
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 5
+              },
+              {
+                "string": 4,
+                "fret": 2
+              },
+              {
+                "string": 6,
+                "fret": 5
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -14138,7 +15041,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -14186,7 +15092,10 @@
                 "string": 6,
                 "fret": 5
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -14230,7 +15139,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -14274,7 +15186,10 @@
                 "string": 5,
                 "fret": 10
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -14318,7 +15233,10 @@
                 "string": 4,
                 "fret": 14
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -14366,7 +15284,10 @@
                 "string": 6,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -14414,7 +15335,10 @@
                 "string": 6,
                 "fret": 17
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -14458,7 +15382,10 @@
                 "string": 5,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -14502,7 +15429,10 @@
                 "string": 5,
                 "fret": 22
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -14523,53 +15453,6 @@
           7
         ],
         "shapes": [
-          {
-            "pattern": 1,
-            "strings": [
-              [
-                3,
-                6
-              ],
-              [
-                3,
-                5
-              ],
-              [
-                3,
-                5
-              ],
-              [
-                3,
-                5
-              ],
-              [
-                3,
-                6
-              ],
-              [
-                3,
-                6
-              ]
-            ],
-            "range": [
-              3,
-              6
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 6
-              },
-              {
-                "string": 4,
-                "fret": 3
-              },
-              {
-                "string": 6,
-                "fret": 6
-              }
-            ]
-          },
           {
             "pattern": 2,
             "strings": [
@@ -14615,7 +15498,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -14658,7 +15544,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -14701,7 +15590,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -14744,7 +15636,60 @@
                 "string": 4,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            "range": [
+              3,
+              6
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 6
+              },
+              {
+                "string": 4,
+                "fret": 3
+              },
+              {
+                "string": 6,
+                "fret": 6
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -14790,7 +15735,10 @@
                 "string": 4,
                 "fret": 3
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -14838,7 +15786,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -14886,7 +15837,10 @@
                 "string": 6,
                 "fret": 6
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -14930,7 +15884,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -14974,7 +15931,10 @@
                 "string": 5,
                 "fret": 11
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -15018,7 +15978,10 @@
                 "string": 4,
                 "fret": 15
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -15066,7 +16029,10 @@
                 "string": 6,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -15114,7 +16080,10 @@
                 "string": 6,
                 "fret": 18
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -15158,7 +16127,10 @@
                 "string": 5,
                 "fret": 23
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       },
@@ -15179,53 +16151,6 @@
           8
         ],
         "shapes": [
-          {
-            "pattern": 1,
-            "strings": [
-              [
-                4,
-                7
-              ],
-              [
-                4,
-                6
-              ],
-              [
-                4,
-                6
-              ],
-              [
-                4,
-                6
-              ],
-              [
-                4,
-                7
-              ],
-              [
-                4,
-                7
-              ]
-            ],
-            "range": [
-              4,
-              7
-            ],
-            "rootPositions": [
-              {
-                "string": 1,
-                "fret": 7
-              },
-              {
-                "string": 4,
-                "fret": 4
-              },
-              {
-                "string": 6,
-                "fret": 7
-              }
-            ]
-          },
           {
             "pattern": 2,
             "strings": [
@@ -15271,7 +16196,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -15314,7 +16242,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -15357,7 +16288,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -15400,7 +16334,60 @@
                 "string": 4,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
+          },
+          {
+            "pattern": 1,
+            "strings": [
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                4,
+                7
+              ],
+              [
+                4,
+                7
+              ]
+            ],
+            "range": [
+              4,
+              7
+            ],
+            "rootPositions": [
+              {
+                "string": 1,
+                "fret": 7
+              },
+              {
+                "string": 4,
+                "fret": 4
+              },
+              {
+                "string": 6,
+                "fret": 7
+              }
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ],
         "shapesByPosition": [
@@ -15446,7 +16433,10 @@
                 "string": 4,
                 "fret": 4
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -15494,7 +16484,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -15542,7 +16535,10 @@
                 "string": 6,
                 "fret": 7
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -15586,7 +16582,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 4,
@@ -15630,7 +16629,10 @@
                 "string": 5,
                 "fret": 12
               }
-            ]
+            ],
+            "referencePattern": 4,
+            "pedagogicalPattern": 3,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 5,
@@ -15674,7 +16676,10 @@
                 "string": 4,
                 "fret": 16
               }
-            ]
+            ],
+            "referencePattern": 5,
+            "pedagogicalPattern": 4,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 1,
@@ -15722,7 +16727,10 @@
                 "string": 6,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 1,
+            "pedagogicalPattern": 5,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 2,
@@ -15770,7 +16778,10 @@
                 "string": 6,
                 "fret": 19
               }
-            ]
+            ],
+            "referencePattern": 2,
+            "pedagogicalPattern": 1,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           },
           {
             "pattern": 3,
@@ -15814,7 +16825,10 @@
                 "string": 5,
                 "fret": 24
               }
-            ]
+            ],
+            "referencePattern": 3,
+            "pedagogicalPattern": 2,
+            "namingSystem": "root_on_low_E_first_major_and_minor"
           }
         ]
       }
@@ -15830,6 +16844,14 @@
       "A versão anterior guardava apenas um deslocamento de oitava e omitia boxes completos em regiões inferiores/superiores.",
       "Os padrões maiores reutilizam a numeração dos relativos menores; rotulagem pedagógica deve ser remapeada.",
       "Shapes que cruzam pestana ou casa 24 não podem ser recortados e rotulados como padrão completo."
-    ]
+    ],
+    "majorNamingCorrected": true,
+    "independentDiagramAudit": "pending"
+  },
+  "naming": {
+    "minor": "Pattern 1 has tonic on low E string at first fret of box",
+    "major": "Pattern 1 is reference minor pattern 2; pattern 2 -> reference 3, 3 -> reference 4, 4 -> reference 5, 5 -> reference 1",
+    "reference": "https://www.fretjam.com/pentatonic-scale-patterns.html",
+    "note": "Numbering is conventional and varies by school; referencePattern preserves original template index."
   }
 }
