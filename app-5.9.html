@@ -688,26 +688,46 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  }
  let studyPositions=[];
  function makeStudyPositions(){
-   const root=+$("exRoot").value,scale=$("exScale").value,arr=[];
+   const root=+$("exRoot").value,scale=$("exScale").value,arr=[],pcs=pentNotes(root);
+   const make=(strings,shape,method)=>{
+     const flat=strings.flat();if(!flat.length)return;
+     if(!strings.every((row,si)=>row.every(fr=>fr>=0&&fr<=24&&pcs.includes((openMidi[si]+fr)%12))))return;
+     const start=Math.min(...flat),end=Math.max(...flat);
+     if(!arr.some(p=>JSON.stringify(p.strings)===JSON.stringify(strings)))arr.push({shape,strings,start,end,method});
+   };
    if(scale==="minPent"||scale==="majPent"){
-     for(const oct of [0,12]){
-       for(let shape=0;shape<5;shape++){
-         const strings=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct).filter(f=>f>=0&&f<=24));
-         const flat=strings.flat();if(!flat.length)continue;
-         if(strings.every((pair,si)=>pair.every(fr=>pentNotes(root).includes((openMidi[si]+fr)%12))))
-           arr.push({shape,oct,strings,start:Math.min(...flat),end:Math.max(...flat)});
-       }
+     // Cinco boxes tradicionais, transpostos pela tônica, repetidos a cada 12 casas.
+     for(let oct=-12;oct<=24;oct+=12)for(let shape=0;shape<5;shape++){
+       const raw=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct));
+       if(raw.flat().every(fr=>fr>=0&&fr<=24))make(raw,shape,"Pentatônica · box");
      }
-     arr.sort((a,b)=>a.start-b.start||a.shape-b.shape);
+   }else if(exerciseIntervals().length===7){
+     // Sete posições 3NPS: cada corda possui as três notas consecutivas da escala
+     // a partir da posição diatônica escolhida na sexta corda.
+     const lowE=openMidi[0];
+     const starts=Array.from({length:25},(_,f)=>f).filter(f=>pcs.includes((lowE+f)%12));
+     for(const base of starts){
+       const strings=openMidi.map(midi=>{
+         const notes=[];for(let fret=Math.max(0,base-2);fret<=Math.min(24,base+7);fret++)if(pcs.includes((midi+fret)%12))notes.push(fret);
+         // 3NPS: escolher o trio cuja primeira nota está mais próxima da mão.
+         const eligible=notes.filter(f=>f>=base-1);
+         return eligible.slice(0,3);
+       });
+       if(strings.every(row=>row.length===3)&&Math.max(...strings.flat())-Math.min(...strings.flat())<=7)make(strings,arr.length,"3 notas por corda");
+     }
    }else{
-     for(let start=0;start<=20;start+=3){
-       const end=Math.min(24,start+4),strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pentNotes(root).includes((midi+fr)%12)));
-       if(strings.some(pair=>pair.length))arr.push({shape:arr.length,strings,start,end});
+     // Escalas simétricas e blues: boxes compactos derivados matematicamente
+     // das notas da escala, sem rotulá-los incorretamente como CAGED/3NPS.
+     for(let start=0;start<=24;start+=3){
+       const end=Math.min(24,start+4);
+       const strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pcs.includes((midi+fr)%12)));
+       if(strings.every(row=>row.length))make(strings,arr.length,"Box calculado");
      }
    }
+   arr.sort((x,y)=>x.start-y.start||x.end-y.end);
    studyPositions=arr;if(exPos>=arr.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   arr.forEach((p,i)=>{const b=el("button","", "Shape "+(p.shape%5+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   arr.forEach((p,i)=>{const b=el("button","", "Shape "+(i+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
    const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),p=studyPositions[exPos];if(!p)return;
@@ -754,12 +774,9 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  function startExMetro(){if(exOn)return;exOn=true;exBeat=0;$("exMetro").textContent="■ Parar";$("exMetro").classList.add("active");exTick()}
  function stopGuide(stopMetro=true){exGuideOn=false;clearTimeout(exGuideTimer);exGuideTimer=null;document.querySelectorAll("#exFret .exDot").forEach(x=>x.classList.remove("playing"));document.querySelectorAll("#exFret .exString").forEach(x=>x.classList.remove("playing"));$("exGuide").textContent="▶ Play";exGuidePaused=false;$("exNow").textContent="Pronto";if(stopMetro)stopExMetro()}
  function buildGuide(){
-   const position=studyPositions[exPos];if(!position)return [];
-   const dots=new Map([...document.querySelectorAll("#exFret .exDot")].map(d=>[d.dataset.si+":"+d.dataset.fret,d]));
-   const seq=[];
-   for(let si=0;si<6;si++)for(const fret of position.strings[si].slice().sort((a,b)=>a-b)){
-     const d=dots.get(si+":"+fret);if(d)seq.push(d);
-   }
+   // Fonte única da reprodução: SOMENTE os elementos efetivamente desenhados.
+   const seq=[...document.querySelectorAll("#exFret .exDot[data-midi][data-si][data-fret]")]
+     .sort((a,b)=>(+a.dataset.si)-(+b.dataset.si)||(+a.dataset.fret)-(+b.dataset.fret));
    const dir=$("exDirection").value;
    if(dir==="up")return seq;
    if(dir==="down")return seq.slice().reverse();
