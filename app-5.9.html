@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.43";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.44";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -400,8 +400,17 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.43</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.43</div>
+</style><style id="v544FretGuides">
+#screenExercise .exFretNumbersBottom{display:grid!important;grid-template-columns:repeat(var(--shape-cols),1fr)!important;position:absolute!important;left:18%!important;right:0!important;bottom:3px!important;z-index:8!important;pointer-events:none}
+#screenExercise .exFretNumbersBottom>span{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-end!important;color:#fff!important;text-shadow:0 1px 3px #000!important}
+#screenExercise .exFretNumbersBottom small{font-size:8px!important;opacity:.78!important;text-transform:uppercase}
+#screenExercise .exFretNumbersBottom b{font-size:12px!important}
+#screenExercise .exInlays{position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none}
+#screenExercise .exInlays i{position:absolute!important;top:50%!important;transform:translate(-50%,-50%)!important;display:flex!important;gap:14px!important}
+#screenExercise .exInlays i b{display:block!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#efe6cf!important;box-shadow:0 0 0 1px #6f5639!important;opacity:.95!important}
+#screenExercise .exInlays i.double{top:50%!important;flex-direction:column!important;gap:28px!important}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.44</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.44</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -739,7 +748,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    (isOpen?'<div class="exNut"></div>':'')+
    '<div class="exFrets">'+Array.from({length:cols},(_,i)=>'<div class="exFretLine"></div>').join("")+'</div>'+
    '<div class="exInlays">'+Array.from({length:cols},(_,i)=>{const fr=firstFret+i;if(![3,5,7,9,12,15,17,19,21,24].includes(fr))return "";const left=18+((i+.5)/cols)*82;return fr===12||fr===24?'<i class="double" style="left:'+left+'%"><b></b><b></b></i>':'<i style="left:'+left+'%"><b></b></i>'}).join("")+'</div>'+
-   '<div class="exFretNumbersBottom">'+(isOpen?'<span><b>0</b><small>solta</small></span>':'<span></span>')+
+   '<div class="exFretNumbersBottom">'+
    Array.from({length:cols},(_,i)=>'<span><small>casa</small><b>'+(firstFret+i)+'</b></span>').join('')+'</div>';
    for(let si=0;si<6;si++)for(const fret of p.strings[si]){
      if(!notes.includes((openMidi[si]+fret)%12))continue;
