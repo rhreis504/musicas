@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.19";
+const CURRENT="5.20";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -402,7 +402,7 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exBoard,#screenExercise .exFret{width:100%!important;min-width:0!important;height:300px!important;min-height:300px!important}
 #screenExercise .exFret{border-radius:14px;overflow:hidden}
 #screenExercise .exStrings{position:absolute!important;inset:0!important;display:block!important}
-#screenExercise .exString{position:absolute!important;left:0!important;right:0!important;height:0!important;border:0!important;border-top:2px solid #c8cbd0!important}
+#screenExercise .exString{position:absolute!important;left:0!important;right:0!important;height:0!important;border:0!important;border-top-style:solid!important;border-top-color:#d8dce3!important}#screenExercise .exString.s0{border-top-width:4px!important}#screenExercise .exString.s1{border-top-width:3.4px!important}#screenExercise .exString.s2{border-top-width:2.9px!important}#screenExercise .exString.s3{border-top-width:2.3px!important}#screenExercise .exString.s4{border-top-width:1.7px!important}#screenExercise .exString.s5{border-top-width:1.2px!important}
 #screenExercise .exString.s0{top:8.333%!important}.exString.s1{top:25%!important}.exString.s2{top:41.667%!important}.exString.s3{top:58.333%!important}.exString.s4{top:75%!important}.exString.s5{top:91.667%!important}
 #screenExercise .exFrets{position:absolute!important;inset:0!important;left:18%!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important}
 #screenExercise .exFretLine{border-right:2px solid #d8dce3bb!important}
@@ -412,8 +412,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .openLabel{left:1%!important;width:12%!important;bottom:5px!important}
 #screenExercise .exDot{width:34px!important;height:34px!important;font-size:12px!important}
 @media(max-height:780px){#screenExercise #exBoardScroll,#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important}}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.19</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.19</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.20</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.20</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -627,7 +627,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  exercise.innerHTML += '<div class="moduleCard"><div class="studyHero"><span>ESTUDO GUIADO</span><strong id="studyName">Mi • Pentatônica menor</strong><small>Ouça, acompanhe no braço e toque junto.</small></div><div class="exerciseGrid"><label class="small">Tônica<select id="exRoot"><option value="0">Dó</option><option value="1">Dó♯/Ré♭</option><option value="2">Ré</option><option value="3">Ré♯/Mi♭</option><option value="4" selected>Mi</option><option value="5">Fá</option><option value="6">Fá♯/Sol♭</option><option value="7">Sol</option><option value="8">Sol♯/Lá♭</option><option value="9">Lá</option><option value="10">Lá♯/Si♭</option><option value="11">Si</option></select></label><label class="small">Escala<select id="exScale"><option value="minPent">Pentatônica menor</option><option value="majPent">Pentatônica maior</option><option value="major">Maior (Jônio)</option><option value="minor">Menor natural (Eólio)</option><option value="blues">Blues menor</option></select></label></div><div class="label">VELOCIDADE E SOM</div><div class="exToolbar"><button id="exBpmMinus" aria-label="Diminuir BPM">−</button><input id="exBpm" type="range" min="40" max="220" step="1" value="90"><button id="exBpmPlus" aria-label="Aumentar BPM">+</button><span id="exBpmTxt">90 BPM</span><button id="exMetro">▶ Metrônomo</button></div><div class="exSoundRow"><label>Timbre<select id="exInstrument"><option value="acoustic_guitar_nylon">Violão nylon</option><option value="acoustic_guitar_steel">Violão aço</option><option value="electric_guitar_clean">Guitarra limpa</option></select></label><span id="exSoundStatus">Violão nylon</span></div><div class="practiceOptions"><label>Subdivisão<select id="exSub"><option value="1">♩ 1 nota/batida</option><option value="2">♫ 2 notas/batida</option><option value="4">4 notas/batida</option></select></label><label>Sentido<select id="exDirection"><option value="both">Subir e descer</option><option value="up">Somente subir</option><option value="down">Somente descer</option></select></label><label class="countIn"><input id="exCountIn" type="checkbox" checked> Contagem 1–2–3–4</label></div><div class="exMixer"><label>🎸 Exercício <input id="exVolume" type="range" min="0" max="150" value="125"><b id="exVolumeTxt">125%</b></label><label>⏱️ Metrônomo <input id="exMetroVolume" type="range" min="0" max="150" value="90"><b id="exMetroVolumeTxt">90%</b></label></div><div class="label">SHAPE</div><div class="positionBar" id="positionBar"></div><details class="advancedStudy"><summary>Configurações do exercício</summary><div class="exToolbar advancedRow"><input id="exStartFret" type="range" min="0" max="21" value="0"><span id="exStartTxt">Casas 0–4</span><button id="exGuide">▶ Play</button><button id="exStop">■ Stop</button><label class="exLoopCtl"><input id="exLoop" type="checkbox" checked> Loop</label><span id="exNow">Pronto</span></div></details><div class="studyTransport"><button id="studyPrev">‹</button><button id="studyPlay">▶</button><button id="studyStop">■</button><button id="studyNext">›</button><label><input id="studyLoop" type="checkbox" checked> Loop</label></div><div id="studyStatus">Pronto para tocar</div><div style="overflow-x:auto" id="exBoardScroll"><div class="exBoard"><div id="exFret" class="exFret"></div></div></div><div class="swipeHint">← Arraste para navegar entre as posições →</div></div>';
 
  const noteNames=["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
- const openMidi=[64,59,55,50,45,40]; // cordas visualmente: e B G D A E
+ const openMidi=[40,45,50,55,59,64]; // visual: E grave, A, D, G, B, E aguda
  let exPos=0;
  function exerciseIntervals(){return {minPent:[0,3,5,7,10],majPent:[0,2,4,7,9],major:[0,2,4,5,7,9,11],minor:[0,2,3,5,7,8,10],blues:[0,3,5,6,7,10]}[$("exScale").value]||[0,3,5,7,10]} function pentNotes(root){return exerciseIntervals().map(i=>(root+i)%12)}
 
