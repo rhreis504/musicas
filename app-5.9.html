@@ -28,7 +28,7 @@ function launchTool(tool){
 </style><script id="freshVersionCheck">
 (function(){
 "use strict";
-const CURRENT="5.25";
+const CURRENT="5.26";
 let inFlight=null, last=0;
 function reveal(){document.documentElement.classList.remove("checking-update")}
 async function check(force){
@@ -425,8 +425,15 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exFretNumbersBottom span{text-align:center;color:#f8fafc;font-weight:900;line-height:1;background:#101a2d;border:1px solid #435675;border-radius:7px;margin:2px;padding:5px 1px}
 #screenExercise .exFretNumbersBottom small{display:block;font-size:8px;color:#aeb8cc;text-transform:uppercase;margin-bottom:2px}
 #screenExercise .exFretNumbersBottom b{font-size:17px}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.25</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.25</div>
+</style><style id="v526ExactShapeCards">
+#screenExercise .exFret{min-width:0!important;width:100%!important;height:300px!important;overflow:visible!important;margin-top:58px}
+#screenExercise .shapeCaption{position:absolute;left:0;right:0;top:-58px;height:50px;display:flex;align-items:center;justify-content:center;gap:10px;background:#0e7490;border:1px solid #22d3ee;border-radius:14px 14px 0 0;color:#fff;z-index:20}
+#screenExercise .shapeCaption b{font-size:20px}#screenExercise .shapeCaption span{font-size:13px;font-weight:800}
+#screenExercise .exFrets{grid-template-columns:repeat(var(--shape-cols),1fr)!important;left:18%!important}
+#screenExercise .exFretNumbersBottom{grid-template-columns:18% repeat(var(--shape-cols),1fr)!important}
+#screenExercise .positionBar button{min-width:142px;white-space:normal}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.26</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.26</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -663,59 +670,52 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   [[10,12],[10,12],[9,12],[9,12],[10,12],[10,12]]
  ];
  function traditionalPentShape(root,shape,major){
-   const minorRoot=(root+(major?9:0))%12;
-   const anchor=(minorRoot-4+12)%12;
+   const minorRoot=(root+(major?9:0))%12,anchor=(minorRoot-4+12)%12;
    return MIN_PENT_SHAPES[shape].map(pair=>pair.map(fr=>fr+anchor));
  }
  let studyPositions=[];
  function makeStudyPositions(){
    const root=+$("exRoot").value,scale=$("exScale").value,arr=[];
    if(scale==="minPent"||scale==="majPent"){
-     for(let shape=0;shape<5;shape++){
-       const raw=traditionalPentShape(root,shape,scale==="majPent");
-       for(const oct of [0,12,24]){
-         const shifted=raw.map(pair=>pair.map(f=>f+oct));
-         // Na última região do braço, mantém apenas as notas que realmente existem até a casa 24.
-         const strings=shifted.map(pair=>pair.filter(f=>f>=0&&f<=24));
-         if(strings.some(pair=>pair.length)&&strings.every((pair,si)=>pair.every(fr=>pentNotes(root).includes((openMidi[si]+fr)%12))))
-           arr.push({shape,oct,strings,start:Math.min(...strings.flat()),end:Math.max(...strings.flat())});
+     for(const oct of [0,12]){
+       for(let shape=0;shape<5;shape++){
+         const strings=traditionalPentShape(root,shape,scale==="majPent").map(pair=>pair.map(f=>f+oct).filter(f=>f>=0&&f<=24));
+         const flat=strings.flat();if(!flat.length)continue;
+         if(strings.every((pair,si)=>pair.every(fr=>pentNotes(root).includes((openMidi[si]+fr)%12))))
+           arr.push({shape,oct,strings,start:Math.min(...flat),end:Math.max(...flat)});
        }
      }
      arr.sort((a,b)=>a.start-b.start||a.shape-b.shape);
-     // Cada botão é um shape real. Depois da casa 12, os 5 shapes se repetem uma oitava acima até a casa 24.
-     const seen=new Set();
-     for(let i=arr.length-1;i>=0;i--){const k=JSON.stringify(arr[i].strings);if(seen.has(k))arr.splice(i,1);else seen.add(k)}
    }else{
-     // Regiões calculadas por notas da escala, sem alegar que são boxes CAGED ou 3NPS padronizados.
      for(let start=0;start<=20;start+=3){
-       const end=Math.min(24,start+4);
-       const strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pentNotes(root).includes((midi+fr)%12)));
-       if(strings.some(pair=>pair.length))arr.push({shape:arr.length,strings,start});
+       const end=Math.min(24,start+4),strings=openMidi.map(midi=>Array.from({length:end-start+1},(_,i)=>start+i).filter(fr=>pentNotes(root).includes((midi+fr)%12)));
+       if(strings.some(pair=>pair.length))arr.push({shape:arr.length,strings,start,end});
      }
    }
-   studyPositions=arr;
-   if(exPos>=studyPositions.length)exPos=0;
+   studyPositions=arr;if(exPos>=arr.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   studyPositions.forEach((p,i)=>{const cycle=Math.floor((p.start+0.01)/12),shapeNo=p.shape+1;const b=el("button","", "Shape "+shapeNo+(cycle?" · oitava +"+cycle:"")+" · casa "+p.start);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   arr.forEach((p,i)=>{const b=el("button","", "Shape "+(p.shape%5+1)+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
-   const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),position=studyPositions[exPos];
-   if(!position)return;
-   const start=position.start,isOpen=start===0,firstFret=isOpen?1:start,end=Math.min(24,position.end??(start+4)),fretCount=Math.max(1,end-firstFret+1);
+   const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),p=studyPositions[exPos];if(!p)return;
+   const start=p.start,end=p.end,isOpen=start===0,firstFret=isOpen?1:start;
+   // O quadro horizontal é o mesmo shape da referência vertical: cordas continuam E A D G B E de cima para baixo.
+   const cols=isOpen?end:Math.max(1,end-start+1);
    f.classList.toggle("openPosition",isOpen);
-   f.innerHTML='<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'" data-ex-string="'+i+'"></div>').join("")+'</div>'+
-   (isOpen?'<div class="exNut" aria-label="Pestana do violão"></div><div class="openLabel">SOLTAS</div>':'')+
-   '<div class="exFrets">'+Array.from({length:fretCount},(_,i)=>'<div class="exFretLine"><span>'+(firstFret+i)+'</span></div>').join("")+'</div>'+ '<div class="exFretNumbers">'+(isOpen?'<span>0<br><small>Solta</small></span>':'<span></span>')+Array.from({length:fretCount},(_,i)=>'<span>'+(firstFret+i)+'</span>').join('')+'</div>'+ '<div class="exFretNumbersBottom">'+(isOpen?'<span><b>0</b><small>solta</small></span>':'<span></span>')+Array.from({length:fretCount},(_,i)=>'<span><small>casa</small><b>'+(firstFret+i)+'</b></span>').join('')+'</div>';
-   for(let si=0;si<6;si++)for(const fret of position.strings[si]){
-     if(fret<0||fret>24||!notes.includes((openMidi[si]+fret)%12))continue;
-     const midi=openMidi[si]+fret,pc=midi%12;
-     const d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),noteNames[pc]);
-     d.style.left=(fret===0?7:isOpen?18+(fret-.5)*(82/fretCount):18+((fret-firstFret+.5)/fretCount)*82)+"%";
-     d.style.top=((si+.5)/6*100)+"%";
-     d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;
-     d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
+   f.style.setProperty("--shape-cols",cols);
+   f.innerHTML='<div class="shapeCaption"><b>Shape '+(p.shape%5+1)+'</b><span>Casas '+start+'–'+end+'</span></div>'+
+   '<div class="exStrings">'+Array.from({length:6},(_,i)=>'<div class="exString s'+i+'"></div>').join("")+'</div>'+
+   (isOpen?'<div class="exNut"></div>':'')+
+   '<div class="exFrets">'+Array.from({length:cols},(_,i)=>'<div class="exFretLine"></div>').join("")+'</div>'+
+   '<div class="exFretNumbersBottom">'+(isOpen?'<span><b>0</b><small>solta</small></span>':'<span></span>')+
+   Array.from({length:cols},(_,i)=>'<span><small>casa</small><b>'+(firstFret+i)+'</b></span>').join('')+'</div>';
+   for(let si=0;si<6;si++)for(const fret of p.strings[si]){
+     if(!notes.includes((openMidi[si]+fret)%12))continue;
+     const midi=openMidi[si]+fret,pc=midi%12,d=el("div","exDot"+(fret===0?" exOpenDot":"")+(pc===root?" root":""),noteNames[pc]);
+     const left=fret===0?7:(isOpen?18+((fret-.5)/cols)*82:18+((fret-firstFret+.5)/cols)*82);
+     d.style.left=left+"%";d.style.top=((si+.5)/6*100)+"%";d.dataset.midi=midi;d.dataset.si=si;d.dataset.fret=fret;d.onclick=()=>exercisePluck(midi,.72);f.appendChild(d);
    }
-   $("exStartFret").value=start;$("exStartTxt").textContent="Shape "+(position.shape+1)+" • Casas "+(isOpen?"0 (solta)–"+end:start+"–"+end);
+   $("exStartFret").value=start;$("exStartTxt").textContent="Shape "+(p.shape%5+1)+" • Casas "+start+"–"+end;
    document.querySelectorAll("#positionBar button").forEach((b,i)=>b.classList.toggle("active",i===exPos));
  }
  function updateStudyName(){$("studyName").textContent=$("exRoot").selectedOptions[0].textContent+" • "+$("exScale").selectedOptions[0].textContent}
