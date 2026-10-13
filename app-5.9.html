@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.36";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.37";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -399,8 +399,8 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
  #screenExercise .exBoard{min-height:360px!important}
  #screenExercise .exDot{width:30px!important;height:30px!important}
 }
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.36</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.36</div>
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.37</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.37</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -721,7 +721,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
    studyPositions=arr.map((p,i)=>({...p,shape:p.canonicalShape??(i+1),openPosition:p.strings.some(row=>row.includes(0))}));
    if(exPos>=studyPositions.length)exPos=0;
    const bar=$("positionBar");bar.innerHTML="";
-   studyPositions.forEach((p,i)=>{const label=p.canonicalShape?"Shape "+p.canonicalShape:"Shape "+(i+1);const b=el("button","",label+" · casas "+p.start+"–"+p.end);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
+   studyPositions.forEach((p,i)=>{const label=p.canonicalShape?"Shape "+p.canonicalShape:"Shape "+(i+1);const b=el("button","",label);b.onclick=()=>{stopGuide();exPos=i;drawExercise()};bar.appendChild(b)});
  }
  function drawExercise(){
    const root=+$("exRoot").value,notes=pentNotes(root),f=$("exFret"),p=studyPositions[exPos];if(!p)return;
