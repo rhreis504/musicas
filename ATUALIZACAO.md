@@ -6,8 +6,8 @@
 
 ## Versão publicada
 
-- **version:** 5.21
-- **build:** ea8592f3
+- **version:** 5.22
+- **build:** 74985b17
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
@@ -15,13 +15,13 @@
 
 | Módulo | Arquivo/fonte | Revisão |
 |---|---|---|
-| Inicial / navegação | app-5.9.html | 5.21 |
-| Acordes | app-5.9.html | 5.21 |
-| Exercícios / escalas / shapes | app-5.9.html | 5.21 |
-| Braço do violão | app-5.9.html | 5.21 |
-| Afinador | app-5.9.html | 5.21 |
-| Metrônomo | app-5.9.html | 5.21 |
-| Loader / Atualizar | index.html | 5.21 |
+| Inicial / navegação | app-5.9.html | 5.22 |
+| Acordes | app-5.9.html | 5.22 |
+| Exercícios / escalas / shapes | app-5.9.html | 5.22 |
+| Braço do violão | app-5.9.html | 5.22 |
+| Afinador | app-5.9.html | 5.22 |
+| Metrônomo | app-5.9.html | 5.22 |
+| Loader / Atualizar | index.html | 5.22 |
 
 ## Regra obrigatória de publicação
 
@@ -33,6 +33,8 @@
 6. O arquivo version.json fica apenas como compatibilidade; este MD é a referência principal.
 
 ## Histórico
+
+- **5.22** — numeração das casas visível acima do braço, incluindo casa 0 (solta); removidas posições pentatônicas duplicadas por oitava.
 
 - **5.21** — 18 fórmulas de escalas, pentatônicas com cinco shapes tradicionais e demais escalas em regiões móveis; notas/casas e Play calculados da mesma matriz; documentação REFERENCIAS_ESCALAS.md.
 
