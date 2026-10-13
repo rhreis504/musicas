@@ -659,7 +659,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
   fetch("biblioteca/shapes-diatonicos-3nps-v1.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}),
   fetch("biblioteca/shapes-pentatonicos-v1.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
  ]).then(([diatonic,pent])=>{
-   if(diatonic.version==="2.0.0"&&diatonic.scales){DIATONIC_LIBRARY=diatonic;window.PENTATONIC_LIBRARY=pent;makeStudyPositions();drawExercise()}
+   if(/^2\.0\./.test(diatonic.version)&&diatonic.scales){DIATONIC_LIBRARY=diatonic;window.PENTATONIC_LIBRARY=pent;makeStudyPositions();drawExercise()}
  }).catch(e=>console.warn("Biblioteca indisponível; usando geometria local validada",e));
  function exerciseIntervals(){return SCALE_INTERVALS[$("exScale").value]||SCALE_INTERVALS.minPent}
  function pentNotes(root){return exerciseIntervals().map(i=>(root+i)%12)}
