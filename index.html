@@ -49,8 +49,7 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
      const finalHtml=await get("./"+APP);
      if(versionOf(finalHtml)!==fresh.version)throw Error("publicação mudou durante download");
      progress(86,"Preparando v"+fresh.version+"…");
-     const blob=URL.createObjectURL(new Blob([finalHtml],{type:"text/html"}));
-     const frame=document.createElement("iframe");frame.allow="microphone; autoplay";frame.src=blob;frame.style.visibility="hidden";
+     const frame=document.createElement("iframe");frame.allow="microphone; autoplay";frame.src="./"+APP+"?version="+encodeURIComponent(fresh.version)+"&session="+bust();frame.style.visibility="hidden";
      frame.onload=()=>{progress(94,"Finalizando v"+fresh.version+"…");setTimeout(()=>{progress(100,"v"+fresh.version+" atualizada");setTimeout(()=>{frame.style.visibility="visible";requestAnimationFrame(()=>boot.remove())},280)},220)};
      document.body.appendChild(frame);
    }catch(e){progress(0,"Não foi possível verificar a atualização.");retry.style.display="block"}
