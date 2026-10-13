@@ -1,7 +1,7 @@
 {
   "schema": "3nps-diatonic-v1",
   "version": "1.0.0",
-  "status": "mathematically_verified_not_independently_diagram_certified",
+  "status": "pitch_valid_but_3nps_geometry_requires_correction",
   "system": "seven degree-based three-notes-per-string patterns",
   "tuning": "E2 A2 D3 G3 B3 E4",
   "fretRange": [
@@ -30681,5 +30681,46 @@
         }
       }
     }
+  },
+  "audit": {
+    "date": "2026-10-12",
+    "method": "all patterns checked for fret-span and hand-position coherence",
+    "patterns": 588,
+    "patternsWiderThanSixFrets": 63,
+    "largeBackwardJumps": 0,
+    "examples": [
+      {
+        "type": "major",
+        "key": "C",
+        "degree": 1,
+        "width": 7
+      },
+      {
+        "type": "major",
+        "key": "C#/Db",
+        "degree": 1,
+        "width": 7
+      },
+      {
+        "type": "major",
+        "key": "D",
+        "degree": 1,
+        "width": 7
+      },
+      {
+        "type": "major",
+        "key": "D#/Eb",
+        "degree": 1,
+        "width": 7
+      },
+      {
+        "type": "major",
+        "key": "G",
+        "degree": 1,
+        "width": 7
+      }
+    ],
+    "externalBenchmark": "https://guitartheorystudio.com/positions/c-major-three-notes-per-string",
+    "conclusion": "Pitch correctness does not establish 3NPS pedagogy. Existing greedy algorithm produces unusually wide or discontinuous positions. Do not label as independently homologated."
   }
 }
