@@ -5,45 +5,58 @@ iframe{position:fixed;inset:0;border:0;width:100%;height:100%;display:block;back
 #force:active{background:#f59e0b;color:#111}
 </style></head><body><button id="force">↻ Atualizar</button><script>
 (()=>{
- const btn=document.getElementById("force"),LOCAL_VERSION="5.21",LOCAL_BUILD="ea8592f3",APP="app-5.9.html";
+ const btn=document.getElementById("force"),LOCAL_VERSION="5.21",APP="app-5.9.html";
+ const raw="https://raw.githubusercontent.com/rhreis504/musicas/main/";
  let frame=null,busy=false;
  const bust=()=>Date.now()+"-"+Math.random().toString(36).slice(2);
+ const status=t=>{btn.textContent=t;btn.setAttribute("aria-label",t)};
  function parseMD(md){
-   const version=(md.match(/\*\*version:\*\*\s*([^\s]+)/i)||[])[1];
-   const build=(md.match(/\*\*build:\*\*\s*([^\s]+)/i)||[])[1];
-   const entry=(md.match(/\*\*entry:\*\*\s*([^\s]+)/i)||[])[1]||APP;
-   if(!version||!build)throw Error("ATUALIZACAO.md inválido");
-   return {version,build,app:entry};
+  const version=(md.match(/\\*\\*version:\\*\\*\\s*([^\\s]+)/i)||[])[1];
+  const build=(md.match(/\\*\\*build:\\*\\*\\s*([^\\s]+)/i)||[])[1];
+  const entry=(md.match(/\\*\\*entry:\\*\\*\\s*([^\\s]+)/i)||[])[1]||APP;
+  if(!version||!build||!/^[\\w.-]+\\.html$/.test(entry))throw Error("Manifesto inválido");
+  return {version,build,entry};
  }
- async function mdLatest(){
-   const r=await fetch("./ATUALIZACAO.md?fresh="+bust(),{cache:"no-store",headers:{"Cache-Control":"no-cache, no-store, max-age=0","Pragma":"no-cache"}});
-   if(!r.ok)throw Error("ATUALIZACAO.md indisponível");
-   return parseMD(await r.text());
+ async function fetchText(path,fromRaw){
+  const url=(fromRaw?raw:"./")+path+(path.includes("?")?"&":"?")+"fresh="+bust();
+  const res=await fetch(url,{cache:"no-store"});
+  if(!res.ok)throw Error("HTTP "+res.status);
+  return res.text();
  }
- function appUrl(m){return "./"+m.app+"?version="+encodeURIComponent(m.version)+"&build="+encodeURIComponent(m.build)+"&fresh="+bust()}
- function mount(m){
-   const n=document.createElement("iframe");n.allow="microphone; autoplay";n.src=appUrl(m);
-   n.onload=()=>{if(frame)frame.remove();frame=n};
-   document.body.appendChild(n);
+ async function manifest(){
+  try{return parseMD(await fetchText("ATUALIZACAO.md",true))}
+  catch(e){return parseMD(await fetchText("ATUALIZACAO.md",false))}
  }
- async function purge(){
-   if("serviceWorker" in navigator){for(const reg of await navigator.serviceWorker.getRegistrations())await reg.unregister().catch(()=>{})}
-   if("caches" in window){for(const key of await caches.keys())await caches.delete(key)}
-   try{localStorage.removeItem("mv-last-manifest")}catch(e){}
- }
- async function hardUpdate(){
-   if(busy)return;busy=true;btn.textContent="Validando versão…";
+ async function verifiedHtml(m){
+  const marker='const CURRENT="'+m.version+'"';
+  for(const fromRaw of [true,false]){
    try{
-     await purge();
-     const m=await mdLatest();
-     btn.textContent="Abrindo v"+m.version+"…";
-     const u=new URL(location.origin+location.pathname);
-     u.searchParams.set("version",m.version);u.searchParams.set("build",m.build);u.searchParams.set("fresh",bust());
-     location.replace(u.href);
-   }catch(e){btn.textContent="Falha — tentar novamente";busy=false}
+    const html=await fetchText(m.entry,fromRaw);
+    if(html.includes(marker))return html;
+   }catch(e){}
+  }
+  throw Error("A versão "+m.version+" ainda não está disponível para carregar");
  }
- btn.onclick=hardUpdate;
- mount({version:LOCAL_VERSION,build:LOCAL_BUILD,app:APP});
- setTimeout(async()=>{try{const m=await mdLatest();if(m.version!==LOCAL_VERSION||m.build!==LOCAL_BUILD){await purge();mount(m)}}catch(e){}},250);
+ function mount(html,m){
+  const n=document.createElement("iframe");
+  n.allow="microphone; autoplay";
+  n.srcdoc=html;
+  n.onload=()=>{if(frame)frame.remove();frame=n;status("✓ v"+m.version+" instalada");setTimeout(()=>status("↻ Atualizar"),3200)};
+  document.body.appendChild(n);
+ }
+ async function refresh(){
+  if(busy)return;busy=true;status("Consultando GitHub…");
+  try{
+   const m=await manifest();
+   status("Verificando v"+m.version+"…");
+   const html=await verifiedHtml(m);
+   mount(html,m);
+  }catch(e){
+   status("Aguardando publicação — tente em 2 min");
+   console.warn("Atualização Meu Violão:",e);
+  }finally{busy=false}
+ }
+ btn.onclick=refresh;
+ refresh();
 })();
 </script></body></html>
