@@ -6,12 +6,14 @@
 
 ## Versão publicada
 
-- **version:** 5.28
-- **build:** 61aa6935
+- **version:** 5.29
+- **build:** bb2eb1e7
 - **published:** 2026-10-12
 - **entry:** app-5.9.html
 
-## Registro da versão 5.28
+## Registro da versão 5.29
+
+- Padronização universal da primeira posição: shapes que começam entre as casas 1 e 5 exibem o braço desde a casa 0, com nut/pestana e cordas soltas válidas.
 
 - Gerador de shapes por tônica e família de escala.
 - Pentatônicas: boxes tradicionais transpostos por tônica.
