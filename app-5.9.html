@@ -25,7 +25,7 @@ function launchTool(tool){
 }
 </script><style id="versionStyles">
 #appVersionBadge{position:fixed;z-index:10050;top:calc(7px + env(safe-area-inset-top));right:9px;padding:4px 8px;border-radius:999px;background:#111a2eee;border:1px solid #33405f;color:#aeb8cc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
-</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.47";})();</script><style id="v3Layout">
+</style><script id="freshVersionCheck">(function(){"use strict";const CURRENT="5.48";})();</script><style id="v3Layout">
 body{padding-bottom:92px}
 .appHome,.toolScreen{display:none!important}.appHome.active,.toolScreen.active{display:block!important}
 #launchHome{display:block} body.launched #launchHome{display:none!important}
@@ -409,8 +409,28 @@ main.app,.screen,#screenExercise,#screenExercise>.moduleCard{width:100%!importan
 #screenExercise .exInlays i{position:absolute!important;top:50%!important;transform:translate(-50%,-50%)!important;display:flex!important;gap:14px!important}
 #screenExercise .exInlays i b{display:block!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#efe6cf!important;box-shadow:0 0 0 1px #6f5639!important;opacity:.95!important}
 #screenExercise .exInlays i.double{top:50%!important;flex-direction:column!important;gap:28px!important}
-</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.47</div><section id="launchHome" aria-label="Tela inicial">
-<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.47</div>
+</style><style id="v548ExerciseUX">
+/* v5.48: mobile-first guided practice, fretboard readability */
+#screenExercise>.moduleCard{max-height:none!important;height:auto!important;overflow:visible!important;display:flex!important;flex-direction:column!important;gap:10px!important;padding:12px!important}
+#screenExercise .exerciseGrid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:8px!important}
+#screenExercise .exerciseGrid label{min-width:0!important}
+#screenExercise .exerciseGrid select{width:100%!important;min-width:0!important;font-size:14px!important}
+#screenExercise .positionBar{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin!important;gap:6px!important;padding:4px 0 8px!important}
+#screenExercise .positionBar button{flex:0 0 auto!important;min-width:70px!important;white-space:nowrap!important}
+#screenExercise #exBoardScroll{height:300px!important;min-height:300px!important;overflow:visible!important;padding:0 0 32px!important}
+#screenExercise .exBoard,#screenExercise .exFret{height:260px!important;min-height:260px!important;overflow:visible!important}
+#screenExercise .exFretNumbersBottom{bottom:-28px!important;height:27px!important;display:flex!important;left:18%!important;right:0!important;align-items:center!important;gap:0!important}
+#screenExercise .exFretNumbersBottom span{flex:1!important;min-width:0!important;padding:3px 0!important;margin:0 1px!important;border-radius:5px!important;line-height:1!important}
+#screenExercise .exFretNumbersBottom small{display:none!important}
+#screenExercise .exFretNumbersBottom b{font-size:11px!important;line-height:15px!important}
+#screenExercise .exDot{width:29px!important;height:29px!important;font-size:10px!important;box-shadow:0 1px 4px #0009!important;z-index:8!important}
+#screenExercise .exDot.playing{outline:3px solid #fbbf24!important;outline-offset:3px!important;z-index:12!important}
+#screenExercise .shapeCaption{min-height:35px!important;font-size:13px!important}
+#screenExercise .exInlays i b{width:7px!important;height:7px!important}
+#screenExercise .exInlays i.double{gap:36px!important}
+@media(max-width:390px){#screenExercise .exDot{width:25px!important;height:25px!important;font-size:9px!important}#screenExercise>.moduleCard{padding:9px!important}#screenExercise .exFretNumbersBottom b{font-size:10px!important}}
+</style></head><body><div id="updateGate">Verificando versão publicada…</div><div id="appVersionBadge">v5.48</div><section id="launchHome" aria-label="Tela inicial">
+<div class="launchBadge">CENTRAL MUSICAL • VERSÃO 5.48</div>
 <div class="launchTitle">🎸 Meu Violão</div>
 <p class="launchSub">Escolha uma ferramenta para começar. Tudo organizado em um só lugar.</p>
 <div class="launchGrid">
@@ -626,7 +646,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
  // Exercícios: seleção + metrônomo compacto + 5 boxes da pentatônica menor.
  exercise.innerHTML += '<div class="moduleCard"><div class="studyHero"><span>ESTUDO GUIADO</span><strong id="studyName">Mi • Pentatônica menor</strong><small>Ouça, acompanhe no braço e toque junto.</small></div><div class="exerciseGrid"><label class="small">Tônica<select id="exRoot"><option value="0" selected>Dó</option><option value="1">Dó♯/Ré♭</option><option value="2">Ré</option><option value="3">Ré♯/Mi♭</option><option value="4">Mi</option><option value="5">Fá</option><option value="6">Fá♯/Sol♭</option><option value="7">Sol</option><option value="8">Sol♯/Lá♭</option><option value="9">Lá</option><option value="10">Lá♯/Si♭</option><option value="11">Si</option></select></label><label class="small">Escala<select id="exScale"><option value="minPent">Pentatônica menor</option><option value="majPent">Pentatônica maior</option><option value="major">Maior (Jônio)</option><option value="minor">Menor natural (Eólio)</option><option value="majBlues">Blues maior</option><option value="dorian">Dórico</option><option value="phrygian">Frígio</option><option value="lydian">Lídio</option><option value="mixolydian">Mixolídio</option><option value="locrian">Lócrio</option><option value="harmMinor">Menor harmônica</option><option value="melMinor">Menor melódica (jazz)</option><option value="phrygDom">Frígio dominante</option><option value="wholeTone">Tons inteiros</option><option value="dimWH">Diminuta tom-semitom</option><option value="dimHW">Diminuta semitom-tom</option><option value="chromatic">Cromática</option></select></label></div><div class="label">VELOCIDADE E SOM</div><div class="exToolbar"><button id="exBpmMinus" aria-label="Diminuir BPM">−</button><input id="exBpm" type="range" min="40" max="220" step="1" value="90"><button id="exBpmPlus" aria-label="Aumentar BPM">+</button><span id="exBpmTxt">90 BPM</span><button id="exMetro">▶ Metrônomo</button></div><div class="exSoundRow"><label>Timbre<select id="exInstrument"><option value="acoustic_guitar_nylon">Violão nylon</option><option value="acoustic_guitar_steel">Violão aço</option><option value="electric_guitar_clean">Guitarra limpa</option></select></label><span id="exSoundStatus">Violão nylon</span></div><div class="practiceOptions"><label>Subdivisão<select id="exSub"><option value="1">♩ 1 nota/batida</option><option value="2">♫ 2 notas/batida</option><option value="4">4 notas/batida</option></select></label><label>Sentido<select id="exDirection"><option value="both">Subir e descer</option><option value="up">Somente subir</option><option value="down">Somente descer</option></select></label><label class="countIn"><input id="exCountIn" type="checkbox" checked> Contagem 1–2–3–4</label></div><div class="exMixer"><label>🎸 Exercício <input id="exVolume" type="range" min="0" max="150" value="125"><b id="exVolumeTxt">125%</b></label><label>⏱️ Metrônomo <input id="exMetroVolume" type="range" min="0" max="150" value="90"><b id="exMetroVolumeTxt">90%</b></label></div><div class="label">SHAPE</div><div class="positionBar" id="positionBar"></div><details class="advancedStudy"><summary>Configurações do exercício</summary><div class="exToolbar advancedRow"><input id="exStartFret" type="range" min="0" max="21" value="0"><span id="exStartTxt">Casas 0–4</span><button id="exGuide">▶ Play</button><button id="exStop">■ Stop</button><label class="exLoopCtl"><input id="exLoop" type="checkbox" checked> Loop</label><span id="exNow">Pronto</span></div></details><div class="studyTransport"><button id="studyPrev">‹</button><button id="studyPlay">▶</button><button id="studyStop">■</button><button id="studyNext">›</button><label><input id="studyLoop" type="checkbox" checked> Loop</label></div><div id="studyStatus">Pronto para tocar</div><div style="overflow-x:auto" id="exBoardScroll"><div class="exBoard"><div id="exFret" class="exFret"></div></div></div><div class="swipeHint">← Arraste para navegar entre as posições →</div></div>';
 
- const noteNames=["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"];
+ const noteNames=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
  const openMidi=[40,45,50,55,59,64]; // visual: E grave, A, D, G, B, E aguda
  let exPos=0;
  const SCALE_INTERVALS={
@@ -728,7 +748,7 @@ $("instrument").onchange=()=>{stopAll();activeInstrument=$("instrument").value;i
        if(strings.every(row=>row.length))add(strings,"Box calculado");
      }
    }
-   arr.sort((a,b)=>a.start-b.start||a.end-b.end);
+   arr.sort((a,b)=>((a.canonicalShape||99)-(b.canonicalShape||99))||a.start-b.start||a.end-b.end);
    // Mantém apenas posições distintas e úteis. A pestana só aparece quando o shape
    // realmente contém ao menos uma nota de corda solta.
    studyPositions=arr.map((p,i)=>({...p,shape:p.canonicalShape??(i+1),openPosition:p.strings.some(row=>row.includes(0))}));
